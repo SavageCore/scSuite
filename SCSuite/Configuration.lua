@@ -6,9 +6,59 @@ SCSuiteConfiguration = SCSuiteConfiguration or class()
 function SCSuiteConfiguration:init()
 
     -- Start edit --
-	self.mission_selector_enable = true -- Enables Mission Selection Menu
+    self.mission_selector_enable = true -- Enables Mission Selection Menu
     self.music_selector_enable = true -- Enables Music Selection Menu
+    
     self.mute_bain_enable = true -- Mutes all Bain voice overs in-game except on required levels
+    -- All maps listed here disable Mute Bain (Bain talks)
+    self.mute_bain_blacklist = { 
+    
+        "alex_1", -- Rats Day 1
+        --"alex_2", -- Rats Day 2
+        --"alex_3", -- Rats Day 3
+        --"arm_cro", -- Armored Transport: Crossroads
+        "arm_fac", -- Armored Transport: Harbor
+        --"arm_for", -- Armored Transport: Train Heist
+        "arm_hcm", -- Armored Transport: Downtown
+        --"arm_par", -- Armored Transport: Park
+        --"arm_und", -- Armored Transport: Underpass
+        "big", -- Big Bank
+        --"branchbank", -- Bank Heist
+        --"election_day_1", -- Election Day Day 1
+        --"election_day_2", -- Election Day Day 2
+        --"election_day_3_skip1", -- Election Day Day 3 (Not sure the difference)
+        --"election_day_3_skip2", -- Election Day Day 3 (Not sure the difference)
+        --"election_day_3", -- Election Day Day 3
+        --"escape_cafe_day", -- Escape: Cafe (Day)
+        --"escape_cafe", -- Escape: Cafe
+        --"escape_garage", -- Escape: Garage
+        --"escape_overpass_night", -- Escape: Overpass (Night)
+        "escape_overpass", -- Escape: Overpass
+        --"escape_park_day", -- Escape: Park (Day)
+        --"escape_park", -- Escape: Park
+        --"escape_street", -- Escape: Street
+        --"family", -- Diamond Heist
+        --"firestarter_1", -- Firestarter Day 1
+        --"firestarter_2", -- Firestarter Day 2
+        --"firestarter_3", -- Firestarter Day 3
+        --"four_stores", -- Four Stores
+        --"framing_frame_1", -- Framing Frame Day 1
+        --"framing_frame_2", -- Framing Frame Day 2
+        --"framing_frame_3", -- Framing Frame Day 3
+        --"jewelry_store", -- Jewelry Store
+        --"kosugi", -- Shadow Raid
+        --"mallcrasher", -- Mallcrasher
+        --"nightclub", -- Nightclub
+        "roberts", -- GO Bank
+        --"safehouse", -- Safehouse
+        --"ukrainian_job", -- Ukranian Job
+        --"watchdogs_1", -- Watchdogs Day 1
+        "watchdogs_2", -- Watchdogs Day 2
+        --"welcome_to_the_jungle_1", -- Big Oil Day 1
+        --"welcome_to_the_jungle_2", -- Big Oil Day 2    
+        
+    }  
+        
     self.bank_buster_keybind_enable = true -- Enables opening of all deposit boxes when F9 is pressed
     self.bank_buster_stealth_enable = true -- Enables automatic opening of deposit boxes if vault is opened in stealth
     self.flat_job_bonus_enable = false -- All jobs give +50% XP

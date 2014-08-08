@@ -11,11 +11,11 @@ if tweak_data and tweak_data.SCSuiteConfiguration.bodies_for_bain_enable then
     if managers.job:current_level_id() == nil then return end
     if not WhitelistCheck then 
         if inTable(tweak_data.SCSuiteConfiguration.bodies_for_bain_whitelist, managers.job:current_level_id()) then
-            managers.chat:_receive_message(1, "Bain", "Hey, the organs - go get them!", tweak_data.system_chat_color)
+            managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.bodies_for_bain_enabled, tweak_data.system_chat_color)
             SkipLevel = false
             WhitelistCheck = true
         else
-            managers.chat:_receive_message(1, "Bain", "We cannot take organs with this Ebola crisis!", tweak_data.system_chat_color)
+            managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.bodies_for_bain_disabled, tweak_data.system_chat_color)
             WhitelistCheck = true
         end
     else

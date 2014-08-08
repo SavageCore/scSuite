@@ -3,22 +3,13 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mute_bain_enable then
     if inGame() and isPlaying() then
         muteBain = true
         if isHost() and managers.job:current_level_id() == "roberts" and managers.groupai:state():whisper_mode() then
-            managers.chat:_receive_message(1, "System", "Disabling MuteBain - required for this level.", tweak_data.system_chat_color)
+            managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.mute_bain_disabled, tweak_data.system_chat_color)
             return
         end
 
-        exceptions = { 
-            "roberts", 
-            "alex_1", 
-            "escape_overpass", 
-            "arm_hcm", 
-            "arm_fac", 
-            "watchdogs_2",
-            "big"
-        }
-        for i,v in ipairs(exceptions) do
+        for i,v in ipairs(tweak_data.SCSuiteConfiguration.mute_bain_blacklist) do
             if managers.job:current_level_id() == v then
-                managers.chat:_receive_message(1, "System", "Disabling MuteBain - required for this level.", tweak_data.system_chat_color)
+                managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.mute_bain_disabled, tweak_data.system_chat_color)
             return
             end
         end

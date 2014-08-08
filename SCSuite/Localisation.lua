@@ -16,6 +16,12 @@ function SCSuiteLocalisation:init()
         -- Configuration Reloaded
         self.reload_configuration_success = "Configuration Reloaded"
         self.reload_configuration_fail = "Failed: Configuration Reload"
+        -- Sell hostages
+        self.bodies_for_bain_enabled = "Bain: Bring me hostages or body bags!"
+        self.bodies_for_bain_disabled = "Bain: We cannot take organs with this Ebola crisis!"
+        -- Mute Bain
+        self.mute_bain_enabled = "Enabled: MuteBain"
+        self.mute_bain_disabled = "Disabled: MuteBain - required for this level."
     elseif tweak_data.SCSuiteConfiguration.language == "deDE" then
         -- Instant Drill
         self.instant_drill_override_enabled = "DE Enabled: Instant Drill Override"
@@ -28,5 +34,11 @@ function SCSuiteLocalisation:init()
         -- Configuration Reloaded
         self.reload_configuration_success = "Konfiguration Reloaded"
         self.reload_configuration_fail = "DE Failed: Configuration Reload"
+        -- Sell hostages
+        self.bodies_for_bain_enabled = "DE Bain: Bring me hostages or body bags!"
+        self.bodies_for_bain_disabled = "DE Bain: We cannot take organs with this Ebola crisis!"
+        -- Mute Bain
+        self.mute_bain_enabled = "DE Enabled: MuteBain"
+        self.mute_bain_disabled = "DE Disabled: MuteBain - required for this level."
     end    
 end
