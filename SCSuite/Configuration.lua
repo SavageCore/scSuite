@@ -20,6 +20,7 @@ function SCSuiteConfiguration:init()
     self.version_string_override = true -- Replace Payday 2 Version number on main menu with scSuite version information
     self.instant_drill_override_enable = true -- Enables the keybind F4 to toggle instant drill
     self.drill_jam_override_enable = true -- Enables override so the drill never jams
+    self.language = "enGB" --IETF language tag
     
     self.bodies_for_bain_enable = true -- Sell humans - dead or alive
     -- Any level listed here you will be able to sell hostages on
@@ -87,6 +88,6 @@ function SCSuiteConfiguration:init()
     -- End edit --
     
     -- !!!!!!! DO NOT TOUCH BELOW !!!!!!! --
-    self.version_string = "scSuite v0.1.0 - HoxHud 2.2"
+    self.version_string = "scSuite v0.1.1 - HoxHud 2.2"
     
 end
