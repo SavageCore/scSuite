@@ -4,6 +4,7 @@ Config:
   PrintOffsets: false
   ExtraCols: 10
   ExtraRows: 10
+#  FirstRunScript: LUA/_GLOBALS.lua
 KeyBindings:
 # Mission Selection - http://www.unknowncheats.me/forum/1015461-post50.html
    - [VK_F1, LUA/MissionSelector.lua]
@@ -29,6 +30,7 @@ KeyBindings:
 #  - [0x22, LUA/somescript.lua]
 #  - [0x7A, LUA/somescript.lua]
 PersistScripts:
+#   - [GlobalScriptInitialized, LUA/_GLOBALS.lua]
    - [General, LUA/Persist/General.lua]
 # Don't shout at tied civilians - http://www.unknowncheats.me/forum/1018784-post3.html
    - [NoShout, LUA/MiscFixes/NoShout.lua]
@@ -112,5 +114,5 @@ PostRequireScripts:
    - [lib/units/unitdamage, LUA/BankBuster.lua] 
 # Random chance of no pager on undetected guards - http://www.unknowncheats.me/forum/1003557-post107.html
    - [lib/units/enemies/cop/copbrain, LUA/PagerChance.lua]    
-# Infinite Cable Ties - http://www.unknowncheats.me/forum/payday-2/114719-infinite-grenades-infinite-cable-ties-alternate-scripts.html
-#   - [lib/managers/menu/menulobbyrenderer, LUA/CableLimit.lua] 
+# Cable Ties Limit - http://www.unknowncheats.me/forum/payday-2/114719-infinite-grenades-infinite-cable-ties-alternate-scripts.html
+#   - [lib/managers/menu/menubackdropgui, LUA/CableLimit.lua] 

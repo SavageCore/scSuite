@@ -64,7 +64,7 @@ function SCSuiteConfiguration:init()
     self.flat_job_bonus_enable = false -- All jobs give +50% XP
     self.drop_in_pause_disable = true -- Disable pause/lock when someone joins your game
     self.cable_tie_override_enable = true -- Enable limit override on amount of cable ties
-    self.cable_tie_override_limit = 100 -- Cable ties limit
+    self.cable_tie_override_limit = 10 -- Cable ties limit
     self.civilian_follow_override_enable = true -- Enable limit override on amount of civilian followers - Will default to 500
     self.civilian_follow_override_limit = 100 -- Civilian follower limit
     self.version_string_override = true -- Replace Payday 2 Version number on main menu with scSuite version information
@@ -138,6 +138,6 @@ function SCSuiteConfiguration:init()
     -- End edit --
     
     -- !!!!!!! DO NOT TOUCH BELOW !!!!!!! --
-    self.version_string = "scSuite v0.1.1 - HoxHud 2.2"
+    self.version_string = "scSuite v0.1.2 - HoxHud 2.2"
     
 end
