@@ -64,13 +64,14 @@ function SCSuiteConfiguration:init()
     self.flat_job_bonus_enable = false -- All jobs give +50% XP
     self.drop_in_pause_disable = true -- Disable pause/lock when someone joins your game
     self.cable_tie_override_enable = true -- Enable limit override on amount of cable ties
-    self.cable_tie_override_limit = 10 -- Cable ties limit
+    self.cable_tie_override_limit = 100 -- Cable ties limit
     self.civilian_follow_override_enable = true -- Enable limit override on amount of civilian followers - Will default to 500
     self.civilian_follow_override_limit = 5 -- Civilian follower limit
     self.version_string_override = true -- Replace Payday 2 Version number on main menu with scSuite version information
     self.instant_drill_override_enable = false -- Enables the keybind F4 to toggle instant drill
-    self.drill_jam_override_enable = false -- Enables override so the drill never jams
+    self.drill_jam_override_enable = true -- Enables override so the drill never jams
     self.language = "enGB" --IETF language tag
+    self.kill_all_enable = false -- Enables the keybind F5 to kill/delete all AI on map - no pagers
     
     self.bodies_for_bain_enable = true -- Sell humans - dead or alive
     -- Any level listed here you will be able to sell hostages on
@@ -141,6 +142,6 @@ function SCSuiteConfiguration:init()
     -- End edit --
     
     -- !!!!!!! DO NOT TOUCH BELOW !!!!!!! --
-    self.version_string = "scSuite v0.1.2 - HoxHud 2.2"
+    self.version_string = "scSuite v0.1.3 - HoxHud 2.2"
     
 end

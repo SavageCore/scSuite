@@ -22,6 +22,8 @@ function SCSuiteLocalisation:init()
         -- Mute Bain
         self.mute_bain_enabled = "Enabled: MuteBain"
         self.mute_bain_disabled = "Disabled: MuteBain - required for this level."
+        -- KillAllAI
+        self.kill_all_notify = "ALL KILLED"
     elseif tweak_data.SCSuiteConfiguration.language == "deDE" then
         -- Instant Drill
         self.instant_drill_override_enabled = "DE Enabled: Instant Drill Override"
@@ -40,5 +42,7 @@ function SCSuiteLocalisation:init()
         -- Mute Bain
         self.mute_bain_enabled = "DE Enabled: MuteBain"
         self.mute_bain_disabled = "DE Disabled: MuteBain - required for this level."
+        -- KillAllAI
+        self.kill_all_notify = "DE ALL KILLED"            
     end    
 end
