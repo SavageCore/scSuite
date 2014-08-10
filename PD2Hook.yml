@@ -16,8 +16,7 @@ KeyBindings:
    - [VK_F4, LUA/Hacks/InstantDrill.lua]
 # Nuke map - http://www.unknowncheats.me/forum/1017628-post1.html   
    - [VK_F5, LUA/Hacks/KillAllAI.lua]
-# Infinite ECM - http://www.unknowncheats.me/forum/936421-post2.html   
-   - [VK_F6, LUA/Hacks/InfiniteECM.lua]
+#  - [VK_F6, LUA/somescript.lua]
 #  - [VK_F7, LUA/somescript.lua]
 #  - [VK_F8, LUA/somescript.lua]
    - [VK_F9, LUA/KeyBind/BankBuster.lua]
