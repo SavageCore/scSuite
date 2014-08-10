@@ -9,24 +9,27 @@ if tweak_data and tweak_data.SCSuiteConfiguration.bodies_for_bain_enable then
         return false
     end
     if managers.job:current_level_id() == nil then return end
+    if not isPlaying() then return end
+    
     if not WhitelistCheck then 
         if inTable(tweak_data.SCSuiteConfiguration.bodies_for_bain_whitelist, managers.job:current_level_id()) then
-            managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.bodies_for_bain_enabled, tweak_data.system_chat_color)
+            managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.bodies_for_bain_enabled, tweak_data.system_chat_color)    
             SkipLevel = false
             WhitelistCheck = true
         else
             managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.bodies_for_bain_disabled, tweak_data.system_chat_color)
             WhitelistCheck = true
         end
-    else
-        SkipLevel = false
     end
+    --    SkipLevel = false
+    --end
 
     local DEAD_BODY_COST			=	300			-- Base cost for dead body
     local HOSTAGE_SELL_DISTANCE		=	6 * 100		-- Distance to loot zone, when we can sell a hostage
     local BODYBAGS_STAY_IN_CAR 		= 	true		-- Bodybags visual will stay in car after secure
 
     if not SellHostage and not SkipLevel then
+        SellHostage = true
         -- GET UNIT TYPE
         if get_unit_type == nil then
             get_unit_type = function(unit)
@@ -324,8 +327,6 @@ if tweak_data and tweak_data.SCSuiteConfiguration.bodies_for_bain_enable then
                 
                 return self:def_dye_pack_exploded()
             end
-        
-            SellHostage = true
             return
         end
     end
