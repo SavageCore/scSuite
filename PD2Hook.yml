@@ -30,7 +30,7 @@ KeyBindings:
 #  - [0x22, LUA/somescript.lua]
 #  - [0x7A, LUA/somescript.lua]
 PersistScripts:
-#   - [GlobalScriptInitialized, LUA/_GLOBALS.lua]
+   - [GlobalScriptInitialized, LUA/_GLOBALS.lua]
    - [General, LUA/Persist/General.lua]
 # Don't shout at tied civilians - http://www.unknowncheats.me/forum/1018784-post3.html
    - [NoShout, LUA/MiscFixes/NoShout.lua]
@@ -49,7 +49,9 @@ PersistScripts:
 # Infinite Cable Ties - http://www.unknowncheats.me/forum/payday-2/114719-infinite-grenades-infinite-cable-ties-alternate-scripts.html
    - [CableOverride, LUA/CableLimit.lua]    
 # No Drill Jam - http://www.unknowncheats.me/forum/payday-2/117728-instant-drill-hack-toggle.html   
-   - [DrillJam, LUA/Hacks/DrillJam.lua]   
+   - [DrillJam, LUA/Hacks/DrillJam.lua] 
+# Stealth Fixer - http://www.unknowncheats.me/forum/payday-2/111139-stealthfixerv2.html   
+   - [StealthFixer, LUA/Persist/StealthFixer.lua]
 PostRequireScripts:
    - ["*", SCSuite/Main.lua]
    - [core/lib/managers/coremusicmanager, HoxHud/setup.lua] 
@@ -96,6 +98,7 @@ PostRequireScripts:
    - [lib/units/props/texttemplatebase, HoxHud/setup.lua] 
 # This is not used by HoxHud itself, rather it fixes a bug 
    - [lib/managers/gameplaycentralmanager, HoxHud/setup.lua]
+   - [lib/network/handlers/unitnetworkhandler, LUA/MiscFixes/HoxHud.lua]
 # Toggle Interaction - http://www.unknowncheats.me/forum/992194-post4.html
    - [lib/units/beings/player/states/PlayerStandard, LUA/Toggle/Interact.lua]      
 # Toggle Mask - http://www.unknowncheats.me/forum/992194-post4.html

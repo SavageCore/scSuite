@@ -1,6 +1,25 @@
 if not GlobalScriptInitialized then
     GlobalScriptInitialized = true
-    
+	-- HACK VERSION	by pierredjays
+	if not MenuNodeMainGui then return end
+	-- MenuNodeMainGui = MenuNodeMainGui or class( MenuNodeGui )
+	function MenuNodeMainGui:_setup_item_rows( node )
+		MenuNodeMainGui.super._setup_item_rows( self, node )
+		if alive( self._version_string ) then
+			self._version_string:parent():remove( self._version_string )
+			self._version_string = nil
+		end
+		self._version_string = self.ws:panel():text({
+			name = "version_string",
+			text = tweak_data.SCSuiteConfiguration.version_string,
+			font = tweak_data.menu.pd2_small_font,
+			font_size = tweak_data.menu.pd2_small_font_size,
+			color = Color('FF4F00'),
+			align = SystemInfo:platform() == Idstring("WIN32") and "left",
+			vertical = "top",
+			alpha = 0.9
+		})
+	end   
     -------------------------------------------------------------------------
     -- Utility Functions
     -------------------------------------------------------------------------
@@ -353,9 +372,45 @@ if not GlobalScriptInitialized then
     return false
     end
     
-SCSuiteStatus = SCSuiteStatus or class()
-function SCSuiteStatus:init()
-    self.loaded = true  
-end    
+    -- CrashFixer - http://www.unknowncheats.me/forum/945899-post1.html
+    if RequiredScript == "lib/managers/group_ai_states/groupaistatebase" then
+        for k,v in pairs(GroupAIStateBase) do
+            if type(v) == "function" then
+                GroupAIStateBase[k] = function(...)
+                    local ret = {pcall(v, ...)}
+                    if ret[1] == true and #ret > 1 then
+                        table.remove(ret, 1)
+                        return unpack(ret)
+                    end
+                end
+            end
+        end
+        
+    elseif RequiredScript == "lib/units/enemies/cop/actions/lower_body/copactionwalk" then
+        CopActionWalk.___nav_point_pos = CopActionWalk._nav_point_pos
+        CopActionWalk.___send_nav_point = CopActionWalk._send_nav_point
+        
+        function CopActionWalk._nav_point_pos(...)
+            local _,ret = pcall(CopActionWalk.___nav_point_pos, ...)
+            return ret
+        end
+        
+        function CopActionWalk:_send_nav_point(...)
+            local _,ret = pcall(self.___send_nav_point, self, ...)
+            return ret
+        end
+        
+    elseif RequiredScript == "lib/units/enemies/spooc/actions/lower_body/actionspooc" then
+        ActionSpooc.__upd_chase_path = ActionSpooc._upd_chase_path
+
+        function ActionSpooc:_upd_chase_path(...)
+            pcall(self.__upd_chase_path, self, ...)
+        end
+    end    
+    
+    SCSuiteStatus = SCSuiteStatus or class()
+    function SCSuiteStatus:init()
+        self.loaded = true  
+    end    
     
 end

@@ -2495,7 +2495,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
     -- BANK HEIST: CASH (Normal, Hard, Very Hard, OverKill, and DeathWish)
     BankCashDeathWish = function()
             local job_data = {
-                job_id = "branchbank",
+                job_id = "branchbank_cash",
                 difficulty = "overkill_290"
             }
             start_job(job_data)
@@ -2503,7 +2503,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
 
     BankCashOverKill = function()
             local job_data = {
-                job_id = "branchbank",
+                job_id = "branchbank_cash",
                 difficulty = "overkill_145"
             }
             start_job(job_data)
@@ -2511,7 +2511,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
 
     BankCashVeryHard = function()
             local job_data = {
-                job_id = "branchbank",
+                job_id = "branchbank_cash",
                 difficulty = "overkill"
             }
             start_job(job_data)
@@ -2519,7 +2519,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
 
     BankCashHard = function()
             local job_data = {
-                job_id = "branchbank",
+                job_id = "branchbank_cash",
                 difficulty = "hard"
             }
             start_job(job_data)
@@ -2527,7 +2527,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
 
     BankCashNormal = function()
             local job_data = {
-                job_id = "branchbank",
+                job_id = "branchbank_cash",
                 difficulty = "normal"
             }
             start_job(job_data)

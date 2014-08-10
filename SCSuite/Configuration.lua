@@ -66,10 +66,10 @@ function SCSuiteConfiguration:init()
     self.cable_tie_override_enable = true -- Enable limit override on amount of cable ties
     self.cable_tie_override_limit = 10 -- Cable ties limit
     self.civilian_follow_override_enable = true -- Enable limit override on amount of civilian followers - Will default to 500
-    self.civilian_follow_override_limit = 100 -- Civilian follower limit
+    self.civilian_follow_override_limit = 5 -- Civilian follower limit
     self.version_string_override = true -- Replace Payday 2 Version number on main menu with scSuite version information
-    self.instant_drill_override_enable = true -- Enables the keybind F4 to toggle instant drill
-    self.drill_jam_override_enable = true -- Enables override so the drill never jams
+    self.instant_drill_override_enable = false -- Enables the keybind F4 to toggle instant drill
+    self.drill_jam_override_enable = false -- Enables override so the drill never jams
     self.language = "enGB" --IETF language tag
     
     self.bodies_for_bain_enable = true -- Sell humans - dead or alive
@@ -129,12 +129,15 @@ function SCSuiteConfiguration:init()
     self.force_ready_threshold = 5
     
     -- Toggle scripts - die push and hold die!
-    self.toggle_interact_enable = true -- Enable general interact toggle - lock picking for example - press F again to stop
-    self.toggle_mask_enable = true -- Enable mask toggle - press once to put mask on
-    self.toggle_equipment_enable = true -- Enable equipment toggle - press once to deploy ECM
+    self.toggle_interact_enable = true -- Enables general interact toggle - lock picking for example - press F again to stop
+    self.toggle_mask_enable = true -- Enables mask toggle - press once to put mask on
+    self.toggle_equipment_enable = true -- Enables equipment toggle - press once to deploy ECM
+    
+    self.stealth_joker_enable = true -- Enables Joker (guard domination) in Stealth
+    self.unlimited_conversion_enable = true -- Enables unlimited conversions
     
     -- Fixes
-    self.fixes_shout_civilians_enable = true -- Enables a fix to stop shouting at tied civs
+    self.fixes_shout_civilians_enable = false -- Enables a fix to stop shouting at tied civs
     -- End edit --
     
     -- !!!!!!! DO NOT TOUCH BELOW !!!!!!! --
