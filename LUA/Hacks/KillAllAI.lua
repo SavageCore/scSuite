@@ -22,4 +22,6 @@ if tweak_data and tweak_data.SCSuiteConfiguration.kill_all_enable then
 
     numapocalypse()
     managers.hud:show_hint( { text = tweak_data.SCSuiteLocalisation.kill_all_notify } )  
+else
+    managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.kill_all_disabled, tweak_data.system_chat_color)
 end
