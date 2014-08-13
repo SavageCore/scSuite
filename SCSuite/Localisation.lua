@@ -25,15 +25,6 @@ function SCSuiteLocalisation:init()
         -- KillAllAI
         self.kill_all_notify = "ALL KILLED"
         self.kill_all_disabled = "Disabled: KillAllAI (kill_all_enable)"
-        -- XRay
-        self.xray_enabled = "Enabled: XRay"
-        self.xray_disable = "Disabled: XRay (xray_enable)"        
-        --CarryStacker
-        self.carry_stacker_enabled = "Enabled: CarryStacker"
-        self.carry_stacker_disabled = "Disabled: CarryStacker (carry_stacker_enable)"
-        --PickupFinder
-        self.pickup_finder_enabled = "Enabled: CarryStacker"
-        self.pickup_finder_disabled = "Disabled: CarryStacker (pickup_waypoints_enable)"
     elseif tweak_data.SCSuiteConfiguration.language == "deDE" then
         -- Instant Drill
         self.instant_drill_override_enabled = "DE Enabled: Instant Drill Override"
@@ -54,12 +45,6 @@ function SCSuiteLocalisation:init()
         self.mute_bain_disabled = "DE Disabled: MuteBain - required for this level."
         -- KillAllAI
         self.kill_all_notify = "DE ALL KILLED"
-        self.kill_all_disabled = "DE Disabled: KillAllAI (kill_all_enable)"     
-        -- XRay
-        self.xray_enabled = "DE Enabled: XRay"
-        self.xray_disable = "DE Disabled: XRay (xray_enable)"    
-        --CarryStacker
-        self.carry_stacker_enabled "DE Enabled: CarryStacker"
-        self.carry_stacker_disabled "DE Disabled: CarryStacker (carry_stacker_enable)"        
+        self.kill_all_disabled = "DE Disabled: KillAllAI (kill_all_enable)"        
     end    
 end

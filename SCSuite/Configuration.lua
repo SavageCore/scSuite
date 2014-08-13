@@ -68,11 +68,10 @@ function SCSuiteConfiguration:init()
     self.civilian_follow_override_enable = true -- Enable limit override on amount of civilian followers - Will default to 500
     self.civilian_follow_override_limit = 5 -- Civilian follower limit
     self.version_string_override = true -- Replace Payday 2 Version number on main menu with scSuite version information
-    self.instant_drill_override_enable = true -- Enables the keybind F4 to toggle instant drill
+    self.instant_drill_override_enable = false -- Enables the keybind F4 to toggle instant drill
     self.drill_jam_override_enable = true -- Enables override so the drill never jams
     self.language = "enGB" --IETF language tag
-    self.kill_all_enable = true -- Enables the keybind F5 to kill/delete all AI on map - no pagers
-    self.hostage_sell_limit = 1 -- Limit of hostages or body bags you can sell
+    self.kill_all_enable = false -- Enables the keybind F5 to kill/delete all AI on map - no pagers
     
     self.bodies_for_bain_enable = true -- Sell humans - dead or alive
     -- Any level listed here you will be able to sell hostages on
@@ -138,18 +137,11 @@ function SCSuiteConfiguration:init()
     self.stealth_joker_enable = true -- Enables Joker (guard domination) in Stealth
     self.unlimited_conversion_enable = true -- Enables unlimited conversions
     
-    self.anti_anti_cheat_enable = true -- Enables various Anti Anti-Cheat scripts - such as disabling HoxHud chat spam
-   
-    self.xray_enable = true -- Enables the keybind F6 to highlight (xray) all enemies, civilians and cameras on the map
-    self.pickup_waypoints_enables = false -- Enables Highlighting of Keycards and Crowbars
-    
-    self.carry_stacker_enable = true -- Enables CarryStacker
-    self.carry_stacker_limit = 2 -- Limit for CarryStacker
-    
     -- Fixes
     self.fixes_shout_civilians_enable = false -- Enables a fix to stop shouting at tied civs
     -- End edit --
     
     -- !!!!!!! DO NOT TOUCH BELOW !!!!!!! --
     self.version_string = "scSuite v0.1.3 - HoxHud 2.2"
+    
 end
