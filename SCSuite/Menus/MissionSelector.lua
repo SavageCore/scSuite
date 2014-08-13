@@ -92,6 +92,16 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
     end
     end
         
+    -- Menu Call
+
+    MainMenuReturn = MainMenuReturn or function()
+        dofiles("SCSuite/Menus/Main.lua")
+    end
+
+    ReloadConfiguration = ReloadConfiguration or function()
+        dofiles("SCSuite/ReloadConfiguration.lua")
+    end   
+        
     -- ESCAPE CHAIN (Current Difficulty)
     EscapeCafeChain = function()
     managers.job:set_next_interupt_stage( "escape_cafe" )
@@ -2575,517 +2585,772 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
         end
 
     EscapeDeathWish = {
-    { text = "Escape: Cafe", callback = EscapeCafeDeathWish },
-    { text = "Escape: Cafe (Day)", callback = EscapeCafeDayDeathWish },
-    { text = "Escape: Park", callback = EscapeParkDeathWish },
-    { text = "Escape: Park (Day)", callback = EscapeParkDayDeathWish },
-    { text = "Escape: Overpass", callback = EscapeOverPassDeathWish },
-    { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightDeathWish },
-    { text = "Escape: Street", callback = EscapeStreetDeathWish },
-    { text = "Escape: Garage", callback = EscapeGarageDeathWish },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    EscapeDeathWishMenu = SimpleMenu:new("Mission Selector", "Choose Heist", EscapeDeathWish)
+    { text = "---Difficulty DeathWish---", callback = nil },
+    {},
+     { text = "Escape: Cafe", callback = EscapeCafeDeathWish },
+     { text = "Escape: Cafe (Day)", callback = EscapeCafeDayDeathWish },
+     { text = "Escape: Park", callback = EscapeParkDeathWish },
+     { text = "Escape: Park (Day)", callback = EscapeParkDayDeathWish },
+     { text = "Escape: Overpass", callback = EscapeOverPassDeathWish },
+     { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightDeathWish },
+     { text = "Escape: Street", callback = EscapeStreetDeathWish },
+     { text = "Escape: Garage", callback = EscapeGarageDeathWish },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    EscapeDeathWishMenu = SimpleMenu:new("Escape Difficulty", "Choose Heist", EscapeDeathWish)
 
     EscapeOverKill = {
-    { text = "Escape: Cafe", callback = EscapeCafeOverKill },
-    { text = "Escape: Cafe (Day)", callback = EscapeCafeDayOverKill },
-    { text = "Escape: Park", callback = EscapeParkOverKill },
-    { text = "Escape: Park (Day)", callback = EscapeParkDayOverKill },
-    { text = "Escape: Overpass", callback = EscapeOverPassOverKill },
-    { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightOverKill },
-    { text = "Escape: Street", callback = EscapeStreetOverKill },
-    { text = "Escape: Garage", callback = EscapeGarageOverKill },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    EscapeOverKillMenu = SimpleMenu:new("Mission Selector", "Choose Heist", EscapeOverKill)
+    { text = "---Difficulty OverKill---", callback = nil },
+    {},
+     { text = "Escape: Cafe", callback = EscapeCafeOverKill },
+     { text = "Escape: Cafe (Day)", callback = EscapeCafeDayOverKill },
+     { text = "Escape: Park", callback = EscapeParkOverKill },
+     { text = "Escape: Park (Day)", callback = EscapeParkDayOverKill },
+     { text = "Escape: Overpass", callback = EscapeOverPassOverKill },
+     { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightOverKill },
+     { text = "Escape: Street", callback = EscapeStreetOverKill },
+     { text = "Escape: Garage", callback = EscapeGarageOverKill },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    EscapeOverKillMenu = SimpleMenu:new("Escape Difficulty", "Choose Heist", EscapeOverKill)
 
     EscapeVeryHard = {
-    { text = "Escape: Cafe", callback = EscapeCafeVeryHard },
-    { text = "Escape: Cafe (Day)", callback = EscapeCafeDayVeryHard },
-    { text = "Escape: Park", callback = EscapeParkVeryHard },
-    { text = "Escape: Park (Day)", callback = EscapeParkDayVeryHard },
-    { text = "Escape: Overpass", callback = EscapeOverPassVeryHard },
-    { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightVeryHard },
-    { text = "Escape: Street", callback = EscapeStreetVeryHard },
-    { text = "Escape: Garage", callback = EscapeGarageVeryHard },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    EscapeVeryHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", EscapeVeryHard)
+    { text = "---Difficulty VeryHard---", callback = nil },
+    {},
+     { text = "Escape: Cafe", callback = EscapeCafeVeryHard },
+     { text = "Escape: Cafe (Day)", callback = EscapeCafeDayVeryHard },
+     { text = "Escape: Park", callback = EscapeParkVeryHard },
+     { text = "Escape: Park (Day)", callback = EscapeParkDayVeryHard },
+     { text = "Escape: Overpass", callback = EscapeOverPassVeryHard },
+     { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightVeryHard },
+     { text = "Escape: Street", callback = EscapeStreetVeryHard },
+     { text = "Escape: Garage", callback = EscapeGarageVeryHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    EscapeVeryHardMenu = SimpleMenu:new("Escape Difficulty", "Choose Heist", EscapeVeryHard)
 
     EscapeHard = {
-    { text = "Escape: Cafe", callback = EscapeCafeHard },
-    { text = "Escape: Cafe (Day)", callback = EscapeCafeDayHard },
-    { text = "Escape: Park", callback = EscapeParkHard },
-    { text = "Escape: Park (Day)", callback = EscapeParkDayHard },
-    { text = "Escape: Overpass", callback = EscapeOverPassHard },
-    { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightHard },
-    { text = "Escape: Street", callback = EscapeStreetHard },
-    { text = "Escape: Garage", callback = EscapeGarageHard },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    EscapeHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", EscapeHard)
+    { text = "---Difficulty Hard---", callback = nil },
+    {},
+     { text = "Escape: Cafe", callback = EscapeCafeHard },
+     { text = "Escape: Cafe (Day)", callback = EscapeCafeDayHard },
+     { text = "Escape: Park", callback = EscapeParkHard },
+     { text = "Escape: Park (Day)", callback = EscapeParkDayHard },
+     { text = "Escape: Overpass", callback = EscapeOverPassHard },
+     { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightHard },
+     { text = "Escape: Street", callback = EscapeStreetHard },
+     { text = "Escape: Garage", callback = EscapeGarageHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    EscapeHardMenu = SimpleMenu:new("Escape Difficulty", "Choose Heist", EscapeHard)
 
     EscapeNormal = {
-    { text = "Escape: Cafe", callback = EscapeCafeNormal },
-    { text = "Escape: Cafe (Day)", callback = EscapeCafeDayNormal },
-    { text = "Escape: Park", callback = EscapeParkNormal },
-    { text = "Escape: Park (Day)", callback = EscapeParkDayNormal },
-    { text = "Escape: Overpass", callback = EscapeOverPassNormal },
-    { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightNormal },
-    { text = "Escape: Street", callback = EscapeStreetNormal },
-    { text = "Escape: Garage", callback = EscapeGarageNormal },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    EscapeNormalMenu = SimpleMenu:new("Mission Selector", "Choose Heist", EscapeNormal)
-        
+    { text = "---Difficulty Normal---", callback = nil },
+    {},
+     { text = "Escape: Cafe", callback = EscapeCafeNormal },
+     { text = "Escape: Cafe (Day)", callback = EscapeCafeDayNormal },
+     { text = "Escape: Park", callback = EscapeParkNormal },
+     { text = "Escape: Park (Day)", callback = EscapeParkDayNormal },
+     { text = "Escape: Overpass", callback = EscapeOverPassNormal },
+     { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightNormal },
+     { text = "Escape: Street", callback = EscapeStreetNormal },
+     { text = "Escape: Garage", callback = EscapeGarageNormal },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    EscapeNormalMenu = SimpleMenu:new("Escape Difficulty", "Choose Heist", EscapeNormal)
+
     VladDeathWish = {
-    { text = "Four Stores" .. heat_string("four_stores"), callback = FourStoresDeathWish },
-    { text = "Mallcrasher" .. heat_string("mallcrasher"), callback = MallCrasherDeathWish },
-    { text = "Nightclub" .. heat_string("nightclub"), callback = NightclubDeathWish },
-    { text = "Ukrainian Job (Pro Job)" .. heat_string("ukrainian_job_prof"), callback = UkrainianJobPRODeathWish },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    VladDeathWishMenu = SimpleMenu:new("Mission Selector", "Choose Heist", VladDeathWish)
+    { text = "---Difficulty DeathWish---", callback = nil },
+    {},
+     { text = "Four Stores" .. heat_string("four_stores"), callback = FourStoresDeathWish },
+     { text = "Mallcrasher" .. heat_string("mallcrasher"), callback = MallCrasherDeathWish },
+     { text = "Nightclub" .. heat_string("nightclub"), callback = NightclubDeathWish },
+     { text = "Ukrainian Job (Pro Job)" .. heat_string("ukrainian_job_prof"), callback = UkrainianJobPRODeathWish },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    VladDeathWishMenu = SimpleMenu:new("Vlad Difficulty", "Choose Heist", VladDeathWish)
 
     VladOverKill = {
-    { text = "Four Stores" .. heat_string("four_stores"), callback = FourStoresOverKill },
-    { text = "Mallcrasher" .. heat_string("mallcrasher"), callback = MallCrasherOverKill },
-    { text = "Nightclub" .. heat_string("nightclub"), callback = NightclubOverKill },
-    { text = "Ukrainian Job (Pro Job)" .. heat_string("ukrainian_job_prof"), callback = UkrainianJobPROOverKill },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    VladOverKillMenu = SimpleMenu:new("Mission Selector", "Choose Heist", VladOverKill)
+    { text = "---Difficulty OverKill---", callback = nil },
+    {},
+     { text = "Four Stores" .. heat_string("four_stores"), callback = FourStoresOverKill },
+     { text = "Mallcrasher" .. heat_string("mallcrasher"), callback = MallCrasherOverKill },
+     { text = "Nightclub" .. heat_string("nightclub"), callback = NightclubOverKill },
+     { text = "Ukrainian Job (Pro Job)" .. heat_string("ukrainian_job_prof"), callback = UkrainianJobPROOverKill },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    VladOverKillMenu = SimpleMenu:new("Vlad Difficulty", "Choose Heist", VladOverKill)
 
     VladVeryHard = {
-    { text = "Four Stores" .. heat_string("four_stores"), callback = FourStoresVeryHard },
-    { text = "Mallcrasher" .. heat_string("mallcrasher"), callback = MallCrasherVeryHard },
-    { text = "Nightclub" .. heat_string("nightclub"), callback = NightclubVeryHard },
-    { text = "Ukrainian Job (Pro Job)" .. heat_string("ukrainian_job_prof"), callback = UkrainianJobPROVeryHard },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    VladVeryHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", VladVeryHard)
+    { text = "---Difficulty VeryHard---", callback = nil },
+    {},
+     { text = "Four Stores" .. heat_string("four_stores"), callback = FourStoresVeryHard },
+     { text = "Mallcrasher" .. heat_string("mallcrasher"), callback = MallCrasherVeryHard },
+     { text = "Nightclub" .. heat_string("nightclub"), callback = NightclubVeryHard },
+     { text = "Ukrainian Job (Pro Job)" .. heat_string("ukrainian_job_prof"), callback = UkrainianJobPROVeryHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    VladVeryHardMenu = SimpleMenu:new("Vlad Difficulty", "Choose Heist", VladVeryHard)
 
     VladHard = {
-    { text = "Four Stores" .. heat_string("four_stores"), callback = FourStoresHard },
-    { text = "Mallcrasher" .. heat_string("mallcrasher"), callback = MallCrasherHard },
-    { text = "Nightclub" .. heat_string("nightclub"), callback = NightclubHard },
-    { text = "Ukrainian Job (Pro Job)" .. heat_string("ukrainian_job_prof"), callback = UkrainianJobPROHard },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    VladHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", VladHard)
+    { text = "---Difficulty Hard---", callback = nil },
+    {},
+     { text = "Four Stores" .. heat_string("four_stores"), callback = FourStoresHard },
+     { text = "Mallcrasher" .. heat_string("mallcrasher"), callback = MallCrasherHard },
+     { text = "Nightclub" .. heat_string("nightclub"), callback = NightclubHard },
+     { text = "Ukrainian Job (Pro Job)" .. heat_string("ukrainian_job_prof"), callback = UkrainianJobPROHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    VladHardMenu = SimpleMenu:new("Vlad Difficulty", "Choose Heist", VladHard)
 
     VladNormal = {
-    { text = "Four Stores" .. heat_string("four_stores"), callback = FourStoresNormal },
-    { text = "Mallcrasher" .. heat_string("mallcrasher"), callback = MallCrasherNormal },
-    { text = "Nightclub" .. heat_string("nightclub"), callback = NightclubNormal },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    VladNormalMenu = SimpleMenu:new("Mission Selector", "Choose Heist", VladNormal)
+    { text = "---Difficulty Normal---", callback = nil },
+    {},
+     { text = "Four Stores" .. heat_string("four_stores"), callback = FourStoresNormal },
+     { text = "Mallcrasher" .. heat_string("mallcrasher"), callback = MallCrasherNormal },
+     { text = "Nightclub" .. heat_string("nightclub"), callback = NightclubNormal },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    VladNormalMenu = SimpleMenu:new("Vlad Difficulty", "Choose Heist", VladNormal)
 
     ElephantDeathWish = {
-    { text = "Framing Frame Day 1" .. heat_string("framing_frame"), callback = FramingFrameDay1DeathWish },
-    { text = "Framing Frame Day 2" .. heat_string("framing_frame"), callback = FramingFrameDay2DeathWish },
-    { text = "Framing Frame Day 3" .. heat_string("framing_frame"), callback = FramingFrameDay3DeathWish },
-    { text = "Framing Frame (Pro Job) Day 1" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay1DeathWish },
-    { text = "Framing Frame (Pro Job) Day 2" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay2DeathWish },
-    { text = "Framing Frame (Pro Job) Day 3" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay3DeathWish },
-    { text = "Big Oil (Pro Job) Day 1" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay1DeathWish },
-    { text = "Big Oil (Pro Job) Day 2" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay2DeathWish },
-    { text = "Election Day Day 1" .. heat_string("election_day"), callback = ElectionDayDay1DeathWish },
-    { text = "Election Day Day 2" .. heat_string("election_day"), callback = ElectionDayDay2DeathWish },
-    { text = "Election Day Day 3" .. heat_string("election_day"), callback = ElectionDayDay3DeathWish },
-    { text = "Election Day (Pro Job) Day 1" .. heat_string("election_day_prof"), callback = ElectionDayPRODay1DeathWish },
-    { text = "Election Day (Pro Job) Day 2" .. heat_string("election_day_prof"), callback = ElectionDayPRODay2DeathWish },
-    { text = "Election Day (Pro Job) Day 3" .. heat_string("election_day_prof"), callback = ElectionDayPRODay3DeathWish },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    ElephantDeathWishMenu = SimpleMenu:new("Mission Selector", "Choose Heist", ElephantDeathWish)
+    { text = "---Difficulty DeathWish---", callback = nil },
+    {},
+     { text = "Framing Frame Day 1" .. heat_string("framing_frame"), callback = FramingFrameDay1DeathWish },
+     { text = "Framing Frame Day 2" .. heat_string("framing_frame"), callback = FramingFrameDay2DeathWish },
+     { text = "Framing Frame Day 3" .. heat_string("framing_frame"), callback = FramingFrameDay3DeathWish },
+     { text = "Framing Frame (Pro Job) Day 1" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay1DeathWish },
+     { text = "Framing Frame (Pro Job) Day 2" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay2DeathWish },
+     { text = "Framing Frame (Pro Job) Day 3" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay3DeathWish },
+     { text = "Big Oil (Pro Job) Day 1" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay1DeathWish },
+     { text = "Big Oil (Pro Job) Day 2" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay2DeathWish },
+     { text = "Election Day Day 1" .. heat_string("election_day"), callback = ElectionDayDay1DeathWish },
+     { text = "Election Day Day 2" .. heat_string("election_day"), callback = ElectionDayDay2DeathWish },
+     { text = "Election Day Day 3" .. heat_string("election_day"), callback = ElectionDayDay3DeathWish },
+     { text = "Election Day (Pro Job) Day 1" .. heat_string("election_day_prof"), callback = ElectionDayPRODay1DeathWish },
+     { text = "Election Day (Pro Job) Day 2" .. heat_string("election_day_prof"), callback = ElectionDayPRODay2DeathWish },
+     { text = "Election Day (Pro Job) Day 3" .. heat_string("election_day_prof"), callback = ElectionDayPRODay3DeathWish },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    ElephantDeathWishMenu = SimpleMenu:new("Elephant Difficulty", "Choose Heist", ElephantDeathWish)
 
     ElephantOverKill = {
-    { text = "Framing Frame Day 1" .. heat_string("framing_frame"), callback = FramingFrameDay1OverKill },
-    { text = "Framing Frame Day 2" .. heat_string("framing_frame"), callback = FramingFrameDay2OverKill },
-    { text = "Framing Frame Day 3" .. heat_string("framing_frame"), callback = FramingFrameDay3OverKill },
-    { text = "Framing Frame (Pro Job) Day 1" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay1OverKill },
-    { text = "Framing Frame (Pro Job) Day 2" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay2OverKill },
-    { text = "Framing Frame (Pro Job) Day 3" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay3OverKill },
-    { text = "Big Oil (Pro Job) Day 1" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay1OverKill },
-    { text = "Big Oil (Pro Job) Day 2" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay2OverKill },
-    { text = "Election Day Day 1" .. heat_string("election_day"), callback = ElectionDayDay1OverKill },
-    { text = "Election Day Day 2" .. heat_string("election_day"), callback = ElectionDayDay2OverKill },
-    { text = "Election Day Day 3" .. heat_string("election_day"), callback = ElectionDayDay3OverKill },
-    { text = "Election Day (Pro Job) Day 1" .. heat_string("election_day_prof"), callback = ElectionDayPRODay1OverKill },
-    { text = "Election Day (Pro Job) Day 2" .. heat_string("election_day_prof"), callback = ElectionDayPRODay2OverKill },
-    { text = "Election Day (Pro Job) Day 3" .. heat_string("election_day_prof"), callback = ElectionDayPRODay3OverKill },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    ElephantOverKillMenu = SimpleMenu:new("Mission Selector", "Choose Heist", ElephantOverKill)
+    { text = "---Difficulty OverKill---", callback = nil },
+    {},
+     { text = "Framing Frame Day 1" .. heat_string("framing_frame"), callback = FramingFrameDay1OverKill },
+     { text = "Framing Frame Day 2" .. heat_string("framing_frame"), callback = FramingFrameDay2OverKill },
+     { text = "Framing Frame Day 3" .. heat_string("framing_frame"), callback = FramingFrameDay3OverKill },
+     { text = "Framing Frame (Pro Job) Day 1" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay1OverKill },
+     { text = "Framing Frame (Pro Job) Day 2" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay2OverKill },
+     { text = "Framing Frame (Pro Job) Day 3" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay3OverKill },
+     { text = "Big Oil (Pro Job) Day 1" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay1OverKill },
+     { text = "Big Oil (Pro Job) Day 2" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay2OverKill },
+     { text = "Election Day Day 1" .. heat_string("election_day"), callback = ElectionDayDay1OverKill },
+     { text = "Election Day Day 2" .. heat_string("election_day"), callback = ElectionDayDay2OverKill },
+     { text = "Election Day Day 3" .. heat_string("election_day"), callback = ElectionDayDay3OverKill },
+     { text = "Election Day (Pro Job) Day 1" .. heat_string("election_day_prof"), callback = ElectionDayPRODay1OverKill },
+     { text = "Election Day (Pro Job) Day 2" .. heat_string("election_day_prof"), callback = ElectionDayPRODay2OverKill },
+     { text = "Election Day (Pro Job) Day 3" .. heat_string("election_day_prof"), callback = ElectionDayPRODay3OverKill },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    ElephantOverKillMenu = SimpleMenu:new("Elephant Difficulty", "Choose Heist", ElephantOverKill)
 
     ElephantVeryHard = {
-    { text = "Framing Frame Day 1" .. heat_string("framing_frame"), callback = FramingFrameDay1VeryHard },
-    { text = "Framing Frame Day 2" .. heat_string("framing_frame"), callback = FramingFrameDay2VeryHard },
-    { text = "Framing Frame Day 3" .. heat_string("framing_frame"), callback = FramingFrameDay3VeryHard },
-    { text = "Framing Frame (Pro Job) Day 1" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay1VeryHard },
-    { text = "Framing Frame (Pro Job) Day 2" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay2VeryHard },
-    { text = "Framing Frame (Pro Job) Day 3" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay3VeryHard },
-    { text = "Big Oil (Pro Job) Day 1" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay1VeryHard },
-    { text = "Big Oil (Pro Job) Day 2" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay2VeryHard },
-    { text = "Election Day Day 1" .. heat_string("election_day"), callback = ElectionDayDay1VeryHard },
-    { text = "Election Day Day 2" .. heat_string("election_day"), callback = ElectionDayDay2VeryHard },
-    { text = "Election Day Day 3" .. heat_string("election_day"), callback = ElectionDayDay3VeryHard },
-    { text = "Election Day (Pro Job) Day 1" .. heat_string("election_day_prof"), callback = ElectionDayPRODay1VeryHard },
-    { text = "Election Day (Pro Job) Day 2" .. heat_string("election_day_prof"), callback = ElectionDayPRODay2VeryHard },
-    { text = "Election Day (Pro Job) Day 3" .. heat_string("election_day_prof"), callback = ElectionDayPRODay3VeryHard },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    ElephantVeryHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", ElephantVeryHard)
+    { text = "---Difficulty VeryHard---", callback = nil },
+    {},
+     { text = "Framing Frame Day 1" .. heat_string("framing_frame"), callback = FramingFrameDay1VeryHard },
+     { text = "Framing Frame Day 2" .. heat_string("framing_frame"), callback = FramingFrameDay2VeryHard },
+     { text = "Framing Frame Day 3" .. heat_string("framing_frame"), callback = FramingFrameDay3VeryHard },
+     { text = "Framing Frame (Pro Job) Day 1" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay1VeryHard },
+     { text = "Framing Frame (Pro Job) Day 2" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay2VeryHard },
+     { text = "Framing Frame (Pro Job) Day 3" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay3VeryHard },
+     { text = "Big Oil (Pro Job) Day 1" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay1VeryHard },
+     { text = "Big Oil (Pro Job) Day 2" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay2VeryHard },
+     { text = "Election Day Day 1" .. heat_string("election_day"), callback = ElectionDayDay1VeryHard },
+     { text = "Election Day Day 2" .. heat_string("election_day"), callback = ElectionDayDay2VeryHard },
+     { text = "Election Day Day 3" .. heat_string("election_day"), callback = ElectionDayDay3VeryHard },
+     { text = "Election Day (Pro Job) Day 1" .. heat_string("election_day_prof"), callback = ElectionDayPRODay1VeryHard },
+     { text = "Election Day (Pro Job) Day 2" .. heat_string("election_day_prof"), callback = ElectionDayPRODay2VeryHard },
+     { text = "Election Day (Pro Job) Day 3" .. heat_string("election_day_prof"), callback = ElectionDayPRODay3VeryHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    ElephantVeryHardMenu = SimpleMenu:new("Elephant Difficulty", "Choose Heist", ElephantVeryHard)
 
     ElephantHard = {
-    { text = "Framing Frame Day 1" .. heat_string("framing_frame"), callback = FramingFrameDay1Hard },
-    { text = "Framing Frame Day 2" .. heat_string("framing_frame"), callback = FramingFrameDay2Hard },
-    { text = "Framing Frame Day 3" .. heat_string("framing_frame"), callback = FramingFrameDay3Hard },
-    { text = "Framing Frame (Pro Job) Day 1" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay1Hard },
-    { text = "Framing Frame (Pro Job) Day 2" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay2Hard },
-    { text = "Framing Frame (Pro Job) Day 3" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay3Hard },
-    { text = "Big Oil (Pro Job) Day 1" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay1Hard },
-    { text = "Big Oil (Pro Job) Day 2" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay2Hard },
-    { text = "Election Day Day 1" .. heat_string("election_day"), callback = ElectionDayDay1Hard },
-    { text = "Election Day Day 2" .. heat_string("election_day"), callback = ElectionDayDay2Hard },
-    { text = "Election Day Day 3" .. heat_string("election_day"), callback = ElectionDayDay3Hard },
-    { text = "Election Day (Pro Job) Day 1" .. heat_string("election_day_prof"), callback = ElectionDayPRODay1Hard },
-    { text = "Election Day (Pro Job) Day 2" .. heat_string("election_day_prof"), callback = ElectionDayPRODay2Hard },
-    { text = "Election Day (Pro Job) Day 3" .. heat_string("election_day_prof"), callback = ElectionDayPRODay3Hard },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    ElephantHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", ElephantHard)
+    { text = "---Difficulty Hard---", callback = nil },
+    {},
+     { text = "Framing Frame Day 1" .. heat_string("framing_frame"), callback = FramingFrameDay1Hard },
+     { text = "Framing Frame Day 2" .. heat_string("framing_frame"), callback = FramingFrameDay2Hard },
+     { text = "Framing Frame Day 3" .. heat_string("framing_frame"), callback = FramingFrameDay3Hard },
+     { text = "Framing Frame (Pro Job) Day 1" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay1Hard },
+     { text = "Framing Frame (Pro Job) Day 2" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay2Hard },
+     { text = "Framing Frame (Pro Job) Day 3" .. heat_string("framing_frame_prof"), callback = FramingFramePRODay3Hard },
+     { text = "Big Oil (Pro Job) Day 1" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay1Hard },
+     { text = "Big Oil (Pro Job) Day 2" .. heat_string("welcome_to_the_jungle_prof"), callback = BigOilPRODay2Hard },
+     { text = "Election Day Day 1" .. heat_string("election_day"), callback = ElectionDayDay1Hard },
+     { text = "Election Day Day 2" .. heat_string("election_day"), callback = ElectionDayDay2Hard },
+     { text = "Election Day Day 3" .. heat_string("election_day"), callback = ElectionDayDay3Hard },
+     { text = "Election Day (Pro Job) Day 1" .. heat_string("election_day_prof"), callback = ElectionDayPRODay1Hard },
+     { text = "Election Day (Pro Job) Day 2" .. heat_string("election_day_prof"), callback = ElectionDayPRODay2Hard },
+     { text = "Election Day (Pro Job) Day 3" .. heat_string("election_day_prof"), callback = ElectionDayPRODay3Hard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    ElephantHardMenu = SimpleMenu:new("Elephant Difficulty", "Choose Heist", ElephantHard)
 
     ElephantNormal = {
-    { text = "Framing Frame Day 1" .. heat_string("framing_frame"), callback = FramingFrameDay1Normal },
-    { text = "Framing Frame Day 2" .. heat_string("framing_frame"), callback = FramingFrameDay2Normal },
-    { text = "Framing Frame Day 3" .. heat_string("framing_frame"), callback = FramingFrameDay3Normal },
-    { text = "Election Day Day 1" .. heat_string("election_day"), callback = ElectionDayDay1Normal },
-    { text = "Election Day Day 2" .. heat_string("election_day"), callback = ElectionDayDay2Normal },
-    { text = "Election Day Day 3" .. heat_string("election_day"), callback = ElectionDayDay3Normal },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    ElephantNormalMenu = SimpleMenu:new("Mission Selector", "Choose Heist", ElephantNormal)
+    { text = "---Difficulty Normal---", callback = nil },
+    {},
+     { text = "Framing Frame Day 1" .. heat_string("framing_frame"), callback = FramingFrameDay1Normal },
+     { text = "Framing Frame Day 2" .. heat_string("framing_frame"), callback = FramingFrameDay2Normal },
+     { text = "Framing Frame Day 3" .. heat_string("framing_frame"), callback = FramingFrameDay3Normal },
+     { text = "Election Day Day 1" .. heat_string("election_day"), callback = ElectionDayDay1Normal },
+     { text = "Election Day Day 2" .. heat_string("election_day"), callback = ElectionDayDay2Normal },
+     { text = "Election Day Day 3" .. heat_string("election_day"), callback = ElectionDayDay3Normal },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    ElephantNormalMenu = SimpleMenu:new("Elephant Difficulty", "Choose Heist", ElephantNormal)
 
     HectorDeathWish = {
-    { text = "Watchdogs Day 1" .. heat_string("watchdogs"), callback = WatchdogsDay1DeathWish },
-    { text = "Watchdogs Day 2" .. heat_string("watchdogs"), callback = WatchdogsDay2DeathWish },
-    { text = "Fire Starter Day 1" .. heat_string("firestarter"), callback = FireStarterDay1DeathWish },
-    { text = "Fire Starter Day 2" .. heat_string("firestarter"), callback = FireStarterDay2DeathWish },
-    { text = "Fire Starter Day 3" .. heat_string("firestarter"), callback = FireStarterDay3DeathWish },
-    { text = "Rats Day 1" .. heat_string("alex"), callback = RatsDay1DeathWish },
-    { text = "Rats Day 2" .. heat_string("alex"), callback = RatsDay2DeathWish },
-    { text = "Rats Day 3" .. heat_string("alex"), callback = RatsDay3DeathWish },
-    { text = "Watchdogs (Pro Job) Day 1" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay1DeathWish },
-    { text = "Watchdogs (Pro Job) Day 2" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay2DeathWish },
-    { text = "Fire Starter (Pro Job) Day 1" .. heat_string("firestarter_prof"), callback = FireStarterPRODay1DeathWish },
-    { text = "Fire Starter (Pro Job) Day 2" .. heat_string("firestarter_prof"), callback = FireStarterPRODay2DeathWish },
-    { text = "Fire Starter (Pro Job) Day 3" .. heat_string("firestarter_prof"), callback = FireStarterPRODay3DeathWish },
-    { text = "Rats (Pro Job) Day 1" .. heat_string("alex_prof"), callback = RatsPRODay1DeathWish },
-    { text = "Rats (Pro Job) Day 2" .. heat_string("alex_prof"), callback = RatsPRODay2DeathWish },
-    { text = "Rats (Pro Job) Day 3" .. heat_string("alex_prof"), callback = RatsPRODay3DeathWish },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    HectorDeathWishMenu = SimpleMenu:new("Mission Selector", "Choose Heist", HectorDeathWish)
+    { text = "---Difficulty DeathWish---", callback = nil },
+    {},
+     { text = "Watchdogs Day 1" .. heat_string("watchdogs"), callback = WatchdogsDay1DeathWish },
+     { text = "Watchdogs Day 2" .. heat_string("watchdogs"), callback = WatchdogsDay2DeathWish },
+     { text = "Fire Starter Day 1" .. heat_string("firestarter"), callback = FireStarterDay1DeathWish },
+     { text = "Fire Starter Day 2" .. heat_string("firestarter"), callback = FireStarterDay2DeathWish },
+     { text = "Fire Starter Day 3" .. heat_string("firestarter"), callback = FireStarterDay3DeathWish },
+     { text = "Rats Day 1" .. heat_string("alex"), callback = RatsDay1DeathWish },
+     { text = "Rats Day 2" .. heat_string("alex"), callback = RatsDay2DeathWish },
+     { text = "Rats Day 3" .. heat_string("alex"), callback = RatsDay3DeathWish },
+     { text = "Watchdogs (Pro Job) Day 1" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay1DeathWish },
+     { text = "Watchdogs (Pro Job) Day 2" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay2DeathWish },
+     { text = "Fire Starter (Pro Job) Day 1" .. heat_string("firestarter_prof"), callback = FireStarterPRODay1DeathWish },
+     { text = "Fire Starter (Pro Job) Day 2" .. heat_string("firestarter_prof"), callback = FireStarterPRODay2DeathWish },
+     { text = "Fire Starter (Pro Job) Day 3" .. heat_string("firestarter_prof"), callback = FireStarterPRODay3DeathWish },
+     { text = "Rats (Pro Job) Day 1" .. heat_string("alex_prof"), callback = RatsPRODay1DeathWish },
+     { text = "Rats (Pro Job) Day 2" .. heat_string("alex_prof"), callback = RatsPRODay2DeathWish },
+     { text = "Rats (Pro Job) Day 3" .. heat_string("alex_prof"), callback = RatsPRODay3DeathWish },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    HectorDeathWishMenu = SimpleMenu:new("Hector Difficulty", "Choose Heist", HectorDeathWish)
 
     HectorOverKill = {
-    { text = "Watchdogs Day 1" .. heat_string("watchdogs"), callback = WatchdogsDay1OverKill },
-    { text = "Watchdogs Day 2" .. heat_string("watchdogs"), callback = WatchdogsDay2OverKill },
-    { text = "Fire Starter Day 1" .. heat_string("firestarter"), callback = FireStarterDay1OverKill },
-    { text = "Fire Starter Day 2" .. heat_string("firestarter"), callback = FireStarterDay2OverKill },
-    { text = "Fire Starter Day 3" .. heat_string("firestarter"), callback = FireStarterDay3OverKill },
-    { text = "Rats Day 1" .. heat_string("alex"), callback = RatsDay1OverKill },
-    { text = "Rats Day 2" .. heat_string("alex"), callback = RatsDay2OverKill },
-    { text = "Rats Day 3" .. heat_string("alex"), callback = RatsDay3OverKill },
-    { text = "Watchdogs (Pro Job) Day 1" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay1OverKill },
-    { text = "Watchdogs (Pro Job) Day 2" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay2OverKill },
-    { text = "Fire Starter (Pro Job) Day 1" .. heat_string("firestarter_prof"), callback = FireStarterPRODay1OverKill },
-    { text = "Fire Starter (Pro Job) Day 2" .. heat_string("firestarter_prof"), callback = FireStarterPRODay2OverKill },
-    { text = "Fire Starter (Pro Job) Day 3" .. heat_string("firestarter_prof"), callback = FireStarterPRODay3OverKill },
-    { text = "Rats (Pro Job) Day 1" .. heat_string("alex_prof"), callback = RatsPRODay1OverKill },
-    { text = "Rats (Pro Job) Day 2" .. heat_string("alex_prof"), callback = RatsPRODay2OverKill },
-    { text = "Rats (Pro Job) Day 3" .. heat_string("alex_prof"), callback = RatsPRODay3OverKill },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    HectorOverKillMenu = SimpleMenu:new("Mission Selector", "Choose Heist", HectorOverKill)
+    { text = "---Difficulty OverKill---", callback = nil },
+    {},
+     { text = "Watchdogs Day 1" .. heat_string("watchdogs"), callback = WatchdogsDay1OverKill },
+     { text = "Watchdogs Day 2" .. heat_string("watchdogs"), callback = WatchdogsDay2OverKill },
+     { text = "Fire Starter Day 1" .. heat_string("firestarter"), callback = FireStarterDay1OverKill },
+     { text = "Fire Starter Day 2" .. heat_string("firestarter"), callback = FireStarterDay2OverKill },
+     { text = "Fire Starter Day 3" .. heat_string("firestarter"), callback = FireStarterDay3OverKill },
+     { text = "Rats Day 1" .. heat_string("alex"), callback = RatsDay1OverKill },
+     { text = "Rats Day 2" .. heat_string("alex"), callback = RatsDay2OverKill },
+     { text = "Rats Day 3" .. heat_string("alex"), callback = RatsDay3OverKill },
+     { text = "Watchdogs (Pro Job) Day 1" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay1OverKill },
+     { text = "Watchdogs (Pro Job) Day 2" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay2OverKill },
+     { text = "Fire Starter (Pro Job) Day 1" .. heat_string("firestarter_prof"), callback = FireStarterPRODay1OverKill },
+     { text = "Fire Starter (Pro Job) Day 2" .. heat_string("firestarter_prof"), callback = FireStarterPRODay2OverKill },
+     { text = "Fire Starter (Pro Job) Day 3" .. heat_string("firestarter_prof"), callback = FireStarterPRODay3OverKill },
+     { text = "Rats (Pro Job) Day 1" .. heat_string("alex_prof"), callback = RatsPRODay1OverKill },
+     { text = "Rats (Pro Job) Day 2" .. heat_string("alex_prof"), callback = RatsPRODay2OverKill },
+     { text = "Rats (Pro Job) Day 3" .. heat_string("alex_prof"), callback = RatsPRODay3OverKill },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    HectorOverKillMenu = SimpleMenu:new("Hector Difficulty", "Choose Heist", HectorOverKill)
 
     HectorVeryHard = {
-    { text = "Watchdogs Day 1" .. heat_string("watchdogs"), callback = WatchdogsDay1VeryHard },
-    { text = "Watchdogs Day 2" .. heat_string("watchdogs"), callback = WatchdogsDay2VeryHard },
-    { text = "Fire Starter Day 1" .. heat_string("firestarter"), callback = FireStarterDay1VeryHard },
-    { text = "Fire Starter Day 2" .. heat_string("firestarter"), callback = FireStarterDay2VeryHard },
-    { text = "Fire Starter Day 3" .. heat_string("firestarter"), callback = FireStarterDay3VeryHard },
-    { text = "Rats Day 1" .. heat_string("alex"), callback = RatsDay1VeryHard },
-    { text = "Rats Day 2" .. heat_string("alex"), callback = RatsDay2VeryHard },
-    { text = "Rats Day 3" .. heat_string("alex"), callback = RatsDay3VeryHard },
-    { text = "Watchdogs (Pro Job) Day 1" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay1VeryHard },
-    { text = "Watchdogs (Pro Job) Day 2" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay2VeryHard },
-    { text = "Fire Starter (Pro Job) Day 1" .. heat_string("firestarter_prof"), callback = FireStarterPRODay1VeryHard },
-    { text = "Fire Starter (Pro Job) Day 2" .. heat_string("firestarter_prof"), callback = FireStarterPRODay2VeryHard },
-    { text = "Fire Starter (Pro Job) Day 3" .. heat_string("firestarter_prof"), callback = FireStarterPRODay3VeryHard },
-    { text = "Rats (Pro Job) Day 1" .. heat_string("alex_prof"), callback = RatsPRODay1VeryHard },
-    { text = "Rats (Pro Job) Day 2" .. heat_string("alex_prof"), callback = RatsPRODay2VeryHard },
-    { text = "Rats (Pro Job) Day 3" .. heat_string("alex_prof"), callback = RatsPRODay3VeryHard },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    HectorVeryHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", HectorVeryHard)
+    { text = "---Difficulty VeryHard---", callback = nil },
+    {},
+     { text = "Watchdogs Day 1" .. heat_string("watchdogs"), callback = WatchdogsDay1VeryHard },
+     { text = "Watchdogs Day 2" .. heat_string("watchdogs"), callback = WatchdogsDay2VeryHard },
+     { text = "Fire Starter Day 1" .. heat_string("firestarter"), callback = FireStarterDay1VeryHard },
+     { text = "Fire Starter Day 2" .. heat_string("firestarter"), callback = FireStarterDay2VeryHard },
+     { text = "Fire Starter Day 3" .. heat_string("firestarter"), callback = FireStarterDay3VeryHard },
+     { text = "Rats Day 1" .. heat_string("alex"), callback = RatsDay1VeryHard },
+     { text = "Rats Day 2" .. heat_string("alex"), callback = RatsDay2VeryHard },
+     { text = "Rats Day 3" .. heat_string("alex"), callback = RatsDay3VeryHard },
+     { text = "Watchdogs (Pro Job) Day 1" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay1VeryHard },
+     { text = "Watchdogs (Pro Job) Day 2" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay2VeryHard },
+     { text = "Fire Starter (Pro Job) Day 1" .. heat_string("firestarter_prof"), callback = FireStarterPRODay1VeryHard },
+     { text = "Fire Starter (Pro Job) Day 2" .. heat_string("firestarter_prof"), callback = FireStarterPRODay2VeryHard },
+     { text = "Fire Starter (Pro Job) Day 3" .. heat_string("firestarter_prof"), callback = FireStarterPRODay3VeryHard },
+     { text = "Rats (Pro Job) Day 1" .. heat_string("alex_prof"), callback = RatsPRODay1VeryHard },
+     { text = "Rats (Pro Job) Day 2" .. heat_string("alex_prof"), callback = RatsPRODay2VeryHard },
+     { text = "Rats (Pro Job) Day 3" .. heat_string("alex_prof"), callback = RatsPRODay3VeryHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    HectorVeryHardMenu = SimpleMenu:new("Hector Difficulty", "Choose Heist", HectorVeryHard)
 
     HectorHard = {
-    { text = "Watchdogs Day 1" .. heat_string("watchdogs"), callback = WatchdogsDay1Hard },
-    { text = "Watchdogs Day 2" .. heat_string("watchdogs"), callback = WatchdogsDay2Hard },
-    { text = "Fire Starter Day 1" .. heat_string("firestarter"), callback = FireStarterDay1Hard },
-    { text = "Fire Starter Day 2" .. heat_string("firestarter"), callback = FireStarterDay2Hard },
-    { text = "Fire Starter Day 3" .. heat_string("firestarter"), callback = FireStarterDay3Hard },
-    { text = "Rats Day 1" .. heat_string("alex"), callback = RatsDay1Hard },
-    { text = "Rats Day 2" .. heat_string("alex"), callback = RatsDay2Hard },
-    { text = "Rats Day 3" .. heat_string("alex"), callback = RatsDay3Hard },
-    { text = "Watchdogs (Pro Job) Day 1" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay1Hard },
-    { text = "Watchdogs (Pro Job) Day 2" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay2Hard },
-    { text = "Fire Starter (Pro Job) Day 1" .. heat_string("firestarter_prof"), callback = FireStarterPRODay1Hard },
-    { text = "Fire Starter (Pro Job) Day 2" .. heat_string("firestarter_prof"), callback = FireStarterPRODay2Hard },
-    { text = "Fire Starter (Pro Job) Day 3" .. heat_string("firestarter_prof"), callback = FireStarterPRODay3Hard },
-    { text = "Rats (Pro Job) Day 1" .. heat_string("alex_prof"), callback = RatsPRODay1Hard },
-    { text = "Rats (Pro Job) Day 2" .. heat_string("alex_prof"), callback = RatsPRODay2Hard },
-    { text = "Rats (Pro Job) Day 3" .. heat_string("alex_prof"), callback = RatsPRODay3Hard },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    HectorHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", HectorHard)
+    { text = "---Difficulty Hard---", callback = nil },
+    {},
+     { text = "Watchdogs Day 1" .. heat_string("watchdogs"), callback = WatchdogsDay1Hard },
+     { text = "Watchdogs Day 2" .. heat_string("watchdogs"), callback = WatchdogsDay2Hard },
+     { text = "Fire Starter Day 1" .. heat_string("firestarter"), callback = FireStarterDay1Hard },
+     { text = "Fire Starter Day 2" .. heat_string("firestarter"), callback = FireStarterDay2Hard },
+     { text = "Fire Starter Day 3" .. heat_string("firestarter"), callback = FireStarterDay3Hard },
+     { text = "Rats Day 1" .. heat_string("alex"), callback = RatsDay1Hard },
+     { text = "Rats Day 2" .. heat_string("alex"), callback = RatsDay2Hard },
+     { text = "Rats Day 3" .. heat_string("alex"), callback = RatsDay3Hard },
+     { text = "Watchdogs (Pro Job) Day 1" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay1Hard },
+     { text = "Watchdogs (Pro Job) Day 2" .. heat_string("watchdogs_prof"), callback = WatchdogsPRODay2Hard },
+     { text = "Fire Starter (Pro Job) Day 1" .. heat_string("firestarter_prof"), callback = FireStarterPRODay1Hard },
+     { text = "Fire Starter (Pro Job) Day 2" .. heat_string("firestarter_prof"), callback = FireStarterPRODay2Hard },
+     { text = "Fire Starter (Pro Job) Day 3" .. heat_string("firestarter_prof"), callback = FireStarterPRODay3Hard },
+     { text = "Rats (Pro Job) Day 1" .. heat_string("alex_prof"), callback = RatsPRODay1Hard },
+     { text = "Rats (Pro Job) Day 2" .. heat_string("alex_prof"), callback = RatsPRODay2Hard },
+     { text = "Rats (Pro Job) Day 3" .. heat_string("alex_prof"), callback = RatsPRODay3Hard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    HectorHardMenu = SimpleMenu:new("Hector Difficulty", "Choose Heist", HectorHard)
 
     HectorNormal = {
-    { text = "Watchdogs Day 1" .. heat_string("watchdogs"), callback = WatchdogsDay1Normal },
-    { text = "Watchdogs Day 2" .. heat_string("watchdogs"), callback = WatchdogsDay2Normal },
-    { text = "Fire Starter Day 1" .. heat_string("firestarter"), callback = FireStarterDay1Normal },
-    { text = "Fire Starter Day 2" .. heat_string("firestarter"), callback = FireStarterDay2Normal },
-    { text = "Fire Starter Day 3" .. heat_string("firestarter"), callback = FireStarterDay3Normal },
-    { text = "Rats Day 1" .. heat_string("alex"), callback = RatsDay1Normal },
-    { text = "Rats Day 2" .. heat_string("alex"), callback = RatsDay2Normal },
-    { text = "Rats Day 3" .. heat_string("alex"), callback = RatsDay3Normal },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    HectorNormalMenu = SimpleMenu:new("Mission Selector", "Choose Heist", HectorNormal)
+    { text = "---Difficulty Normal---", callback = nil },
+    {},
+     { text = "Watchdogs Day 1" .. heat_string("watchdogs"), callback = WatchdogsDay1Normal },
+     { text = "Watchdogs Day 2" .. heat_string("watchdogs"), callback = WatchdogsDay2Normal },
+     { text = "Fire Starter Day 1" .. heat_string("firestarter"), callback = FireStarterDay1Normal },
+     { text = "Fire Starter Day 2" .. heat_string("firestarter"), callback = FireStarterDay2Normal },
+     { text = "Fire Starter Day 3" .. heat_string("firestarter"), callback = FireStarterDay3Normal },
+     { text = "Rats Day 1" .. heat_string("alex"), callback = RatsDay1Normal },
+     { text = "Rats Day 2" .. heat_string("alex"), callback = RatsDay2Normal },
+     { text = "Rats Day 3" .. heat_string("alex"), callback = RatsDay3Normal },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    HectorNormalMenu = SimpleMenu:new("Hector Difficulty", "Choose Heist", HectorNormal)
 
     DentistDeathWish = {
-    { text = "The Big Bank" .. heat_string("big"), callback = BigBankDeathWish },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    DentistDeathWishMenu = SimpleMenu:new("Mission Selector", "Choose Heist", DentistDeathWish)
+    { text = "---Difficulty DeathWish---", callback = nil },
+    {},
+     { text = "The Big Bank" .. heat_string("big"), callback = BigBankOverKill },
+     { text = "Cancel", is_cancel_button = true },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    DentistDeathWishMenu = SimpleMenu:new("The Dentist Difficulty", "Choose Heist", DentistDeathWish)
 
     DentistOverKill = {
-    { text = "The Big Bank" .. heat_string("big"), callback = BigBankOverKill },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    DentistOverKillMenu = SimpleMenu:new("Mission Selector", "Choose Heist", DentistOverKill)
+    { text = "---Difficulty OverKill---", callback = nil },
+    {},
+     { text = "The Big Bank" .. heat_string("big"), callback = BigBankOverKill },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    DentistOverKillMenu = SimpleMenu:new("The Dentist Difficulty", "Choose Heist", DentistOverKill)
 
     DentistVeryHard = {
-    { text = "The Big Bank" .. heat_string("big"), callback = BigBankVeryHard },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    DentistVeryHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", DentistVeryHard)
+    { text = "---Difficulty VeryHard---", callback = nil },
+    {},
+     { text = "The Big Bank" .. heat_string("big"), callback = BigBankVeryHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    DentistVeryHardMenu = SimpleMenu:new("The Dentist Difficulty", "Choose Heist", DentistVeryHard)
 
     DentistHard = {
-    { text = "The Big Bank" .. heat_string("big"), callback = BigBankHard },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    DentistHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", DentistHard)
+    { text = "---Difficulty Hard---", callback = nil },
+    {},
+     { text = "The Big Bank" .. heat_string("big"), callback = BigBankHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    DentistHardMenu = SimpleMenu:new("The Dentist Difficulty", "Choose Heist", DentistHard)
 
     DentistNormal = {
-    { text = "The Big Bank" .. heat_string("big"), callback = BigBankNormal },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    DentistNormalMenu = SimpleMenu:new("Mission Selector", "Choose Heist", DentistNormal)
+    { text = "---Difficulty Normal---", callback = nil },
+    {},
+     { text = "The Big Bank" .. heat_string("big"), callback = BigBankNormal },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    DentistNormalMenu = SimpleMenu:new("The Dentist Difficulty", "Choose Heist", DentistNormal)
 
     BainDLCDeathWish = {
-    { text = "Transport: Crossroads" .. heat_string("arm_cro"), callback = TransportCrossRoadsDeathWish },
-    { text = "Transport: Downtown" .. heat_string("arm_hcm"), callback = TransportDownTownDeathWish },
-    { text = "Transport: Harbour" .. heat_string("arm_fac"), callback = TransportHarbourDeathWish },
-    { text = "Transport: Underpass" .. heat_string("arm_und"), callback = TransportUnderPassDeathWish },
-    { text = "Transport: Park" .. heat_string("arm_par"), callback = TransportParkDeathWish },
-    { text = "Train Heist", callback = TrainHeistDeathWish },
-    { text = "GO Bank" .. heat_string("roberts"), callback = GOBankDeathWish },
-    { text = "Shadow Raid" .. heat_string("kosugi"), callback = ShadowRaidDeathWish },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    BainDLCDeathWishMenu = SimpleMenu:new("Mission Selector", "Choose Heist", BainDLCDeathWish)
+    { text = "---Difficulty DeathWish---", callback = nil },
+    {},
+     { text = "Transport: Crossroads" .. heat_string("arm_cro"), callback = TransportCrossRoadsDeathWish },
+     { text = "Transport: Downtown" .. heat_string("arm_hcm"), callback = TransportDownTownDeathWish },
+     { text = "Transport: Harbour" .. heat_string("arm_fac"), callback = TransportHarbourDeathWish },
+     { text = "Transport: Underpass" .. heat_string("arm_und"), callback = TransportUnderPassDeathWish },
+     { text = "Transport: Park" .. heat_string("arm_par"), callback = TransportParkDeathWish },
+     { text = "Train Heist", callback = TrainHeistDeathWish },
+     { text = "GO Bank" .. heat_string("roberts"), callback = GOBankDeathWish },
+     { text = "Shadow Raid" .. heat_string("kosugi"), callback = ShadowRaidDeathWish },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainDLCDeathWishMenu = SimpleMenu:new("Bain DLC Difficulty", "Choose Heist", BainDLCDeathWish)
 
     BainDLCOverKill = {
-    { text = "Transport: Crossroads" .. heat_string("arm_cro"), callback = TransportCrossRoadsOverKill },
-    { text = "Transport: Downtown" .. heat_string("arm_hcm"), callback = TransportDownTownOverKill },
-    { text = "Transport: Harbour" .. heat_string("arm_fac"), callback = TransportHarbourOverKill },
-    { text = "Transport: Underpass" .. heat_string("arm_und"), callback = TransportUnderPassOverKill },
-    { text = "Transport: Park" .. heat_string("arm_par"), callback = TransportParkOverKill },
-    { text = "Train Heist", callback = TrainHeistOverKill },
-    { text = "GO Bank" .. heat_string("roberts"), callback = GOBankOverKill },
-    { text = "Shadow Raid" .. heat_string("kosugi"), callback = ShadowRaidOverKill },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    BainDLCOverKillMenu = SimpleMenu:new("Mission Selector", "Choose Heist", BainDLCOverKill)
+    { text = "---Difficulty OverKill---", callback = nil },
+    {},
+     { text = "Transport: Crossroads" .. heat_string("arm_cro"), callback = TransportCrossRoadsOverKill },
+     { text = "Transport: Downtown" .. heat_string("arm_hcm"), callback = TransportDownTownOverKill },
+     { text = "Transport: Harbour" .. heat_string("arm_fac"), callback = TransportHarbourOverKill },
+     { text = "Transport: Underpass" .. heat_string("arm_und"), callback = TransportUnderPassOverKill },
+     { text = "Transport: Park" .. heat_string("arm_par"), callback = TransportParkOverKill },
+     { text = "Train Heist", callback = TrainHeistOverKill },
+     { text = "GO Bank" .. heat_string("roberts"), callback = GOBankOverKill },
+     { text = "Shadow Raid" .. heat_string("kosugi"), callback = ShadowRaidOverKill },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainDLCOverKillMenu = SimpleMenu:new("Bain DLC Difficulty", "Choose Heist", BainDLCOverKill)
 
     BainDLCVeryHard = {
-    { text = "Transport: Crossroads" .. heat_string("arm_cro"), callback = TransportCrossRoadsVeryHard },
-    { text = "Transport: Downtown" .. heat_string("arm_hcm"), callback = TransportDownTownVeryHard },
-    { text = "Transport: Harbour" .. heat_string("arm_fac"), callback = TransportHarbourVeryHard },
-    { text = "Transport: Underpass" .. heat_string("arm_und"), callback = TransportUnderPassVeryHard },
-    { text = "Transport: Park" .. heat_string("arm_par"), callback = TransportParkVeryHard },
-    { text = "Train Heist", callback = TrainHeistVeryHard },
-    { text = "GO Bank" .. heat_string("roberts"), callback = GOBankVeryHard },
-    { text = "Shadow Raid" .. heat_string("kosugi"), callback = ShadowRaidVeryHard },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    BainDLCVeryHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", BainDLCVeryHard)
+    { text = "---Difficulty VeryHard---", callback = nil },
+    {},
+     { text = "Transport: Crossroads" .. heat_string("arm_cro"), callback = TransportCrossRoadsVeryHard },
+     { text = "Transport: Downtown" .. heat_string("arm_hcm"), callback = TransportDownTownVeryHard },
+     { text = "Transport: Harbour" .. heat_string("arm_fac"), callback = TransportHarbourVeryHard },
+     { text = "Transport: Underpass" .. heat_string("arm_und"), callback = TransportUnderPassVeryHard },
+     { text = "Transport: Park" .. heat_string("arm_par"), callback = TransportParkVeryHard },
+     { text = "Train Heist", callback = TrainHeistVeryHard },
+     { text = "GO Bank" .. heat_string("roberts"), callback = GOBankVeryHard },
+     { text = "Shadow Raid" .. heat_string("kosugi"), callback = ShadowRaidVeryHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainDLCVeryHardMenu = SimpleMenu:new("Bain DLC Difficulty", "Choose Heist", BainDLCVeryHard) 
 
     BainDLCHard = {
-    { text = "Transport: Crossroads" .. heat_string("arm_cro"), callback = TransportCrossRoadsHard },
-    { text = "Transport: Downtown" .. heat_string("arm_hcm"), callback = TransportDownTownHard },
-    { text = "Transport: Harbour" .. heat_string("arm_fac"), callback = TransportHarbourHard },
-    { text = "Transport: Underpass" .. heat_string("arm_und"), callback = TransportUnderPassHard },
-    { text = "Transport: Park" .. heat_string("arm_par"), callback = TransportParkHard },
-    { text = "Train Heist", callback = TrainHeistHard },
-    { text = "GO Bank" .. heat_string("roberts"), callback = GOBankHard },
-    { text = "Shadow Raid" .. heat_string("kosugi"), callback = ShadowRaidHard },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    BainDLCHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", BainDLCHard)
-
+    { text = "---Difficulty Hard---", callback = nil },
+    {},
+     { text = "Transport: Crossroads" .. heat_string("arm_cro"), callback = TransportCrossRoadsHard },
+     { text = "Transport: Downtown" .. heat_string("arm_hcm"), callback = TransportDownTownHard },
+     { text = "Transport: Harbour" .. heat_string("arm_fac"), callback = TransportHarbourHard },
+     { text = "Transport: Underpass" .. heat_string("arm_und"), callback = TransportUnderPassHard },
+     { text = "Transport: Park" .. heat_string("arm_par"), callback = TransportParkHard },
+     { text = "Train Heist", callback = TrainHeistHard },
+     { text = "GO Bank" .. heat_string("roberts"), callback = GOBankHard },
+     { text = "Shadow Raid" .. heat_string("kosugi"), callback = ShadowRaidHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainDLCHardMenu = SimpleMenu:new("Bain DLC Difficulty", "Choose Heist", BainDLCHard)  
+    
     BainDLCNormal = {
-    { text = "Transport: Crossroads" .. heat_string("arm_cro"), callback = TransportCrossRoadsNormal },
-    { text = "Transport: Downtown" .. heat_string("arm_hcm"), callback = TransportDownTownNormal },
-    { text = "Transport: Harbour" .. heat_string("arm_fac"), callback = TransportHarbourNormal },
-    { text = "Transport: Underpass" .. heat_string("arm_und"), callback = TransportUnderPassNormal },
-    { text = "Transport: Park" .. heat_string("arm_par"), callback = TransportParkNormal },
-    { text = "Train Heist", callback = TrainHeistNormal },
-    { text = "GO Bank" .. heat_string("roberts"), callback = GOBankNormal },
-    { text = "Shadow Raid" .. heat_string("kosugi"), callback = ShadowRaidNormal },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    BainDLCNormalMenu = SimpleMenu:new("Mission Selector", "Choose Heist", BainDLCNormal)
+    { text = "---Difficulty Normal---", callback = nil },
+    {},
+     { text = "Transport: Crossroads" .. heat_string("arm_cro"), callback = TransportCrossRoadsNormal },
+     { text = "Transport: Downtown" .. heat_string("arm_hcm"), callback = TransportDownTownNormal },
+     { text = "Transport: Harbour" .. heat_string("arm_fac"), callback = TransportHarbourNormal },
+     { text = "Transport: Underpass" .. heat_string("arm_und"), callback = TransportUnderPassNormal },
+     { text = "Transport: Park" .. heat_string("arm_par"), callback = TransportParkNormal },
+     { text = "Train Heist", callback = TrainHeistNormal },
+     { text = "GO Bank" .. heat_string("roberts"), callback = GOBankNormal },
+     { text = "Shadow Raid" .. heat_string("kosugi"), callback = ShadowRaidNormal },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainDLCNormalMenu = SimpleMenu:new("Bain DLC Difficulty", "Choose Heist", BainDLCNormal)       
 
+    
     BainDeathWish = {
-    { text = "Jewelry Store" .. heat_string("jewelry_store"), callback = JewelryStoreDeathWish },
-    { text = "Bank Heist: Cash" .. heat_string("branchbank_cash"), callback = BankCashDeathWish },
-    { text = "Bank Heist: Deposit" .. heat_string("branchbank_deposit"), callback = BankDepositDeathWish },
-    { text = "Diamond Store" .. heat_string("family"), callback = DiamondStoreDeathWish },
-    { text = "Bank Heist: Gold (Pro Job)" .. heat_string("branchbank_gold_prof"), callback = BankGoldPRODeathWish },
-    { text = "Bank Heist (Pro Job)" .. heat_string("branchbank_prof"), callback = BankPRODeathWish },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    BainDeathWishMenu = SimpleMenu:new("Mission Selector", "Choose Heist", BainDeathWish)
+    { text = "---Difficulty DeathWish---", callback = nil },
+    {},
+     { text = "Jewelry Store" .. heat_string("jewelry_store"), callback = JewelryStoreDeathWish },
+     { text = "Bank Heist: Cash" .. heat_string("branchbank_cash"), callback = BankCashDeathWish },
+     { text = "Bank Heist: Deposit" .. heat_string("branchbank_deposit"), callback = BankDepositDeathWish },
+     { text = "Diamond Store" .. heat_string("family"), callback = DiamondStoreDeathWish },
+     { text = "Bank Heist: Gold (Pro Job)" .. heat_string("branchbank_gold_prof"), callback = BankGoldPRODeathWish },
+     { text = "Bank Heist (Pro Job)" .. heat_string("branchbank_prof"), callback = BankPRODeathWish },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainDeathWishMenu = SimpleMenu:new("Bain Difficulty", "Choose Heist", BainDeathWish)     
 
     BainOverKill = {
-    { text = "Jewelry Store" .. heat_string("jewelry_store"), callback = JewelryStoreOverKill },
-    { text = "Bank Heist: Cash" .. heat_string("branchbank_cash"), callback = BankCashOverKill },
-    { text = "Bank Heist: Deposit" .. heat_string("branchbank_deposit"), callback = BankDepositOverKill },
-    { text = "Diamond Store" .. heat_string("family"), callback = DiamondStoreOverKill },
-    { text = "Bank Heist: Gold (Pro Job)" .. heat_string("branchbank_gold_prof"), callback = BankGoldPROOverKill },
-    { text = "Bank Heist (Pro Job)" .. heat_string("branchbank_prof"), callback = BankPROOverKill },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    BainOverKillMenu = SimpleMenu:new("Mission Selector", "Choose Heist", BainOverKill)
+    { text = "---Difficulty OverKill---", callback = nil },
+    {},
+     { text = "Jewelry Store" .. heat_string("jewelry_store"), callback = JewelryStoreOverKill },
+     { text = "Bank Heist: Cash" .. heat_string("branchbank_cash"), callback = BankCashOverKill },
+     { text = "Bank Heist: Deposit" .. heat_string("branchbank_deposit"), callback = BankDepositOverKill },
+     { text = "Diamond Store" .. heat_string("family"), callback = DiamondStoreOverKill },
+     { text = "Bank Heist: Gold (Pro Job)" .. heat_string("branchbank_gold_prof"), callback = BankGoldPROOverKill },
+     { text = "Bank Heist (Pro Job)" .. heat_string("branchbank_prof"), callback = BankPROOverKill },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainOverKillMenu = SimpleMenu:new("Bain Difficulty", "Choose Heist", BainOverKill)     
 
     BainVeryHard = {
-    { text = "Jewelry Store" .. heat_string("jewelry_store"), callback = JewelryStoreVeryHard },
-    { text = "Bank Heist: Cash" .. heat_string("branchbank_cash"), callback = BankCashVeryHard },
-    { text = "Bank Heist: Deposit" .. heat_string("branchbank_deposit"), callback = BankDepositVeryHard },
-    { text = "Diamond Store" .. heat_string("family"), callback = DiamondStoreVeryHard },
-    { text = "Bank Heist: Gold (Pro Job)" .. heat_string("branchbank_gold_prof"), callback = BankGoldPROVeryHard },
-    { text = "Bank Heist (Pro Job)" .. heat_string("branchbank_prof"), callback = BankPROVeryHard },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    BainVeryHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", BainVeryHard)
-
+    { text = "---Difficulty VeryHard---", callback = nil },
+    {},
+     { text = "Jewelry Store" .. heat_string("jewelry_store"), callback = JewelryStoreVeryHard },
+     { text = "Bank Heist: Cash" .. heat_string("branchbank_cash"), callback = BankCashVeryHard },
+     { text = "Bank Heist: Deposit" .. heat_string("branchbank_deposit"), callback = BankDepositVeryHard },
+     { text = "Diamond Store" .. heat_string("family"), callback = DiamondStoreVeryHard },
+     { text = "Bank Heist: Gold (Pro Job)" .. heat_string("branchbank_gold_prof"), callback = BankGoldPROVeryHard },
+     { text = "Bank Heist (Pro Job)" .. heat_string("branchbank_prof"), callback = BankPROVeryHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainVeryHardMenu = SimpleMenu:new("Bain Difficulty", "Choose Heist", BainVeryHard)     
+  
     BainHard = {
-    { text = "Jewelry Store" .. heat_string("jewelry_store"), callback = JewelryStoreHard },
-    { text = "Bank Heist: Cash" .. heat_string("branchbank_cash"), callback = BankCashHard },
-    { text = "Bank Heist: Deposit" .. heat_string("branchbank_deposit"), callback = BankDepositHard },
-    { text = "Diamond Store" .. heat_string("family"), callback = DiamondStoreHard },
-    { text = "Bank Heist: Gold (Pro Job)" .. heat_string("branchbank_gold_prof"), callback = BankGoldPROHard },
-    { text = "Bank Heist (Pro Job)" .. heat_string("branchbank_prof"), callback = BankPROHard },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    BainHardMenu = SimpleMenu:new("Mission Selector", "Choose Heist", BainHard)
-
+    { text = "---Difficulty Hard---", callback = nil },
+    {},
+     { text = "Jewelry Store" .. heat_string("jewelry_store"), callback = JewelryStoreHard },
+     { text = "Bank Heist: Cash" .. heat_string("branchbank_cash"), callback = BankCashHard },
+     { text = "Bank Heist: Deposit" .. heat_string("branchbank_deposit"), callback = BankDepositHard },
+     { text = "Diamond Store" .. heat_string("family"), callback = DiamondStoreHard },
+     { text = "Bank Heist: Gold (Pro Job)" .. heat_string("branchbank_gold_prof"), callback = BankGoldPROHard },
+     { text = "Bank Heist (Pro Job)" .. heat_string("branchbank_prof"), callback = BankPROHard },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainHardMenu = SimpleMenu:new("Bain Difficulty", "Choose Heist", BainHard)      
+  
     BainNormal = {
-    { text = "Jewelry Store" .. heat_string("jewelry_store"), callback = JewelryStoreNormal },
-    { text = "Bank Heist: Cash" .. heat_string("branchbank_cash"), callback = BankCashNormal },
-    { text = "Bank Heist: Deposit" .. heat_string("branchbank_deposit"), callback = BankDepositNormal },
-    { text = "Diamond Store" .. heat_string("family"), callback = DiamondStoreNormal },
-    { text = "Cancel", is_cancel_button = true },
-    }
-    BainNormalMenu = SimpleMenu:new("Mission Selector", "Choose Heist", BainNormal)
+    { text = "---Difficulty Normal---", callback = nil },
+    {},
+     { text = "Jewelry Store" .. heat_string("jewelry_store"), callback = JewelryStoreNormal },
+     { text = "Bank Heist: Cash" .. heat_string("branchbank_cash"), callback = BankCashNormal },
+     { text = "Bank Heist: Deposit" .. heat_string("branchbank_deposit"), callback = BankDepositNormal },
+     { text = "Diamond Store" .. heat_string("family"), callback = DiamondStoreNormal },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainNormalMenu = SimpleMenu:new("Bain Difficulty", "Choose Heist", BainNormal)     
 
     EscapeDiff = {
-    { text = "Normal", callback = show_menu, data = EscapeNormalMenu },
-    { text = "Hard", callback = show_menu, data = EscapeHardMenu },
-    { text = "Very Hard", callback = show_menu, data = EscapeVeryHardMenu },
-    { text = "Overkill", callback = show_menu, data = EscapeOverKillMenu },
-    { text = "Death Wish", callback = show_menu, data = EscapeDeathWishMenu },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    EscapeDiffMenu = SimpleMenu:new("Mission Selector", "Choose Difficulty", EscapeDiff)
-
+    { text = "---Vlad Difficulty---", callback = nil },
+    {},
+     { text = "Normal", callback = show_menu, data = EscapeNormalMenu },
+     { text = "Hard", callback = show_menu, data = EscapeHardMenu },
+     { text = "Very Hard", callback = show_menu, data = EscapeVeryHardMenu },
+     { text = "Overkill", callback = show_menu, data = EscapeOverKillMenu },
+     { text = "Death Wish", callback = show_menu, data = EscapeDeathWishMenu },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    EscapeDiffMenu = SimpleMenu:new("Vlad Difficulty", "Choose Difficulty", EscapeDiff)  
+    
+    
     VladDiff = {
-    { text = "Normal", callback = show_menu, data = VladNormalMenu },
-    { text = "Hard", callback = show_menu, data = VladHardMenu },
-    { text = "Very Hard", callback = show_menu, data = VladVeryHardMenu },
-    { text = "Overkill", callback = show_menu, data = VladOverKillMenu },
-    { text = "Death Wish", callback = show_menu, data = VladDeathWishMenu },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    VladDiffMenu = SimpleMenu:new("Mission Selector", "Choose Difficulty", VladDiff)
+    { text = "---Vlad Difficulty---", callback = nil },
+    {},
+     { text = "Normal", callback = show_menu, data = VladNormalMenu },
+     { text = "Hard", callback = show_menu, data = VladHardMenu },
+     { text = "Very Hard", callback = show_menu, data = VladVeryHardMenu },
+     { text = "Overkill", callback = show_menu, data = VladOverKillMenu },
+     { text = "Death Wish", callback = show_menu, data = VladDeathWishMenu },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    VladDiffMenu = SimpleMenu:new("Vlad Difficulty", "Choose Difficulty", VladDiff)  
 
     ElephantDiff = {
-    { text = "Normal", callback = show_menu, data = ElephantNormalMenu },
-    { text = "Hard", callback = show_menu, data = ElephantHardMenu },
-    { text = "Very Hard", callback = show_menu, data = ElephantVeryHardMenu },
-    { text = "Overkill", callback = show_menu, data = ElephantOverKillMenu },
-    { text = "Death Wish", callback = show_menu, data = ElephantDeathWishMenu },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    ElephantDiffMenu = SimpleMenu:new("Mission Selector", "Choose Difficulty", ElephantDiff)
+    { text = "---Elephant Difficulty---", callback = nil },
+    {},
+     { text = "Normal", callback = show_menu, data = ElephantNormalMenu },
+     { text = "Hard", callback = show_menu, data = ElephantHardMenu },
+     { text = "Very Hard", callback = show_menu, data = ElephantVeryHardMenu },
+     { text = "Overkill", callback = show_menu, data = ElephantOverKillMenu },
+     { text = "Death Wish", callback = show_menu, data = ElephantDeathWishMenu },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    ElephantDiffMenu = SimpleMenu:new("Elephant Difficulty", "Choose Difficulty", ElephantDiff)  
 
     HectorDiff = {
-    { text = "Normal", callback = show_menu, data = HectorNormalMenu },
-    { text = "Hard", callback = show_menu, data = HectorHardMenu },
-    { text = "Very Hard", callback = show_menu, data = HectorVeryHardMenu },
-    { text = "Overkill", callback = show_menu, data = HectorOverKillMenu },
-    { text = "Death Wish", callback = show_menu, data = HectorDeathWishMenu },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    HectorDiffMenu = SimpleMenu:new("Mission Selector", "Choose Difficulty", HectorDiff)
+    { text = "---Hector Difficulty---", callback = nil },
+    {},
+     { text = "Normal", callback = show_menu, data = HectorNormalMenu },
+     { text = "Hard", callback = show_menu, data = HectorHardMenu },
+     { text = "Very Hard", callback = show_menu, data = HectorVeryHardMenu },
+     { text = "Overkill", callback = show_menu, data = HectorOverKillMenu },
+     { text = "Death Wish", callback = show_menu, data = HectorDeathWishMenu },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    HectorDiffMenu = SimpleMenu:new("Hector Difficulty", "Choose Difficulty", HectorDiff)  
 
     DentistDiff = {
-    { text = "Normal", callback = show_menu, data = DentistNormalMenu },
-    { text = "Hard", callback = show_menu, data = DentistHardMenu },
-    { text = "Very Hard", callback = show_menu, data = DentistVeryHardMenu },
-    { text = "Overkill", callback = show_menu, data = DentistOverKillMenu },
-    { text = "Death Wish", callback = show_menu, data = DentistDeathWishMenu },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    DentistDiffMenu = SimpleMenu:new("Mission Selector", "Choose Difficulty", DentistDiff)
+    { text = "---The Dentist Difficulty---", callback = nil },
+    {},
+     { text = "Normal", callback = show_menu, data = DentistNormalMenu },
+     { text = "Hard", callback = show_menu, data = DentistHardMenu },
+     { text = "Very Hard", callback = show_menu, data = DentistVeryHardMenu },
+     { text = "Overkill", callback = show_menu, data = DentistOverKillMenu },
+     { text = "Death Wish", callback = show_menu, data = DentistDeathWishMenu },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    DentistDiffMenu = SimpleMenu:new("The Dentist Difficulty", "Choose Difficulty", DentistDiff)  
 
     BainDLCDiff = {
-    { text = "Normal", callback = show_menu, data = BainDLCNormalMenu },
-    { text = "Hard", callback = show_menu, data = BainDLCHardMenu },
-    { text = "Very Hard", callback = show_menu, data = BainDLCVeryHardMenu },
-    { text = "Overkill", callback = show_menu, data = BainDLCOverKillMenu },
-    { text = "Death Wish", callback = show_menu, data = BainDLCDeathWishMenu },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    BainDLCDiffMenu = SimpleMenu:new("Mission Selector", "Choose Difficulty", BainDLCDiff)
-
+    { text = "---Bain Difficulty---", callback = nil },
+    {},
+     { text = "Normal", callback = show_menu, data = BainDLCNormalMenu },
+     { text = "Hard", callback = show_menu, data = BainDLCHardMenu },
+     { text = "Very Hard", callback = show_menu, data = BainDLCVeryHardMenu },
+     { text = "Overkill", callback = show_menu, data = BainDLCOverKillMenu },
+     { text = "Death Wish", callback = show_menu, data = BainDLCDeathWishMenu },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainDLCDiffMenu = SimpleMenu:new("Bain Difficulty", "Choose Difficulty", BainDLCDiff)      
+    
     BainDiff = {
-    { text = "Normal", callback = show_menu, data = BainNormalMenu },
-    { text = "Hard", callback = show_menu, data = BainHardMenu },
-    { text = "Very Hard", callback = show_menu, data = BainVeryHardMenu },
-    { text = "Overkill", callback = show_menu, data = BainOverKillMenu },
-    { text = "Death Wish", callback = show_menu, data = BainDeathWishMenu },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    BainDiffMenu = SimpleMenu:new("Mission Selector", "Choose Difficulty", BainDiff)
+    { text = "---Bain Difficulty---", callback = nil },
+    {},
+     { text = "Normal", callback = show_menu, data = BainNormalMenu },
+     { text = "Hard", callback = show_menu, data = BainHardMenu },
+     { text = "Very Hard", callback = show_menu, data = BainVeryHardMenu },
+     { text = "Overkill", callback = show_menu, data = BainOverKillMenu },
+     { text = "Death Wish", callback = show_menu, data = BainDeathWishMenu },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    BainDiffMenu = SimpleMenu:new("Bain Difficulty", "Choose Difficulty", BainDiff)    
 
-    rootopts = {
+    --[[rootopts = {
     { text = "Bain Classic", callback = show_menu, data = BainDiffMenu },
     { text = "Bain DLC", callback = show_menu, data = BainDLCDiffMenu },
     { text = "The Dentist", callback = show_menu, data = DentistDiffMenu },
@@ -3095,20 +3360,44 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
     { text = "Escapes", callback = show_menu, data = EscapeDiffMenu },
     { text = "Cancel", is_cancel_button = true},
     }
+    rootmenu = SimpleMenu:new("Mission Selector", "Choose Contractor", rootopts)]]--
+    
+    rootopts = {
+    { text = "---Misson Selector---", callback = nil },
+    {},
+     { text = "Bain Classic", callback = show_menu, data = BainDiffMenu },
+     { text = "Bain DLC", callback = show_menu, data = BainDLCDiffMenu },
+     { text = "The Dentist", callback = show_menu, data = DentistDiffMenu },
+     { text = "Hector", callback = show_menu, data = HectorDiffMenu },
+     { text = "The Elephant", callback = show_menu, data = ElephantDiffMenu },
+     { text = "Vlad", callback = show_menu, data = VladDiffMenu },
+     { text = "Escapes", callback = show_menu, data = EscapeDiffMenu },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }    
     rootmenu = SimpleMenu:new("Mission Selector", "Choose Contractor", rootopts)
 
     EscapeChain = {
-    { text = "Escape: Cafe", callback = EscapeCafeChain },
-    { text = "Escape: Cafe (Day)", callback = EscapeCafeDayChain },
-    { text = "Escape: Park", callback = EscapeParkChain },
-    { text = "Escape: Park (Day)", callback = EscapeParkDayChain },
-    { text = "Escape: Overpass", callback = EscapeOverPassChain },
-    { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightChain },
-    { text = "Escape: Street", callback = EscapeStreetChain },
-    { text = "Escape: Garage", callback = EscapeGarageChain },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    EscapeChainMenu = SimpleMenu:new("Mission Selector", "Choose Escape to Chain", EscapeChain)
+    { text = "---Escape Selector---", callback = nil },
+    {},
+     { text = "Escape: Cafe", callback = EscapeCafeChain },
+     { text = "Escape: Cafe (Day)", callback = EscapeCafeDayChain },
+     { text = "Escape: Park", callback = EscapeParkChain },
+     { text = "Escape: Park (Day)", callback = EscapeParkDayChain },
+     { text = "Escape: Overpass", callback = EscapeOverPassChain },
+     { text = "Escape: Overpass (Night)", callback = EscapeOverPassNightChain },
+     { text = "Escape: Street", callback = EscapeStreetChain },
+     { text = "Escape: Garage", callback = EscapeGarageChain },
+    {},
+     { text = "----------------", callback = nil },
+     { text = "Main Menu", callback = MainMenuReturn },
+     { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Cancel", is_cancel_button = true},  
+    }        
+    EscapeChainMenu = SimpleMenu:new("Escape Selector", "Choose Escape to Chain", EscapeChain)
 
     FramingFrameDay2Completer = {
     { text = "Auto-Complete Framing Frame Day 2", callback = AutoFramingFrameDay2Completer },

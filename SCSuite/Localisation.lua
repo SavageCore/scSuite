@@ -31,9 +31,16 @@ function SCSuiteLocalisation:init()
         --CarryStacker
         self.carry_stacker_enabled = "Enabled: CarryStacker"
         self.carry_stacker_disabled = "Disabled: CarryStacker (carry_stacker_enable)"
+        self.carry_stacker_toggle_on = "CarryStacker (ON)"
+        self.carry_stacker_toggle_off = "CarryStacker (OFF)"        
         --PickupFinder
-        self.pickup_finder_enabled = "Enabled: CarryStacker"
-        self.pickup_finder_disabled = "Disabled: CarryStacker (pickup_waypoints_enable)"
+        self.pickup_finder_enabled = "Enabled: PickupFinder"
+        self.pickup_finder_disabled = "Disabled: PickupFinder (pickup_waypoints_enable)"
+        --BigBankComputer
+        self.big_bank_computer_enabled = "Enabled: BigBankComputer"
+        self.big_bank_computer_disabled = "Disabled: BigBankComputer (big_bank_computer_enable)"
+        self.big_bank_computer_toggle_on = "Big Bank Computer Hack (ON)"
+        self.big_bank_computer_toggle_off = "Big Bank Computer Hack (OFF)"        
     elseif tweak_data.SCSuiteConfiguration.language == "deDE" then
         -- Instant Drill
         self.instant_drill_override_enabled = "DE Enabled: Instant Drill Override"
@@ -59,7 +66,17 @@ function SCSuiteLocalisation:init()
         self.xray_enabled = "DE Enabled: XRay"
         self.xray_disable = "DE Disabled: XRay (xray_enable)"    
         --CarryStacker
-        self.carry_stacker_enabled "DE Enabled: CarryStacker"
-        self.carry_stacker_disabled "DE Disabled: CarryStacker (carry_stacker_enable)"        
+        self.carry_stacker_enabled = "DE Enabled: CarryStacker"
+        self.carry_stacker_disabled = "DE Disabled: CarryStacker (carry_stacker_enable)"
+        self.carry_stacker_toggle_on = "DE CarryStacker (ON)"
+        self.carry_stacker_toggle_off = "DE CarryStacker (OFF)"    
+        --PickupFinder
+        self.pickup_finder_enabled = "DE Enabled: PickupFinder"
+        self.pickup_finder_disabled = "DE Disabled: PickupFinder (pickup_waypoints_enable)"    
+        --BigBankComputer
+        self.big_bank_computer_enabled = "DE Enabled: BigBankComputer"
+        self.big_bank_computer_disabled = "DE Disabled: BigBankComputer (big_bank_computer_enable)"   
+        self.big_bank_computer_toggle_on = "DE Big Bank Computer Hack (ON)"
+        self.big_bank_computer_toggle_off = "DE Big Bank Computer Hack (OFF)"           
     end    
 end

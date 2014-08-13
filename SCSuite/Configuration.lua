@@ -72,6 +72,7 @@ function SCSuiteConfiguration:init()
     self.drill_jam_override_enable = true -- Enables override so the drill never jams
     self.language = "enGB" --IETF language tag
     self.kill_all_enable = true -- Enables the keybind F5 to kill/delete all AI on map - no pagers
+    self.hostage_sell_limit = 1 -- Limit of hostages or body bags you can sell
     
     self.bodies_for_bain_enable = true -- Sell humans - dead or alive
     -- Any level listed here you will be able to sell hostages on
@@ -140,10 +141,14 @@ function SCSuiteConfiguration:init()
     self.anti_anti_cheat_enable = true -- Enables various Anti Anti-Cheat scripts - such as disabling HoxHud chat spam
    
     self.xray_enable = true -- Enables the keybind F6 to highlight (xray) all enemies, civilians and cameras on the map
-    self.pickup_waypoints_enables = false -- Enables Highlighting of Keycards and Crowbars
+    self.pickup_waypoints_enable = true -- Enables Highlighting of Keycards and Crowbars
+    self.gage_locater_enable = true -- Enables waypoints highlighting all Gage Weapon Packages on the map
     
-    self.carry_stacker_enable = true -- Enables CarryStacker
-    self.carry_stacker_limit = 2 -- Limit for CarryStacker
+    self.carry_stacker_enable = true -- Enables the keybind F8 to toggle CarryStacker
+    self.carry_stacker_limit = 200 -- Limit for CarryStacker
+    
+    self.big_bank_computer_enable = true -- Enables the keybind F10 to always hack Big Bank Computer first time
+    self.big_bank_laser_chance = 100 -- Change the value (100 = lasers off, 0 = lasers on, 50 = 50% chance)
     
     -- Fixes
     self.fixes_shout_civilians_enable = false -- Enables a fix to stop shouting at tied civs

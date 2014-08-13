@@ -6,7 +6,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.carry_stacker_enable then
 
     _toggleCarry = not _toggleCarry
     if _toggleCarry then
-        managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.carry_stacker_enabled, tweak_data.system_chat_color)
+        managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.carry_stacker_toggle_on, tweak_data.system_chat_color)
         if not CarryStackerSetupDone then
             CarryStackerSetupDone = true
             if managers and managers.player and IntimitateInteractionExt and CarryInteractionExt then
@@ -182,6 +182,6 @@ if tweak_data and tweak_data.SCSuiteConfiguration.carry_stacker_enable then
     else
         if not managers.player:is_carrying() then managers.player:carry_stacker() end
         managers.player:drop_carry()
-        managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.carry_stacker_disabled, tweak_data.system_chat_color)
+        managers.chat:_receive_message(1, "scSuite", tweak_data.SCSuiteLocalisation.carry_stacker_toggle_off, tweak_data.system_chat_color)
     end
 end    

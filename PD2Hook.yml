@@ -7,25 +7,28 @@ Config:
 #  FirstRunScript: LUA/_GLOBALS.lua
 KeyBindings:
 # Mission Selection - http://www.unknowncheats.me/forum/1015461-post50.html
-   - [VK_F1, LUA/MissionSelector.lua]
-# Music Menu - http://www.unknowncheats.me/forum/payday-2/117477-payday-2-ultimate-trainer-v3-1-a.html   
-   - [VK_F2, LUA/MusicMenu.lua]
+   - [VK_F1, SCSuite/Menus/Main.lua]
+   - [VK_F2, SCSuite/Menus/MissionSelector.lua]
+   - [VK_F3, SCSuite/Menus/Cheats.lua]   
 # Mute Bain - http://www.unknowncheats.me/forum/payday-2/115882-stop-disable-bains-dialogue.html
-   - [VK_F3, LUA/MuteBainMenu.lua]
+#   - [VK_F3, LUA/MuteBainMenu.lua]
 # Instant Drill - http://www.unknowncheats.me/forum/payday-2/117728-instant-drill-hack-toggle.html   
-   - [VK_F4, LUA/Hacks/InstantDrill.lua]
+#   - [VK_F4, LUA/Hacks/InstantDrill.lua]
 # Nuke map - http://www.unknowncheats.me/forum/1017628-post1.html   
-   - [VK_F5, LUA/Hacks/KillAllAI.lua]
+#   - [VK_F5, LUA/Hacks/KillAllAI.lua]
 # XRay - http://www.unknowncheats.me/forum/payday-2/118618-x-ray-3-0-slynderdale-multi-color-all-ais-etc-toggleable.html
-   - [VK_F6, LUA/Hacks/XRay.lua]   
-#  - [VK_F7, LUA/somescript.lua]
-#  - [VK_F8, LUA/somescript.lua]
-   - [VK_F9, LUA/KeyBind/BankBuster.lua]
-   - [VK_F11, SCSuite/ReloadConfiguration.lua]   
+#   - [VK_F6, LUA/Hacks/XRay.lua]   
+# Gage Package Waypoints - http://www.unknowncheats.me/forum/947839-post18.html 
+#   - [VK_F7, LUA/Hacks/GageLocater.lua]   
+# CarryStacker Limitable Version - http://www.unknowncheats.me/forum/payday-2/117257-carrystacker-limitable-version.html
+#   - [VK_F8, LUA/Hacks/CarryStacker.lua]  
+#   - [VK_F9, LUA/KeyBind/BankBuster.lua]
+# Big Bank Computer Hack - http://www.unknowncheats.me/forum/payday-2/120815-big-bank-correct-computer-1st-try.html   
+#   - [VK_F10, LUA/Hacks/BigBankComputer.lua]   
+#   - [VK_F11, SCSuite/ReloadConfiguration.lua]   
 # This would give you a "run last script" key on F10
 #  - [VK_F10, '*']
-# This would give you a global toggle key on F11.
-#  - [VK_F11, '']
+#  - [VK_F11, SCSuite/Menus/Main.lua]
 #  - [0x7B, LUA/somescript.lua]
 #  - [0xDC, LUA/somescript.lua]
 #  - [0x21, LUA/somescript.lua]
@@ -55,11 +58,9 @@ PersistScripts:
 # Stealth Fixer - http://www.unknowncheats.me/forum/payday-2/111139-stealthfixerv2.html   
    - [StealthFixer, LUA/Persist/StealthFixer.lua]
 # Anti Anti Cheats - http://www.unknowncheats.me/forum/payday-2/115998-beta-anti-anti-cheat-code.html 
-   - [AntiAntiCheats, LUA/Hacks/AntiAntiCheats.lua]
-# CarryStacker Limitable Version - http://www.unknowncheats.me/forum/payday-2/117257-carrystacker-limitable-version.html
-   - [_toggleCarry, LUA/Hacks/CarryStacker.lua]   
+   - [AntiAntiCheats, LUA/Hacks/AntiAntiCheats.lua]    
 # KeyCard & CrowBar Waypoints - http://www.unknowncheats.me/forum/payday-2/115504-keycard-and-crowbar-waypoints.html
-   - [_toggleWaypoint, LUA/Hacks/PickupFinder.lua]   
+#   - [_toggleWaypoint, LUA/Hacks/PickupFinder.lua]   
 PostRequireScripts:
    - ["*", SCSuite/Main.lua]
    - [core/lib/managers/coremusicmanager, HoxHud/setup.lua] 
