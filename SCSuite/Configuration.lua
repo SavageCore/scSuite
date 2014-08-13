@@ -72,7 +72,6 @@ function SCSuiteConfiguration:init()
     self.drill_jam_override_enable = true -- Enables override so the drill never jams
     self.language = "enGB" --IETF language tag
     self.kill_all_enable = true -- Enables the keybind F5 to kill/delete all AI on map - no pagers
-    self.hostage_sell_limit = 1 -- Limit of hostages or body bags you can sell
     
     self.bodies_for_bain_enable = true -- Sell humans - dead or alive
     -- Any level listed here you will be able to sell hostages on
