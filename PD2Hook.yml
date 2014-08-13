@@ -47,7 +47,7 @@ PersistScripts:
 # 500 Civilians follow limit - http://www.unknowncheats.me/forum/967871-post4.html
    - [InfinteFollow, LUA/Persist/FollowOverride.lua]      
 # Sell hostages and dead bodies - http://www.unknowncheats.me/forum/1004237-post11.html
-#   - [SellHostage,  LUA/Persist/SellHostage.lua]   
+   - [SellHostage,  LUA/Persist/SellHostage.lua]   
 # Infinite Cable Ties - http://www.unknowncheats.me/forum/payday-2/114719-infinite-grenades-infinite-cable-ties-alternate-scripts.html
    - [CableOverride, LUA/CableLimit.lua]    
 # No Drill Jam - http://www.unknowncheats.me/forum/payday-2/117728-instant-drill-hack-toggle.html   
