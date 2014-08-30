@@ -16,7 +16,11 @@ SCSuiteConfiguration.localization_strings = {    scsuitemenu = "SCSuite Options"
     mission_menu_desc = "When enabled pressing F2 will open a menu to load any mission",
     mission_menu_enabled = "mission_menu_enabled",
     toggle_mask_name = "ToggleMask",
-    toggle_mask_title = "Toggle Mask",
+    toggle_mask_title = "Mask Toggle",
     toggle_mask_desc = "When enabled equipping mask becomes a toggle. Press key again to stop.",
     toggle_mask_enabled = "toggle_mask_enabled",   
+    toggle_equipment_name = "ToggleEquipment",
+    toggle_equipment_title = "Equipment Toggle",
+    toggle_equipment_desc = "When enabled placing equipment becomes a toggle. Press key again to stop.",
+    toggle_equipment_enabled = "toggle_equipment_enabled",    
 }

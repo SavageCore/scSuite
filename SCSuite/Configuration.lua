@@ -8,6 +8,7 @@ function SCSuiteConfiguration:init()
     self.instant_drill_enabled = true
     self.mission_menu_enabled = true
     self.toggle_mask_enabled = true
+    self.toggle_equipment_enabled = true
     self.mute_bain_blacklist = {
         "alex_1", -- Rats Day 1
         --"alex_2", -- Rats Day 2

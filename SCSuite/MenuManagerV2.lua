@@ -14,6 +14,9 @@ end
 function MenuCallbackHandler:toggleMask(item)
           LocalizationStringManagerBooleanCallBack("toggle_mask_enabled")
 end
+function MenuCallbackHandler:toggleEquipment(item)
+          LocalizationStringManagerBooleanCallBack("toggle_equipment_enabled")
+end
 function MenuCallbackHandler:toggleTest2(item)
           io.write("Toggle value: " .. tostring(item:value()) .. "\n")
 end
@@ -172,6 +175,7 @@ function addMainMenu()
           --local cheat_submenu = addSubmenu("cheat_submenu_name", "cheat_submenu_title", "cheat_submenu_desc", menuEntry)
           --addToggle("instant_drill_name", "instant_drill_title", "instant_drill_desc", "toggleInstantDrill", tweak_data.SCSuiteConfiguration.instant_drill_enabled, cheat_submenu)
           addToggle("toggle_mask_name", "toggle_mask_title", "toggle_mask_desc", "toggleMask", tweak_data.SCSuiteConfiguration.toggle_mask_enabled, menuEntry)
+          addToggle("toggle_equipment_name", "toggle_equipment_title", "toggle_equipment_desc", "toggleEquipment", tweak_data.SCSuiteConfiguration.toggle_equipment_enabled, menuEntry)
           addToggle("mute_bain_name", "mute_bain_title", "mute_bain_desc", "toggleMuteBain", tweak_data.SCSuiteConfiguration.mute_bain_enabled, menuEntry)
           --addToggle("mission_menu_name", "mission_menu_title", "mission_menu_desc", "toggleMissionMenu", tweak_data.SCSuiteConfiguration.mission_menu_enabled, cheat_submenu)
           addToggle("mission_menu_name", "mission_menu_title", "mission_menu_desc", "toggleMissionMenu", tweak_data.SCSuiteConfiguration.mission_menu_enabled, menuEntry)
