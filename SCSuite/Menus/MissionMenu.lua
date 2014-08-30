@@ -1,4 +1,4 @@
-if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
+if tweak_data and tweak_data.SCSuiteConfiguration.mission_menu_enabled then
     -- MISSION SELECTOR v0.9 (Stealth Suite) by B1313 (kimimaro edit - all credit to B1313)
     -- SHOW MENU FUNCTION
         show_menu = show_menu or function(menu)
@@ -97,11 +97,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
     MainMenuReturn = MainMenuReturn or function()
         dofiles("SCSuite/Menus/Main.lua")
     end
-
-    ReloadConfiguration = ReloadConfiguration or function()
-        dofiles("SCSuite/ReloadConfiguration.lua")
-    end   
-        
+            
     -- ESCAPE CHAIN (Current Difficulty)
     EscapeCafeChain = function()
     managers.job:set_next_interupt_stage( "escape_cafe" )
@@ -3184,7 +3180,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
      { text = "----------------", callback = nil },
      { text = "Main Menu", callback = MainMenuReturn },
      { text = "Reload Settings", callback = ReloadConfiguration },
-     { text = "Cancel", is_cancel_button = true},  
+     { text = "Cancel", is_cancel_button = true},
     }        
     BainOverKillMenu = SimpleMenu:new("Bain Difficulty", "Choose Heist", BainOverKill)     
 
@@ -3233,12 +3229,13 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
      { text = "----------------", callback = nil },
      { text = "Main Menu", callback = MainMenuReturn },
      { text = "Reload Settings", callback = ReloadConfiguration },
+    {},      
      { text = "Cancel", is_cancel_button = true},  
     }        
     BainNormalMenu = SimpleMenu:new("Bain Difficulty", "Choose Heist", BainNormal)     
 
     EscapeDiff = {
-    { text = "---Vlad Difficulty---", callback = nil },
+    { text = "---Escape Difficulty---", callback = nil },
     {},
      { text = "Normal", callback = show_menu, data = EscapeNormalMenu },
      { text = "Hard", callback = show_menu, data = EscapeHardMenu },
@@ -3249,6 +3246,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
      { text = "----------------", callback = nil },
      { text = "Main Menu", callback = MainMenuReturn },
      { text = "Reload Settings", callback = ReloadConfiguration },
+    {},      
      { text = "Cancel", is_cancel_button = true},  
     }        
     EscapeDiffMenu = SimpleMenu:new("Vlad Difficulty", "Choose Difficulty", EscapeDiff)  
@@ -3266,6 +3264,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
      { text = "----------------", callback = nil },
      { text = "Main Menu", callback = MainMenuReturn },
      { text = "Reload Settings", callback = ReloadConfiguration },
+    {},      
      { text = "Cancel", is_cancel_button = true},  
     }        
     VladDiffMenu = SimpleMenu:new("Vlad Difficulty", "Choose Difficulty", VladDiff)  
@@ -3282,6 +3281,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
      { text = "----------------", callback = nil },
      { text = "Main Menu", callback = MainMenuReturn },
      { text = "Reload Settings", callback = ReloadConfiguration },
+    {},      
      { text = "Cancel", is_cancel_button = true},  
     }        
     ElephantDiffMenu = SimpleMenu:new("Elephant Difficulty", "Choose Difficulty", ElephantDiff)  
@@ -3298,6 +3298,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
      { text = "----------------", callback = nil },
      { text = "Main Menu", callback = MainMenuReturn },
      { text = "Reload Settings", callback = ReloadConfiguration },
+    {},      
      { text = "Cancel", is_cancel_button = true},  
     }        
     HectorDiffMenu = SimpleMenu:new("Hector Difficulty", "Choose Difficulty", HectorDiff)  
@@ -3314,6 +3315,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
      { text = "----------------", callback = nil },
      { text = "Main Menu", callback = MainMenuReturn },
      { text = "Reload Settings", callback = ReloadConfiguration },
+    {},      
      { text = "Cancel", is_cancel_button = true},  
     }        
     DentistDiffMenu = SimpleMenu:new("The Dentist Difficulty", "Choose Difficulty", DentistDiff)  
@@ -3330,6 +3332,8 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
      { text = "----------------", callback = nil },
      { text = "Main Menu", callback = MainMenuReturn },
      { text = "Reload Settings", callback = ReloadConfiguration },
+     { text = "Back", callback = show_menu, data = rootmenu },
+    {}, 
      { text = "Cancel", is_cancel_button = true},  
     }        
     BainDLCDiffMenu = SimpleMenu:new("Bain Difficulty", "Choose Difficulty", BainDLCDiff)      
@@ -3343,25 +3347,15 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
      { text = "Overkill", callback = show_menu, data = BainOverKillMenu },
      { text = "Death Wish", callback = show_menu, data = BainDeathWishMenu },
     {},
-     { text = "----------------", callback = nil },
+     { text = "----------------", callback = nil },     
      { text = "Main Menu", callback = MainMenuReturn },
      { text = "Reload Settings", callback = ReloadConfiguration },
-     { text = "Cancel", is_cancel_button = true},  
+     { text = "Back", callback = show_menu, data = rootmenu },
+    {}, 
+     { text = "Cancel", is_cancel_button = true},
     }        
     BainDiffMenu = SimpleMenu:new("Bain Difficulty", "Choose Difficulty", BainDiff)    
-
-    --[[rootopts = {
-    { text = "Bain Classic", callback = show_menu, data = BainDiffMenu },
-    { text = "Bain DLC", callback = show_menu, data = BainDLCDiffMenu },
-    { text = "The Dentist", callback = show_menu, data = DentistDiffMenu },
-    { text = "Hector", callback = show_menu, data = HectorDiffMenu },
-    { text = "The Elephant", callback = show_menu, data = ElephantDiffMenu },
-    { text = "Vlad", callback = show_menu, data = VladDiffMenu },
-    { text = "Escapes", callback = show_menu, data = EscapeDiffMenu },
-    { text = "Cancel", is_cancel_button = true},
-    }
-    rootmenu = SimpleMenu:new("Mission Selector", "Choose Contractor", rootopts)]]--
-    
+  
     rootopts = {
     { text = "---Misson Selector---", callback = nil },
     {},
@@ -3395,7 +3389,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mission_selector_enable then
      { text = "----------------", callback = nil },
      { text = "Main Menu", callback = MainMenuReturn },
      { text = "Reload Settings", callback = ReloadConfiguration },
-     { text = "Cancel", is_cancel_button = true},  
+     { text = "Cancel", is_cancel_button = true},     
     }        
     EscapeChainMenu = SimpleMenu:new("Escape Selector", "Choose Escape to Chain", EscapeChain)
 

@@ -4,127 +4,16 @@ Config:
   PrintOffsets: false
   ExtraCols: 10
   ExtraRows: 10
-#  FirstRunScript: LUA/_GLOBALS.lua
 KeyBindings:
-# Mission Selection - http://www.unknowncheats.me/forum/1015461-post50.html
    - [VK_F1, SCSuite/Menus/Main.lua]
-   - [VK_F2, SCSuite/Menus/MissionSelector.lua]
-   - [VK_F3, SCSuite/Menus/Cheats.lua]   
-# Mute Bain - http://www.unknowncheats.me/forum/payday-2/115882-stop-disable-bains-dialogue.html
-#   - [VK_F3, LUA/MuteBainMenu.lua]
-# Instant Drill - http://www.unknowncheats.me/forum/payday-2/117728-instant-drill-hack-toggle.html   
-#   - [VK_F4, LUA/Hacks/InstantDrill.lua]
-# Nuke map - http://www.unknowncheats.me/forum/1017628-post1.html   
-#   - [VK_F5, LUA/Hacks/KillAllAI.lua]
-# XRay - http://www.unknowncheats.me/forum/payday-2/118618-x-ray-3-0-slynderdale-multi-color-all-ais-etc-toggleable.html
-#   - [VK_F6, LUA/Hacks/XRay.lua]   
-# Gage Package Waypoints - http://www.unknowncheats.me/forum/947839-post18.html 
-#   - [VK_F7, LUA/Hacks/GageLocater.lua]   
-# CarryStacker Limitable Version - http://www.unknowncheats.me/forum/payday-2/117257-carrystacker-limitable-version.html
-#   - [VK_F8, LUA/Hacks/CarryStacker.lua]  
-#   - [VK_F9, LUA/KeyBind/BankBuster.lua]
-# Big Bank Computer Hack - http://www.unknowncheats.me/forum/payday-2/120815-big-bank-correct-computer-1st-try.html   
-#   - [VK_F10, LUA/Hacks/BigBankComputer.lua]   
-#   - [VK_F11, SCSuite/ReloadConfiguration.lua]   
-# This would give you a "run last script" key on F10
-#  - [VK_F10, '*']
-#  - [VK_F11, SCSuite/Menus/Main.lua]
-#  - [0x7B, LUA/somescript.lua]
-#  - [0xDC, LUA/somescript.lua]
-#  - [0x21, LUA/somescript.lua]
-#  - [0x22, LUA/somescript.lua]
-#  - [0x7A, LUA/somescript.lua]
+   - [VK_F2, SCSuite/Menus/MissionMenu.lua]
 PersistScripts:
    - [GlobalScriptInitialized, LUA/_GLOBALS.lua]
-   - [General, LUA/Persist/General.lua]
-# Don't shout at tied civilians - http://www.unknowncheats.me/forum/1018784-post3.html
-   - [NoShout, LUA/MiscFixes/NoShout.lua]
-# NEVER ANY HEAT by hejoro
-# Stupid lazy way to have no more negative penalties for doing the same job over and over. All jobs now have +50% bonus
-# Change 500 to 0 to remove XP bonus  
-   - [NoHeat, LUA/Persist/NoHeat.lua]
-# Remove Drop-In Pause - http://www.unknowncheats.me/forum/payday-2/117477-payday-2-ultimate-trainer-v3-1-a.html   
-   - [NoDropInPause, LUA/Persist/PauseRemover.lua]       
-# Mute Bain - http://www.unknowncheats.me/forum/payday-2/115882-stop-disable-bains-dialogue.html
-   - [muteBain, LUA/Persist/MuteBain.lua]   
-# 500 Civilians follow limit - http://www.unknowncheats.me/forum/967871-post4.html
-   - [InfinteFollow, LUA/Persist/FollowOverride.lua]      
-# Sell hostages and dead bodies - http://www.unknowncheats.me/forum/1004237-post11.html
-   - [SellHostage,  LUA/Persist/SellHostage.lua]   
-# Infinite Cable Ties - http://www.unknowncheats.me/forum/payday-2/114719-infinite-grenades-infinite-cable-ties-alternate-scripts.html
-   - [CableOverride, LUA/CableLimit.lua]    
-# No Drill Jam - http://www.unknowncheats.me/forum/payday-2/117728-instant-drill-hack-toggle.html   
-   - [DrillJam, LUA/Hacks/DrillJam.lua] 
-# Stealth Fixer - http://www.unknowncheats.me/forum/payday-2/111139-stealthfixerv2.html   
-   - [StealthFixer, LUA/Persist/StealthFixer.lua]
-# Anti Anti Cheats - http://www.unknowncheats.me/forum/payday-2/115998-beta-anti-anti-cheat-code.html 
-   - [AntiAntiCheats, LUA/Hacks/AntiAntiCheats.lua]    
-# KeyCard & CrowBar Waypoints - http://www.unknowncheats.me/forum/payday-2/115504-keycard-and-crowbar-waypoints.html
-#   - [_toggleWaypoint, LUA/Hacks/PickupFinder.lua]   
+   - [SCSuiteConfigurationGlobals, SCSuite/ConfigurationGlobals.lua]
+   - [STFUBain, LUA/Persist/STFUBain.lua]
 PostRequireScripts:
    - ["*", SCSuite/Main.lua]
-   - [core/lib/managers/coremusicmanager, HoxHud/setup.lua] 
-   - [lib/managers/group_ai_states/groupaistatebase, HoxHud/setup.lua] 
-   - [lib/managers/playermanager, HoxHud/setup.lua] 
-   - [lib/states/missionendstate, HoxHud/setup.lua] 
-   - [lib/managers/localizationmanager, HoxHud/setup.lua] 
-   - [lib/network/base/hostnetworksession, HoxHud/setup.lua] 
-   - [lib/units/weapons/weaponlaser, HoxHud/setup.lua] 
-   - [lib/managers/statisticsmanager, HoxHud/setup.lua] 
-   - [lib/tweak_data/tweakdata, HoxHud/setup.lua] 
-   - [lib/managers/lootmanager, HoxHud/setup.lua] 
-   - [lib/units/weapons/sentrygunweapon, HoxHud/setup.lua] 
-   - [lib/units/props/timergui, HoxHud/setup.lua] 
-   - [lib/managers/hud/hudsuspicion, HoxHud/setup.lua] 
-   - [lib/managers/skilltreemanager, HoxHud/setup.lua] 
-   - [lib/units/beings/player/playerequipment, HoxHud/setup.lua] 
-   - [lib/utils/game_state_machine/gamestatemachine, HoxHud/setup.lua] 
-   - [lib/managers/menu/missionbriefinggui, HoxHud/setup.lua] 
-   - [lib/managers/hud/hudplayercustody, HoxHud/setup.lua] 
-   - [lib/managers/hud/hudhitdirection, HoxHud/setup.lua] 
-   - [lib/units/props/securitycamera, HoxHud/setup.lua] 
-   - [lib/units/beings/player/playerdamage, HoxHud/setup.lua] 
-   - [lib/managers/hud/hudinteraction, HoxHud/setup.lua] 
-   - [lib/units/props/digitalgui, HoxHud/setup.lua] 
-   - [lib/managers/hud/hudassaultcorner, HoxHud/setup.lua] 
-   - [lib/units/equipment/sentry_gun/sentrygundamage, HoxHud/setup.lua] 
-   - [lib/units/interactions/interactionext, HoxHud/setup.lua] 
-   - [lib/units/equipment/ecm_jammer/ecmjammerbase, HoxHud/setup.lua] 
-   - [lib/managers/hud/hudteammate, HoxHud/setup.lua] 
-   - [lib/managers/chatmanager, HoxHud/setup.lua] 
-   - [lib/units/cameras/fpcameraplayerbase, HoxHud/setup.lua] 
-   - [lib/units/beings/player/states/playerstandard, HoxHud/setup.lua] 
-   - [lib/states/ingamewaitingforplayers, HoxHud/setup.lua] 
-   - [lib/managers/hudmanagerpd2, HoxHud/setup.lua] 
-   - [lib/network/handlers/unitnetworkhandler, HoxHud/setup.lua] 
-   - [lib/network/base/clientnetworksession, HoxHud/setup.lua] 
-   - [lib/managers/menumanager, HoxHud/setup.lua] 
-   - [lib/managers/hud/hudstatsscreen, HoxHud/setup.lua] 
-   - [lib/managers/missionassetsmanager, HoxHud/setup.lua] 
-   - [lib/network/base/basenetworksession, HoxHud/setup.lua] 
-   - [lib/network/extensions/cop/huskcopdamage, HoxHud/setup.lua] 
-   - [lib/units/enemies/cop/copdamage, HoxHud/setup.lua] 
-   - [lib/units/props/texttemplatebase, HoxHud/setup.lua] 
-# This is not used by HoxHud itself, rather it fixes a bug 
-   - [lib/managers/gameplaycentralmanager, HoxHud/setup.lua]
-   - [lib/network/handlers/unitnetworkhandler, LUA/MiscFixes/HoxHud.lua]
-# Toggle Interaction - http://www.unknowncheats.me/forum/992194-post4.html
-   - [lib/units/beings/player/states/PlayerStandard, LUA/Toggle/Interact.lua]      
-# Toggle Mask - http://www.unknowncheats.me/forum/992194-post4.html
-   - [lib/units/beings/player/states/PlayerMaskOff, LUA/Toggle/Mask.lua]   
-# Toggle Equipment - http://www.unknowncheats.me/forum/992194-post4.html
-   - [lib/units/beings/player/states/PlayerStandard, LUA/Toggle/Equipment.lua] 
-# Skip EXP/Money screen straight to Payday - http://www.unknowncheats.me/forum/payday-2/117604-skip-endscreen-and-force-ready.html   
-   - [lib/states/missionendstate, LUA/SkipEndscreen.lua]
-# Force ready - http://www.unknowncheats.me/forum/payday-2/117604-skip-endscreen-and-force-ready.html
-   - [lib/managers/menu/missionbriefinggui, LUA/ForceReady.lua]   
-# Gadget stays on after switch - http://www.unknowncheats.me/forum/985520-post11.html
-   - [lib/units/weapons/NewRaycastWeaponBase, LUA/StickyGadget.lua]      
-# Bank Buster Client - http://www.unknowncheats.me/forum/payday-2/115972-automatic-stealth-bankbuster.html
-   - [lib/managers/missionmanager, LUA/BankBusterClient.lua]     
-# Bank Buster - http://www.unknowncheats.me/forum/payday-2/115972-automatic-stealth-bankbuster.html
-   - [lib/units/unitdamage, LUA/BankBuster.lua] 
-# Random chance of no pager on undetected guards - http://www.unknowncheats.me/forum/1003557-post107.html
-   - [lib/units/enemies/cop/copbrain, LUA/PagerChance.lua]    
-# Cable Ties Limit - http://www.unknowncheats.me/forum/payday-2/114719-infinite-grenades-infinite-cable-ties-alternate-scripts.html
-#   - [lib/managers/menu/menubackdropgui, LUA/CableLimit.lua] 
+   - [lib/managers/localizationmanager, SCSuite/LocalizationManagerV2.lua]
+   - [lib/managers/menumanager, SCSuite/MenuManagerV2.lua]
+   - [lib/units/beings/player/states/PlayerMaskOff, LUA/Toggle/Mask.lua]
+   - [lib/units/beings/player/states/PlayerStandard, LUA/Toggle/Equipment.lua]

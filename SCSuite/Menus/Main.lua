@@ -3,11 +3,6 @@ missionselector = missionselector or function()
     showHint("Mission Selector",3)
 end
 
-cheatmenu = cheatmenu or function()
-    dofiles("SCSuite/Menus/Cheats.lua")
-    showHint("Cheat Menu",3)
-end
-
 -- Menu Call
 
 MainMenuReturn = MainMenuReturn or function()
@@ -21,7 +16,6 @@ rootopts = {
 { text = "---Main Menu---", callback = nil },
     {},
      { text = "F2 - Escape Selection", callback = missionselector },
-     { text = "F3 - Cheat Menu", callback = cheatmenu }, 
     {},
      { text = "----------------", callback = nil },
      { text = "Reload Settings", callback = ReloadConfiguration },

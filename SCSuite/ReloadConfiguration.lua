@@ -1,5 +1,0 @@
-dofile("SCSuite/Configuration.lua")
-tweak_data.SCSuiteConfiguration = SCSuiteConfiguration:new()
-dofile("SCSuite/Localisation.lua")
-tweak_data.SCSuiteLocalisation = SCSuiteLocalisation:new()
-showHint(tweak_data.SCSuiteLocalisation.reload_configuration_success,3)

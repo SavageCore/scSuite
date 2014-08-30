@@ -1,4 +1,4 @@
-if tweak_data and tweak_data.SCSuiteConfiguration.toggle_equipment_enable then
+if tweak_data and tweak_data.SCSuiteConfiguration.toggle_equipment_enabled then
     if not _PlayerStandard__check_use_item then _PlayerStandard__check_use_item = PlayerStandard._check_use_item end
     function PlayerStandard:_check_use_item( t, input )
         if input.btn_use_item_press and self:is_deploying() then
