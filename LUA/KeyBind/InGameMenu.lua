@@ -13,7 +13,6 @@ if not SCSuiteMenu then
     SCSuiteMenu:addMenuOption('cheats_menu', 'Drill Related Cheats', 'cheats_drill_menu')
     
     -- Cheats Menu
-    SCSuiteMenu:addOption('cheats_menu', 'Test entry (changes laser colour)', { callback = lasercolor, callbackData = Color("D891EF") } )
     SCSuiteMenu:addOption('cheats_drill_menu', 'Instant Drill', { callback = instantdrill } )
     
     -- Drill Cheats Menu
