@@ -362,4 +362,114 @@ if not GlobalScriptInitialized then
         end
     return false
     end
+    -- SimpleMenu v3 by Baldwin
+    SimpleMenuV3 = SimpleMenuV3 or class()
+
+    function SimpleMenuV3:init(title, text, data, dont_show)
+        self.shown = false
+        self.dialog_data = {}
+        self.dialog_data.id = tostring(math.random(0,0xFFFFFFFF))
+        self.dialog_data.title = title or ""
+        self.dialog_data.text = text or ""
+
+        self.dialog_data.button_list = { }
+
+        for _, option in ipairs( data ) do
+            if not (option.host_only and Network:is_client()) then
+                option.callback_func = callback(self, self, "do_callback", {
+                    callback = option.callback,
+                    switch_back = option.switch_back,
+                    args = { unpack(type(option.data) == 'table' and option.data or {option.data}) }
+                })
+            end
+            --Temporary hacks again {
+            option.cancel_button = option.cancel_button or option.is_cancel_button
+            option.switch_back = type(option.switch_back) ~= 'function' and option.switch_back or nil
+            -- }
+            table.insert( self.dialog_data.button_list, option )
+        end
+        if not dont_show then
+            self:show()
+        end
+    end
+
+    function SimpleMenuV3:show()
+        if self.shown then
+            return
+        end
+        if SimpleMenuV3._current_menu then
+            SimpleMenuV3._current_menu:hide()
+        end
+        managers.system_menu:show( self.dialog_data )
+        self.shown = true
+        SimpleMenuV3._current_menu = self
+    end
+
+    function SimpleMenuV3:hide()
+        if not self.shown then
+            return
+        end
+        for i,btn in pairs(self.dialog_data.button_list) do
+            if btn.cancel_button and btn.callback_func then
+                btn.callback_func(i, btn)
+        end	end
+        managers.system_menu:close( self.dialog_data.id )
+        self.shown = false
+        if self == SimpleMenuV3._current_menu then
+            SimpleMenuV3._current_menu = nil
+        end
+    end
+
+    function SimpleMenuV3:do_callback( data )
+        if data.callback then
+            local err, res = pcall(data.callback, unpack( data.args ) )
+            if not err then
+                io.write('SimpleMenuV3:do_callback()\n', res, '\n')
+            end
+        end
+        if data.switch_back and type(data.switch_back) == 'function' then
+            safecall(data.switch_back)
+        end
+    end
+
+    -- Sorted Dialog by Baldwin
+    local max_entries = 24 -- Max amount of entries being added into single dialog
+    local insert = table.insert
+    function show_sorted_dialog(title,text,data,fallback,mx,n)
+        if not n or n < 1 then
+            n = 1
+        end
+        local max_entries = mx or max_entries
+        local t_data = {{
+            text = "Cancel",
+            cancel_button = true,
+        }}
+        if fallback then
+            insert(t_data, {
+                text = "Back",
+                callback = fallback,
+            })
+        end
+        if (#data - n >= max_entries) then -- Since n starts with 1
+            insert(t_data, {
+                text = "Next Page",
+                callback = function()
+                    show_sorted_dialog(title,text,data,fallback,mx,n+max_entries)
+                end
+            })
+        end
+        if n > 1 then
+            insert(t_data, {
+                text = "Prev Page",
+                callback = function()
+                    show_sorted_dialog(title,text,data,fallback,mx,n-max_entries)
+                end
+            })
+        end
+        insert(t_data, {})
+        for i=n,(max_entries+(n-1) < #data) and max_entries+(n-1) or #data do
+            insert(t_data, data[i])
+        end
+        SimpleMenuV3:new(title, text, t_data)
+    end    
 end
