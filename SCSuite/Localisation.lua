@@ -11,7 +11,11 @@ SCSuiteConfiguration.localization_strings = {    scsuitemenu = "SCSuite Options"
     instant_drill_name = "Instant Drill",
     instant_drill_title = "Toggle Instant Drilling",
     instant_drill_desc = "When enabled any subsequently placed drills will finish instantly",
-    instant_drill_enabled = "instant_drill_enabled",    
+    instant_drill_toggle = "instant_drill_toggle",    
+    instant_drill_enabled = "Enabled: Instant Drill",
+    instant_drill_disabled = "Disabled: You may not run this script (instant_drill_toggle)",
+    instant_drill_toggle_true = "InstantDrill (ON)",
+    instant_drill_toggle_false = "InstantDrill (OFF)",
     mission_menu_title = "Toggle Mission Menu",
     mission_menu_desc = "When enabled pressing F2 will open a menu to load any mission",
     mission_menu_enabled = "mission_menu_enabled",
@@ -23,4 +27,5 @@ SCSuiteConfiguration.localization_strings = {    scsuitemenu = "SCSuite Options"
     toggle_equipment_title = "Equipment Toggle",
     toggle_equipment_desc = "When enabled placing equipment becomes a toggle. Press key again to stop.",
     toggle_equipment_enabled = "toggle_equipment_enabled",    
+   
 }

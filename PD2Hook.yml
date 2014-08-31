@@ -7,10 +7,13 @@ Config:
 KeyBindings:
    - [VK_F1, SCSuite/Menus/Main.lua]
    - [VK_F2, SCSuite/Menus/MissionMenu.lua]
+   - [VK_F3, LUA/KeyBind/InGameMenu.lua]
 PersistScripts:
    - [GlobalScriptInitialized, LUA/_GLOBALS.lua]
    - [SCSuiteConfigurationGlobals, SCSuite/ConfigurationGlobals.lua]
    - [STFUBain, LUA/Persist/STFUBain.lua]
+   - [MenuUtil, SCSuite/Inc/Util.lua]   
+   - [CustomMenuClass, SCSuite/Inc/CustomMenuClass.lua]     
 PostRequireScripts:
    - ["*", SCSuite/Main.lua]
    - [lib/managers/localizationmanager, SCSuite/LocalizationManagerV2.lua]

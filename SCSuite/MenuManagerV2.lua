@@ -1,12 +1,5 @@
-function MenuCallbackHandler:toggleTest(item)
-          io.write("Toggle value: " .. tostring(item:value()) .. "\n")
-          LocalizationStringManagerBooleanCallBack("mute_bain_enabled")
-end
 function MenuCallbackHandler:toggleMuteBain(item)
           LocalizationStringManagerBooleanCallBack("mute_bain_enabled")
-end
-function MenuCallbackHandler:toggleInstantDrill(item)
-          LocalizationStringManagerBooleanCallBack("instant_drill_enabled")
 end
 function MenuCallbackHandler:toggleMissionMenu(item)
           LocalizationStringManagerBooleanCallBack("mission_menu_enabled")
@@ -17,6 +10,7 @@ end
 function MenuCallbackHandler:toggleEquipment(item)
           LocalizationStringManagerBooleanCallBack("toggle_equipment_enabled")
 end
+
 function MenuCallbackHandler:toggleTest2(item)
           io.write("Toggle value: " .. tostring(item:value()) .. "\n")
 end
