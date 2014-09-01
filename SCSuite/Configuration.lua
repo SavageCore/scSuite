@@ -5,6 +5,7 @@ SCSuiteConfiguration = SCSuiteConfiguration or class()
 require("SCSuite/Localisation.lua")
 function SCSuiteConfiguration:init() 
     self.mute_bain_enabled = true
+    self.mute_bain_broadcast_toggle = true
     self.instant_drill_enabled = true
     self.mission_menu_enabled = true
     self.toggle_mask_enabled = true

@@ -16,6 +16,9 @@ end
 function MenuCallbackHandler:togglePersistentGadget(item)
           LocalizationStringManagerBooleanCallBack("persistent_gadget_toggle")
 end
+function MenuCallbackHandler:toggleBroadcastIngredient(item)
+          LocalizationStringManagerBooleanCallBack("mute_bain_broadcast_toggle")
+end
 
 function MenuCallbackHandler:toggleTest2(item)
           io.write("Toggle value: " .. tostring(item:value()) .. "\n")
@@ -181,6 +184,7 @@ function addMainMenu()
           addToggle("mission_menu_name", "mission_menu_title", "mission_menu_desc", "toggleMissionMenu", tweak_data.SCSuiteConfiguration.mission_menu_enabled, menuEntry)
           addToggle("confirm_respec_name", "confirm_respec_title", "confirm_respec_desc", "toggleConfirmRespec", tweak_data.SCSuiteConfiguration.confirm_respec_toggle, menuEntry)
           addToggle("persistent_gadget_name", "persistent_gadget_title", "persistent_gadget_desc", "togglePersistentGadget", tweak_data.SCSuiteConfiguration.persistent_gadget_toggle, menuEntry)
+          addToggle("mute_bain_broadcast_name", "mute_bain_broadcast_title", "mute_bain_broadcast_desc", "toggleBroadcastIngredient", tweak_data.SCSuiteConfiguration.mute_bain_broadcast_toggle, menuEntry)
           --addSlider("test_slider", "slider", "sliderdesc", "sliderTest", 0, menuEntry)
           --addMultichoice("test_multichoice", "multichoice", "multichoicedesc", "multichoiceTest", 0, menuEntry)
 end
