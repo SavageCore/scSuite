@@ -32,6 +32,11 @@ SCSuiteConfiguration.localization_strings = {    scsuitemenu = "SCSuite Options"
     confirm_respec_desc = "When enabled no confirmation dialog on respec/spend skill point will appear",
     confirm_respec_toggle = "confirm_respec_toggle",    
     confirm_respec_enabled = "Enabled: Confirm Respec",
-    confirm_respec_disabled = "Disabled: You may not run this script (confirm_respec_toggle)",  
-   
+    confirm_respec_disabled = "Disabled: You may not run this script (confirm_respec_toggle)", 
+    persistent_gadget_name = "Persistent Gadget",
+    persistent_gadget_title = "Enable Persistent Gadget",
+    persistent_gadget_desc = "When enabled state of weapon gadget will be remembered. For example laser stays on during weapon swap.",
+    persistent_gadget_toggle = "persistent_gadget_toggle",    
+    persistent_gadget_enabled = "Enabled: Persistent Gadget",
+    persistent_gadget_disabled = "Disabled: You may not run this script (persistent_gadget_toggle)",  
 }
