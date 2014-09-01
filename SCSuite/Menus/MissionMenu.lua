@@ -26,7 +26,7 @@ end
 --   rewritten by so and so
 local escape_job = 'ukrainian_job'
 
-if not rawget(_G, 'managers') then do return end end
+if not rawget(_G, 'managers') then return end
 
 local in_game = string.find(game_state_machine:current_state_name(), 'game')
 local is_playing = BaseNetworkHandler._gamestate_filter.any_ingame_playing[game_state_machine:last_queued_state_name()]
@@ -45,13 +45,13 @@ local local_deathwish = translate("menu_difficulty_apocalypse")
 local local_pro =       translate("menu_cn_legend_pro")
 
 local stack = {}
-local showmenu
+local show_menu
 local function back()
     table.remove(stack) -- pop current
     local menu = table.remove(stack)
     if menu then show_menu(menu, true) end
 end
-show_menu = function(menu, backed)
+show_menu = function(menu)
     show_sorted_dialog(menu.title or '', menu.subtitle or '', menu, #stack > 0 and back or nil)
     table.insert(stack, menu)
 end
@@ -94,7 +94,7 @@ local function mission(job, level, day)
         return
     end
     show_menu{
-        title = 'Job: '..job .. ' ' .. heat_string(job),
+        title = 'Job: '..job..' ' .. heat_string(job),
         subtitle = 'Choose Difficulty',
         --MenuItem(local_easy, set_job, 'easy', job, level, day),
         MenuItem(local_normal, set_job, 'normal', job, level, day),
@@ -105,27 +105,24 @@ local function mission(job, level, day)
     }
 end
 
-local function MissionItem(name, day, day_override)
-    local pro = name:sub(-5) == '_prof'
-    local job = pro and name or name
-    local job2 = pro and name:sub(1, -6) or name
-    local local_job = translate('heist_'..job2)
+local function MissionItem(job, day, day_override)
+    local pro = job:sub(-5) == '_prof'
+    local level = pro and job:sub(1, -6) or job
+    local local_job = translate('heist_'..level)
+    local daystr = day and '_'..tostring(day) or ''
 
-    local level = job
+    level = level..daystr
     if not tweak_data.levels[level] then
-        level = level:match('[^_]+')
-    end
-    if day then
-        level = pro and job:sub(1, -6)..'_'..tostring(day) or job..'_'..tostring(day)
+        level = level:match('[^_]+')..daystr
     end
 
-    local human = local_job..(pro and ' ('..local_pro..')' or '')..(day and ' {'..tostring(day)..'}' or '')..heat_string(name)
+    local human = local_job..(pro and ' ('..local_pro..')' or '')..(day and ' {'..tostring(day)..'}' or '')..heat_string(job)
     return MenuItem(human, mission, job, level, day_override or day)
 end
 
-local function EscapeItem(name)
-    local pro = name:sub(-5) == '_prof'
-    local level = pro and name:sub(1, -6) or name
+local function EscapeItem(job)
+    local pro = job:sub(-5) == '_prof'
+    local level = pro and job:sub(1, -6) or job
 
     local append = ''
     if not managers.localization:exists('heist_'..level..'_hl') then
@@ -240,7 +237,7 @@ local menu_extra = {
     MissionItem('ukrainian_job'),
     MissionItem('big_prof'),
     MissionItem('safehouse'),
-    MenuItem('Safehouse (Transport Wrapper)', mission, 'arm_wrapper', 'safehouse'),
+    --MenuItem('Safehouse (Transport Wrapper)', mission, 'arm_wrapper', 'safehouse'),
 }
 
 local menu_main = {
@@ -256,6 +253,6 @@ local menu_main = {
     MenuItem('Extra', show_menu, menu_extra),
 }
 
-if in_chat then do return end end
-if in_game and not is_playing then do return end end
+if in_chat then return end
+if in_game and not is_playing then return end
 show_menu(menu_main)
