@@ -10,6 +10,9 @@ end
 function MenuCallbackHandler:toggleEquipment(item)
           LocalizationStringManagerBooleanCallBack("toggle_equipment_enabled")
 end
+function MenuCallbackHandler:toggleConfirmRespec(item)
+          LocalizationStringManagerBooleanCallBack("confirm_respec_toggle")
+end
 
 function MenuCallbackHandler:toggleTest2(item)
           io.write("Toggle value: " .. tostring(item:value()) .. "\n")
@@ -173,6 +176,7 @@ function addMainMenu()
           addToggle("mute_bain_name", "mute_bain_title", "mute_bain_desc", "toggleMuteBain", tweak_data.SCSuiteConfiguration.mute_bain_enabled, menuEntry)
           --addToggle("mission_menu_name", "mission_menu_title", "mission_menu_desc", "toggleMissionMenu", tweak_data.SCSuiteConfiguration.mission_menu_enabled, cheat_submenu)
           addToggle("mission_menu_name", "mission_menu_title", "mission_menu_desc", "toggleMissionMenu", tweak_data.SCSuiteConfiguration.mission_menu_enabled, menuEntry)
+          addToggle("confirm_respec_name", "confirm_respec_title", "confirm_respec_desc", "toggleConfirmRespec", tweak_data.SCSuiteConfiguration.confirm_respec_toggle, menuEntry)
           --addSlider("test_slider", "slider", "sliderdesc", "sliderTest", 0, menuEntry)
           --addMultichoice("test_multichoice", "multichoice", "multichoicedesc", "multichoiceTest", 0, menuEntry)
 end

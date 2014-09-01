@@ -10,6 +10,7 @@ function SCSuiteConfiguration:init()
     self.toggle_mask_enabled = true
     self.toggle_equipment_enabled = true
     self.instant_drill_toggle = true
+    self.confirm_respec_toggle = true
     self.mute_bain_blacklist = {
         "alex_1", -- Rats Day 1
         --"alex_2", -- Rats Day 2

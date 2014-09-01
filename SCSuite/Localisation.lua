@@ -27,5 +27,11 @@ SCSuiteConfiguration.localization_strings = {    scsuitemenu = "SCSuite Options"
     toggle_equipment_title = "Equipment Toggle",
     toggle_equipment_desc = "When enabled placing equipment becomes a toggle. Press key again to stop.",
     toggle_equipment_enabled = "toggle_equipment_enabled",    
+    confirm_respec_name = "Confirm Respec",
+    confirm_respec_title = "Enable Confirm Respec",
+    confirm_respec_desc = "When enabled no confirmation dialog on respec/spend skill point will appear",
+    confirm_respec_toggle = "confirm_respec_toggle",    
+    confirm_respec_enabled = "Enabled: Confirm Respec",
+    confirm_respec_disabled = "Disabled: You may not run this script (confirm_respec_toggle)",  
    
 }

@@ -20,3 +20,4 @@ PostRequireScripts:
    - [lib/managers/menumanager, SCSuite/MenuManagerV2.lua]
    - [lib/units/beings/player/states/PlayerMaskOff, LUA/Toggle/Mask.lua]
    - [lib/units/beings/player/states/PlayerStandard, LUA/Toggle/Equipment.lua]
+   - [lib/managers/moneymanager, LUA/General/ConfirmRespec.lua]
