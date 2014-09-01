@@ -1,3 +1,25 @@
+-- HEAT STRING FUNCTION - by zulu200
+local heat_string = function( o )
+    if o == 'arm_for' or o == 'branchbank_gold' or o == 'branchbank' or o == 'welcome_to_the_jungle' or o == 'welcome_to_the_jungle_prof' or o == 'ukrainian_job' or o == 'big_prof' or o == 'safehouse' then return "" end
+    local i_perc    = 100 * (managers.job:heat_to_experience_multiplier( managers.job:_get_job_heat( o ) ) - 1)
+    local s_perc    = string.format("%.0f", math.abs(i_perc))
+    local s_format     = string.format("  (%s%%%is%%%% H",((i_perc > 0) and "+" or "- "),6-string.len(s_perc))
+
+    local i_perc_s  = 0
+    local s_perc_s
+    if managers.job:get_ghost_bonus( o ) > 0 then
+        i_perc_s    = 100 * managers.job:get_ghost_bonus( o )
+        s_perc_s    = string.format("%.0f", math.abs(i_perc_s))
+        if i_perc ~= 0 then
+            s_format = s_format.."  + "..s_perc_s.."%% S)"
+        else
+            s_format = "  (+ "..s_perc_s.."%% S)"
+        end
+    else
+            s_format = s_format..")"
+    end
+    return (i_perc ~= 0 or i_perc_s ~= 0) and (string.format(s_format,s_perc) or string.format(s_format,s_perc_s)) or ""
+end
 -- Yet Another Job Menu
 --   original script by harfatus
 --   escapes and escape chains by B1313
@@ -72,7 +94,7 @@ local function mission(job, level, day)
         return
     end
     show_menu{
-        title = 'Job: '..job,
+        title = 'Job: '..job .. ' ' .. heat_string(job),
         subtitle = 'Choose Difficulty',
         --MenuItem(local_easy, set_job, 'easy', job, level, day),
         MenuItem(local_normal, set_job, 'normal', job, level, day),
@@ -85,18 +107,19 @@ end
 
 local function MissionItem(name, day, day_override)
     local pro = name:sub(-5) == '_prof'
-    local job = pro and name:sub(1, -6) or name
-    local local_job = translate('heist_'..job)
+    local job = pro and name or name
+    local job2 = pro and name:sub(1, -6) or name
+    local local_job = translate('heist_'..job2)
 
     local level = job
     if not tweak_data.levels[level] then
         level = level:match('[^_]+')
     end
     if day then
-        level = level..'_'..tostring(day)
+        level = pro and job:sub(1, -6)..'_'..tostring(day) or job..'_'..tostring(day)
     end
 
-    local human = local_job..(pro and ' ('..local_pro..')' or '')..(day and ' {'..tostring(day)..'}' or '')
+    local human = local_job..(pro and ' ('..local_pro..')' or '')..(day and ' {'..tostring(day)..'}' or '')..heat_string(name)
     return MenuItem(human, mission, job, level, day_override or day)
 end
 
