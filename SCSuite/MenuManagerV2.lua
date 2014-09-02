@@ -19,14 +19,16 @@ end
 function MenuCallbackHandler:toggleBroadcastIngredient(item)
           LocalizationStringManagerBooleanCallBack("mute_bain_broadcast_toggle")
 end
+function MenuCallbackHandler:toggleForceReady(item)
+          LocalizationStringManagerBooleanCallBack("force_ready_toggle")
+end
+function MenuCallbackHandler:sliderForceReadyThreshold(item)
+    io.write("Slider value: " .. tostring(math.floor(item:value() + 0.5)) .. "\n")
+    LocalizationStringManagerSliderCallBack("force_ready_threshold_value", tostring(item:value()))
+end
 
 function MenuCallbackHandler:toggleTest2(item)
           io.write("Toggle value: " .. tostring(item:value()) .. "\n")
-end
-
-function MenuCallbackHandler:sliderTest(item)
-    io.write("Slider value: " .. tostring(math.floor(item:value() + 0.5)) .. "\n")
-    LocalizationStringManagerSliderCallBack("string_id_2", tostring(item:value()))
 end
 
 function MenuCallbackHandler:multichoiceTest(item)
@@ -88,12 +90,12 @@ function addMultichoice(name, title, desc, cbk, value, parent)
           parent:add_item(menuItem)
 end
 
-function addSlider(name, title, desc, cbk, value, parent)
+function addSlider(name, title, desc, cbk, value, parent, minval, maxval, stepval)
           local data = {
                       type = "CoreMenuItemSlider.ItemSlider",
-                      min = 0,
-                      max = 1,
-                      step = 0.1,
+                      min = minval, --0
+                      max = maxval, --1
+                      step = stepval, --0.1
                       show_value = true
           }
 
@@ -185,6 +187,7 @@ function addMainMenu()
           addToggle("confirm_respec_name", "confirm_respec_title", "confirm_respec_desc", "toggleConfirmRespec", tweak_data.SCSuiteConfiguration.confirm_respec_toggle, menuEntry)
           addToggle("persistent_gadget_name", "persistent_gadget_title", "persistent_gadget_desc", "togglePersistentGadget", tweak_data.SCSuiteConfiguration.persistent_gadget_toggle, menuEntry)
           addToggle("mute_bain_broadcast_name", "mute_bain_broadcast_title", "mute_bain_broadcast_desc", "toggleBroadcastIngredient", tweak_data.SCSuiteConfiguration.mute_bain_broadcast_toggle, menuEntry)
-          --addSlider("test_slider", "slider", "sliderdesc", "sliderTest", 0, menuEntry)
+          addToggle("force_ready_name", "force_ready_title", "force_ready_desc", "toggleForceReady", tweak_data.SCSuiteConfiguration.force_ready_toggle, menuEntry)
+          addSlider("force_ready_threshold_name", "force_ready_threshold_title", "force_ready_threshold_desc", "sliderForceReadyThreshold", tweak_data.SCSuiteConfiguration.force_ready_threshold_value, menuEntry, 0, 10, 1)
           --addMultichoice("test_multichoice", "multichoice", "multichoicedesc", "multichoiceTest", 0, menuEntry)
 end

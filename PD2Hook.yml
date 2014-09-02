@@ -22,3 +22,4 @@ PostRequireScripts:
    - [lib/units/beings/player/states/PlayerStandard, LUA/Toggle/Equipment.lua]
    - [lib/managers/moneymanager, LUA/General/ConfirmRespec.lua]
    - [lib/units/weapons/newraycastweaponbase, LUA/General/PersistentGadget.lua]
+   - [lib/managers/menu/missionbriefinggui, LUA/General/ForceReady.lua]

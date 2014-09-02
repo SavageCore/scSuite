@@ -6,13 +6,6 @@ require("SCSuite/Localisation.lua")
 function SCSuiteConfiguration:init() 
     self.mute_bain_enabled = true
     self.mute_bain_broadcast_toggle = true
-    self.instant_drill_enabled = true
-    self.mission_menu_enabled = true
-    self.toggle_mask_enabled = true
-    self.toggle_equipment_enabled = true
-    self.instant_drill_toggle = true
-    self.confirm_respec_toggle = true
-    self.persistent_gadget_toggle = true
     self.mute_bain_blacklist = {
         "alex_1", -- Rats Day 1
         --"alex_2", -- Rats Day 2
@@ -58,4 +51,13 @@ function SCSuiteConfiguration:init()
         --"welcome_to_the_jungle_1", -- Big Oil Day 1
         --"welcome_to_the_jungle_2", -- Big Oil Day 2    
     }
+    self.instant_drill_enabled = true
+    self.mission_menu_enabled = true
+    self.toggle_mask_enabled = true
+    self.toggle_equipment_enabled = true
+    self.instant_drill_toggle = true
+    self.confirm_respec_toggle = true
+    self.persistent_gadget_toggle = true
+    self.force_ready_toggle = true
+    self.force_ready_threshold_value = 3
 end
