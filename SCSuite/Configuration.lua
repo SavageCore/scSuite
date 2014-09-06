@@ -60,4 +60,5 @@ function SCSuiteConfiguration:init()
     self.persistent_gadget_toggle = true
     self.force_ready_toggle = true
     self.force_ready_threshold_value = 3
+    self.skip_endscreen_toggle = true
 end

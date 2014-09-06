@@ -53,4 +53,8 @@ SCSuiteConfiguration.localization_strings = {    scsuitemenu = "SCSuite Options"
     force_ready_threshold_title = "Force Ready Threshold",
     force_ready_threshold_desc = "Threshold for the amount of toggles to force start",  
     force_ready_threshold_value = "force_ready_threshold_value",
+    skip_endscreen_name = "Skip Endscreen",  
+    skip_endscreen_title = "Enable Skip Endscreen",
+    skip_endscreen_desc = "When enabled you can press enter to skip money/xp counting",  
+    skip_endscreen_toggle = "skip_endscreen_toggle",
 }
