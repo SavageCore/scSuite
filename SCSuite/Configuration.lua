@@ -61,4 +61,5 @@ function SCSuiteConfiguration:init()
     self.force_ready_toggle = true
     self.force_ready_threshold_value = 3
     self.skip_endscreen_toggle = true
+    self.unlock_dlc_toggle = true
 end

@@ -57,4 +57,8 @@ SCSuiteConfiguration.localization_strings = {    scsuitemenu = "SCSuite Options"
     skip_endscreen_title = "Enable Skip Endscreen",
     skip_endscreen_desc = "When enabled you can press enter to skip money/xp counting",  
     skip_endscreen_toggle = "skip_endscreen_toggle",
+    unlock_dlc_name = "Unlock DLC",  
+    unlock_dlc_title = "Enable Unlock DLC",
+    unlock_dlc_desc = "When enabled all DLC is unlocked - if you like it, buy it!",  
+    unlock_dlc_toggle = "unlock_dlc_toggle",    
 }

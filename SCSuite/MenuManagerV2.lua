@@ -29,6 +29,9 @@ end
 function MenuCallbackHandler:toggleSkipEndscreen(item)
           LocalizationStringManagerBooleanCallBack("skip_endscreen_toggle")
 end
+function MenuCallbackHandler:toggleUnlockDLC(item)
+          LocalizationStringManagerBooleanCallBack("unlock_dlc_toggle")
+end
 
 function MenuCallbackHandler:toggleTest2(item)
           io.write("Toggle value: " .. tostring(item:value()) .. "\n")
@@ -192,6 +195,7 @@ function addMainMenu()
           addToggle("mute_bain_broadcast_name", "mute_bain_broadcast_title", "mute_bain_broadcast_desc", "toggleBroadcastIngredient", tweak_data.SCSuiteConfiguration.mute_bain_broadcast_toggle, menuEntry)
           addToggle("force_ready_name", "force_ready_title", "force_ready_desc", "toggleForceReady", tweak_data.SCSuiteConfiguration.force_ready_toggle, menuEntry)
           addSlider("force_ready_threshold_name", "force_ready_threshold_title", "force_ready_threshold_desc", "sliderForceReadyThreshold", tweak_data.SCSuiteConfiguration.force_ready_threshold_value, menuEntry, 0, 10, 1)
-          addSlider("skip_endscreen_name", "skip_endscreen_title", "skip_endscreen_desc", "toggleSkipEndscreen", tweak_data.SCSuiteConfiguration.skip_endscreen_toggle, menuEntry, 0, 10, 1)
+          addToggle("skip_endscreen_name", "skip_endscreen_title", "skip_endscreen_desc", "toggleSkipEndscreen", tweak_data.SCSuiteConfiguration.skip_endscreen_toggle, menuEntry, 0, 10, 1)
+          addToggle("unlock_dlc_name", "unlock_dlc_title", "unlock_dlc_desc", "toggleUnlockDLC", tweak_data.SCSuiteConfiguration.unlock_dlc_toggle, menuEntry, 0, 10, 1)
           --addMultichoice("test_multichoice", "multichoice", "multichoicedesc", "multichoiceTest", 0, menuEntry)
 end
