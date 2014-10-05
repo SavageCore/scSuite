@@ -1,37 +1,29 @@
-missionselector = missionselector or function()
-    dofiles("SCSuite/Menus/MissionSelector.lua")
-    showHint("Mission Selector",3)
-end
+if not SCSuiteMenu then
+    function missionmenu()
+        SCSuiteMenu:close()
+        dofiles("SCSuite/Menus/MissionMenu.lua")
+    end
+    function missionmenunew()
+        SCSuiteMenu:close()
+        dofiles("SCSuite/Menus/MissionMenuNew.lua")
+    end
+    function cheatsmenu()
+        SCSuiteMenu:close()
+        dofiles("SCSuite/Menus/InGameMenu.lua")
+    end    
+   
+    SCSuiteMenu = CustomMenuClass:new({hasLoading = false})
+    
+    SCSuiteMenu:addMainMenu('main_menu', { title = 'SCSuite - Main Menu' } )    
+    SCSuiteMenu:addOption('main_menu', 'Mission Menu', { callback = missionmenu } )
+    SCSuiteMenu:addOption('main_menu', 'Mission Menu New', { callback = missionmenunew } )
+    SCSuiteMenu:addOption('main_menu', 'Cheats/Hacks (Ingame)', { callback = cheatsmenu } )
+    
+    -- Drill Cheats Menu
+end   
 
--- Menu Call
-
-MainMenuReturn = MainMenuReturn or function()
-    dofiles("SCSuite/Menus/Main.lua")
-end
-
--- Menu stuff
-
-if inGame() and isPlaying() then
-rootopts = {
-{ text = "---Main Menu---", callback = nil },
-    {},
-     { text = "F2 - Escape Selection", callback = missionselector },
-    {},
-     { text = "----------------", callback = nil },
-     { text = "Reload Settings", callback = ReloadConfiguration },
-     { text = "Cancel", is_cancel_button = true},
-    }
+if SCSuiteMenu:isOpen() then
+    SCSuiteMenu:close()
 else
-rootopts = {
-{ text = "---Main Menu---", callback = nil },
-    {},
-     { text = "F2 - Mission Selector", callback = missionselector },
-    {},
-     { text = "----------------", callback = nil },
-     { text = "Reload Settings", callback = ReloadConfiguration },
-     { text = "Cancel", is_cancel_button = true},
-}
-end
-
-rootmenu = SimpleMenu:new("Main Menu", "scSuite Main Menu - Please enjoy!", rootopts)
-rootmenu:show()
+    SCSuiteMenu:open()
+end 

@@ -471,5 +471,10 @@ if not GlobalScriptInitialized then
             insert(t_data, data[i])
         end
         SimpleMenuV3:new(title, text, t_data)
+    end   
+    -- Titlescreen check
+    function inTitlescreen()
+        if not game_state_machine then return false end
+        return string.find(game_state_machine:current_state_name(), "titlescreen")
     end    
 end

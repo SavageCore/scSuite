@@ -23,7 +23,6 @@ function MenuCallbackHandler:toggleForceReady(item)
           LocalizationStringManagerBooleanCallBack("force_ready_toggle")
 end
 function MenuCallbackHandler:sliderForceReadyThreshold(item)
-    io.write("Slider value: " .. tostring(math.floor(item:value() + 0.5)) .. "\n")
     LocalizationStringManagerSliderCallBack("force_ready_threshold_value", tostring(item:value()))
 end
 function MenuCallbackHandler:toggleSkipEndscreen(item)
@@ -32,10 +31,38 @@ end
 function MenuCallbackHandler:toggleUnlockDLC(item)
           LocalizationStringManagerBooleanCallBack("unlock_dlc_toggle")
 end
+function MenuCallbackHandler:toggleBankBuster(item)
+          LocalizationStringManagerBooleanCallBack("bank_buster_toggle")
+end
+function MenuCallbackHandler:toggleNukeMap(item)
+          LocalizationStringManagerBooleanCallBack("nuke_map_toggle")
+end
+function MenuCallbackHandler:toggleCarryStacker(item)
+          LocalizationStringManagerBooleanCallBack("carry_stacker_toggle")
+end
+function MenuCallbackHandler:sliderCarryStackerLimit(item)
+    LocalizationStringManagerSliderCallBack("carry_stacker_limit_value", tostring(item:value()))
+end
+function MenuCallbackHandler:toggleCableTie(item)
+          LocalizationStringManagerBooleanCallBack("cable_tie_toggle")
+end
+function MenuCallbackHandler:sliderCableTieLimit(item)
+    LocalizationStringManagerSliderCallBack("cable_tie_limit_value", tostring(item:value()))
+end
+function MenuCallbackHandler:togglePagerChance(item)
+          LocalizationStringManagerBooleanCallBack("pager_chance_toggle")
+end
+function MenuCallbackHandler:toggleRestartPro(item)
+          LocalizationStringManagerBooleanCallBack("restart_pro_toggle")
+end
+function MenuCallbackHandler:toggleDisableUpdateNotifier(item)
+          LocalizationStringManagerBooleanCallBack("disable_update_notifier_toggle")
+end
 
 function MenuCallbackHandler:toggleTest2(item)
           io.write("Toggle value: " .. tostring(item:value()) .. "\n")
 end
+
 
 function MenuCallbackHandler:multichoiceTest(item)
     io.write("Multichoice value: " .. tostring(item:value()) .. "\n")
@@ -195,7 +222,16 @@ function addMainMenu()
           addToggle("mute_bain_broadcast_name", "mute_bain_broadcast_title", "mute_bain_broadcast_desc", "toggleBroadcastIngredient", tweak_data.SCSuiteConfiguration.mute_bain_broadcast_toggle, menuEntry)
           addToggle("force_ready_name", "force_ready_title", "force_ready_desc", "toggleForceReady", tweak_data.SCSuiteConfiguration.force_ready_toggle, menuEntry)
           addSlider("force_ready_threshold_name", "force_ready_threshold_title", "force_ready_threshold_desc", "sliderForceReadyThreshold", tweak_data.SCSuiteConfiguration.force_ready_threshold_value, menuEntry, 0, 10, 1)
-          addToggle("skip_endscreen_name", "skip_endscreen_title", "skip_endscreen_desc", "toggleSkipEndscreen", tweak_data.SCSuiteConfiguration.skip_endscreen_toggle, menuEntry, 0, 10, 1)
-          addToggle("unlock_dlc_name", "unlock_dlc_title", "unlock_dlc_desc", "toggleUnlockDLC", tweak_data.SCSuiteConfiguration.unlock_dlc_toggle, menuEntry, 0, 10, 1)
+          addToggle("skip_endscreen_name", "skip_endscreen_title", "skip_endscreen_desc", "toggleSkipEndscreen", tweak_data.SCSuiteConfiguration.skip_endscreen_toggle, menuEntry)
+          addToggle("unlock_dlc_name", "unlock_dlc_title", "unlock_dlc_desc", "toggleUnlockDLC", tweak_data.SCSuiteConfiguration.unlock_dlc_toggle, menuEntry)
+          addToggle("bank_buster_name", "bank_buster_title", "bank_buster_desc", "toggleBankBuster", tweak_data.SCSuiteConfiguration.bank_buster_toggle, menuEntry)
+          addToggle("nuke_map_name", "nuke_map_title", "nuke_map_desc", "toggleNukeMap", tweak_data.SCSuiteConfiguration.nuke_map_toggle, menuEntry)
+          addToggle("carry_stacker_name", "carry_stacker_title", "carry_stacker_desc", "toggleCarryStacker", tweak_data.SCSuiteConfiguration.carry_stacker_toggle, menuEntry)
+          addSlider("carry_stacker_limit_name", "carry_stacker_limit_title", "carry_stacker_limit_desc", "sliderCarryStackerLimit", tweak_data.SCSuiteConfiguration.carry_stacker_limit_value, menuEntry, 0, 50, 5)  
+          addToggle("cable_tie_name", "cable_tie_title", "cable_tie_desc", "toggleCableTie", tweak_data.SCSuiteConfiguration.cable_tie_toggle, menuEntry)
+          addSlider("cable_tie_limit_name", "cable_tie_limit_title", "cable_tie_limit_desc", "sliderCableTieLimit", tweak_data.SCSuiteConfiguration.cable_tie_limit_value, menuEntry, 0, 10, 5)
+          addToggle("pager_chance_name", "pager_chance_title", "pager_chance_desc", "togglePagerChance", tweak_data.SCSuiteConfiguration.pager_chance_toggle, menuEntry)
+          addToggle("restart_pro_name", "restart_pro_title", "restart_pro_desc", "toggleRestartPro", tweak_data.SCSuiteConfiguration.restart_pro_toggle, menuEntry)
+          addToggle("disable_update_notifier_name", "disable_update_notifier_title", "disable_update_notifier_desc", "toggleDisableUpdateNotifier", tweak_data.SCSuiteConfiguration.disable_update_notifier_toggle, menuEntry)
           --addMultichoice("test_multichoice", "multichoice", "multichoicedesc", "multichoiceTest", 0, menuEntry)
 end

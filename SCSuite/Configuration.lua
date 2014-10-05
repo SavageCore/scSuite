@@ -51,7 +51,6 @@ function SCSuiteConfiguration:init()
         --"welcome_to_the_jungle_1", -- Big Oil Day 1
         --"welcome_to_the_jungle_2", -- Big Oil Day 2    
     }
-    self.instant_drill_enabled = true
     self.mission_menu_enabled = true
     self.toggle_mask_enabled = true
     self.toggle_equipment_enabled = true
@@ -59,7 +58,16 @@ function SCSuiteConfiguration:init()
     self.confirm_respec_toggle = true
     self.persistent_gadget_toggle = true
     self.force_ready_toggle = true
-    self.force_ready_threshold_value = 3
+    self.force_ready_threshold_value = 5
     self.skip_endscreen_toggle = true
     self.unlock_dlc_toggle = true
+    self.bank_buster_toggle = true    
+    self.nuke_map_toggle = true    
+    self.carry_stacker_toggle = true    
+    self.carry_stacker_limit_value = 2 
+    self.cable_tie_toggle = true    
+    self.cable_tie_limit_value = 10
+    self.pager_chance_toggle = true
+    self.restart_pro_toggle = true
+    self.disable_update_notifier_toggle = true
 end

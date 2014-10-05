@@ -15,6 +15,7 @@ if not CustomMenuClass then
 	_hasNavigation = true
 	_hasBorder = true
 	_indentColumns = 10 --[[ Distance from edge of Main Menu Panel to the Columns for Options ]]--
+	_pauseGame = false
 
 	--[[ ## Actual Menu Settings ## ]]--
 	_title = "Mod Menu"
@@ -36,6 +37,7 @@ if not CustomMenuClass then
 	_defaultPostToggleBoolean = true
 	_defaultRecieveToggleBoolean = false
 	_hasHelp = true
+	_closeMenu = false
 	
 	--[[ ## Main Menu Rectangle ## ]]--
 	_mainMenuRectWidth = 750
@@ -91,6 +93,7 @@ if not CustomMenuClass then
 		self.hasNavigation = getValue(params.hasNavigation, _hasNavigation)
 		self.hasBorder = getValue(params.hasBorder, _hasBorder)
 		self.indentColumns = getValue(params.indentColumns, _indentColumns)
+		self.pauseGame = getValue(params.pauseGame, _pauseGame)
 		self.mouseActive = false
 		
 		--[[ ## Setup Workspace ## ]]--
@@ -262,7 +265,7 @@ if not CustomMenuClass then
 	
 	function CustomMenuClass:_open()
 		self:activateMouse()
-		self:startPauseThread()
+		self:menuPause(true)
 		self.menuLoaded = true
 	end
 	
@@ -270,8 +273,7 @@ if not CustomMenuClass then
 	function CustomMenuClass:close()
 		if self:isVisible() and self:isMenuLoaded() then
 			self.visible = false
-			self:stopPauseThread()
-			pauseGame(false)
+			self:menuPause(false)
 			self:deactivateMouse()
 			if self.hasLoading then
 				self:setupMenuFadeOut(self)
@@ -304,6 +306,26 @@ if not CustomMenuClass then
 	
 	function CustomMenuClass:stopPauseThread()
 		stopThread(_pauseThreadName)
+	end
+
+	function CustomMenuClass:menuPause(enabled)
+		if managers then
+			if managers.player and managers.player:player_unit() then
+					managers.player:player_unit():base():set_controller_enabled(not enabled)
+				end
+			if managers.menu and managers.menu:active_menu() then
+				managers.menu:active_menu().logic:accept_input(not enabled)
+				managers.menu:active_menu().renderer._logic:accept_input(not enabled)
+			end
+		end
+		if self.pauseGame then
+			if enabled then
+				self:startPauseThread()
+			else
+				self:stopPauseThread()
+				pauseGame(false)
+			end
+		end
 	end
 	
 	--[[ Checks if Menu is visible ]]--
@@ -518,7 +540,8 @@ if not CustomMenuClass then
 							clbkData = option.callbackData,
 							type = option.type,
 							page = p,
-							index = (((i - 1) * self.menus[name].maxRows) + j)
+							index = (((i - 1) * self.menus[name].maxRows) + j),
+							closeMenu = option.closeMenu
 						}
 						if option.type == 4 then --[[ If it's a Toggle Option draw the Toggle Box Icon too ]]--
 							local bitPos = 0
@@ -563,38 +586,44 @@ if not CustomMenuClass then
 				highlightColor = self.menus[name].buttonHighlightColor,
 				clbk = function() self:close() end
 			})
-			--[[ Previous Page Button ]]--
-			buttonRectHeight = self.menus[name].optionFontSize + 4
-			buttonRectX = self.mainMenuBorderWidth + self.indentColumns
-			buttonRectY = self.mainMenuBorderWidth + self.indentColumns
-			drawRect(self.panelNavigationDisplay, "previous_page_button_rect", buttonRectX, buttonRectY, buttonRectWidth, buttonRectHeight, self.menus[name].buttonRectHighlightColor, { rectLayer = self.baseLayer + 3 }):set_visible(false)
-			self.panelNavigationDisplay:text({name = "previous_page_button_text", text = "Previous Page", x = buttonRectX+6, y = buttonRectY+2, layer = self.baseLayer + 4, color = self.menus[name].optionColor, font = self.menus[name].optionFont, font_size = self.menus[name].optionFontSize})
-			table.insert(self.activeButtons, {
-				text = "previous_page_button_text", 
-				rect = "previous_page_button_rect",
-				help = "Opens the Previous Page of the Current Open Menu",
-				normalColor = self.menus[name].optionColor,
-				highlightColor = self.menus[name].buttonHighlightColor,
-				clbk = function() if #self.menus[name].pages > 1 then local p = 0 if self.currentPage == 1 then p = #self.menus[name].pages else p = self.currentPage - 1 end self:openMenu(name, p) end end
-			})
-			--[[ Next Page Button ]]--
-			buttonRectHeight = self.menus[name].optionFontSize + 4
-			buttonRectX = self.panelNavigationDisplay:w() - self.mainMenuBorderWidth - self.indentColumns - buttonRectWidth
-			buttonRectY = self.mainMenuBorderWidth + self.indentColumns
-			drawRect(self.panelNavigationDisplay, "next_page_button_rect", buttonRectX, buttonRectY, buttonRectWidth, buttonRectHeight, self.menus[name].buttonRectHighlightColor, { rectLayer = self.baseLayer + 3 }):set_visible(false)
-			self.panelNavigationDisplay:text({name = "next_page_button_text", text = "Next Page", x = -6-self.mainMenuBorderWidth-self.indentColumns, y = buttonRectY+2, layer = self.baseLayer + 4, color = self.menus[name].optionColor, font = self.menus[name].optionFont, font_size = self.menus[name].optionFontSize, align = "right"})
-			table.insert(self.activeButtons, {
-				text = "next_page_button_text", 
-				rect = "next_page_button_rect",
-				help = "Opens the Next Page of the Current Open Menu",
-				normalColor = self.menus[name].optionColor,
-				highlightColor = self.menus[name].buttonHighlightColor,
-				clbk = function() if #self.menus[name].pages > 1 then local p = 0 if self.currentPage == #self.menus[name].pages then p = 1 else p = self.currentPage + 1 end self:openMenu(name, p) end end
-			})
+			if #self.menus[name].pages > 1 then
+				--[[ Previous Page Button ]]--
+				buttonRectHeight = self.menus[name].optionFontSize + 4
+				buttonRectX = self.mainMenuBorderWidth + self.indentColumns
+				buttonRectY = self.mainMenuBorderWidth + self.indentColumns
+				drawRect(self.panelNavigationDisplay, "previous_page_button_rect", buttonRectX, buttonRectY, buttonRectWidth, buttonRectHeight, self.menus[name].buttonRectHighlightColor, { rectLayer = self.baseLayer + 3 }):set_visible(false)
+				self.panelNavigationDisplay:text({name = "previous_page_button_text", text = "Previous Page", x = buttonRectX+6, y = buttonRectY+2, layer = self.baseLayer + 4, color = self.menus[name].optionColor, font = self.menus[name].optionFont, font_size = self.menus[name].optionFontSize})
+				table.insert(self.activeButtons, {
+					text = "previous_page_button_text", 
+					rect = "previous_page_button_rect",
+					help = "Opens the Previous Page of the Current Open Menu",
+					normalColor = self.menus[name].optionColor,
+					highlightColor = self.menus[name].buttonHighlightColor,
+					clbk = function() if #self.menus[name].pages > 1 then local p = 0 if self.currentPage == 1 then p = #self.menus[name].pages else p = self.currentPage - 1 end self:openMenu(name, p) end end
+				})
+				--[[ Next Page Button ]]--
+				buttonRectHeight = self.menus[name].optionFontSize + 4
+				buttonRectX = self.panelNavigationDisplay:w() - self.mainMenuBorderWidth - self.indentColumns - buttonRectWidth
+				buttonRectY = self.mainMenuBorderWidth + self.indentColumns
+				drawRect(self.panelNavigationDisplay, "next_page_button_rect", buttonRectX, buttonRectY, buttonRectWidth, buttonRectHeight, self.menus[name].buttonRectHighlightColor, { rectLayer = self.baseLayer + 3 }):set_visible(false)
+				self.panelNavigationDisplay:text({name = "next_page_button_text", text = "Next Page", x = -6-self.mainMenuBorderWidth-self.indentColumns, y = buttonRectY+2, layer = self.baseLayer + 4, color = self.menus[name].optionColor, font = self.menus[name].optionFont, font_size = self.menus[name].optionFontSize, align = "right"})
+				table.insert(self.activeButtons, {
+					text = "next_page_button_text", 
+					rect = "next_page_button_rect",
+					help = "Opens the Next Page of the Current Open Menu",
+					normalColor = self.menus[name].optionColor,
+					highlightColor = self.menus[name].buttonHighlightColor,
+					clbk = function() if #self.menus[name].pages > 1 then local p = 0 if self.currentPage == #self.menus[name].pages then p = 1 else p = self.currentPage + 1 end self:openMenu(name, p) end end
+				})
+			end
 			--[[ Previous Menu Button ]]--
 			buttonRectHeight = self.menus[name].optionFontSize + 4
 			buttonRectX = self.mainMenuBorderWidth + self.indentColumns
-			buttonRectY = self.panelNavigationDisplay:h() - self.mainMenuBorderWidth - self.indentColumns - buttonRectHeight
+			if #self.menus[name].pages < 2 then
+				buttonRectY = (self.panelNavigationDisplay:h() / 2) - (buttonRectHeight / 2)
+			else
+				buttonRectY = self.panelNavigationDisplay:h() - self.mainMenuBorderWidth - self.indentColumns - buttonRectHeight
+			end
 			drawRect(self.panelNavigationDisplay, "previous_menu_button_rect", buttonRectX, buttonRectY, buttonRectWidth, buttonRectHeight, self.menus[name].buttonRectHighlightColor, { rectLayer = self.baseLayer + 3 }):set_visible(false)
 			self.panelNavigationDisplay:text({name = "previous_menu_button_text", text = "Previous Menu", x = buttonRectX+6, y = buttonRectY+2, layer = self.baseLayer + 4, color = self.menus[name].optionColor, font = self.menus[name].optionFont, font_size = self.menus[name].optionFontSize})
 			table.insert(self.activeButtons, {
@@ -608,7 +637,11 @@ if not CustomMenuClass then
 			--[[ Main Menu Button ]]--
 			buttonRectHeight = self.menus[name].optionFontSize + 4
 			buttonRectX = self.panelNavigationDisplay:w() - self.mainMenuBorderWidth - self.indentColumns - buttonRectWidth
-			buttonRectY = self.panelNavigationDisplay:h() - self.mainMenuBorderWidth - self.indentColumns - buttonRectHeight
+			if #self.menus[name].pages < 2 then
+				buttonRectY = (self.panelNavigationDisplay:h() / 2) - (buttonRectHeight / 2)
+			else
+				buttonRectY = self.panelNavigationDisplay:h() - self.mainMenuBorderWidth - self.indentColumns - buttonRectHeight
+			end
 			drawRect(self.panelNavigationDisplay, "main_menu_button_rect", buttonRectX, buttonRectY, buttonRectWidth, buttonRectHeight, self.menus[name].buttonRectHighlightColor, { rectLayer = self.baseLayer + 3 }):set_visible(false)
 			self.panelNavigationDisplay:text({name = "main_menu_button_text", text = "Main Menu", x = -6-self.mainMenuBorderWidth-self.indentColumns, y = buttonRectY+2, layer = self.baseLayer + 4, color = self.menus[name].optionColor, font = self.menus[name].optionFont, font_size = self.menus[name].optionFontSize, align = "right"})
 			table.insert(self.activeButtons, {
@@ -776,6 +809,7 @@ if not CustomMenuClass then
 		option.toggle = getValue(optionalParams.toggle, _defaultToggleBoolean) --[[ Sets the Toggle Option to Either On (TRUE) or Off (FALSE) ]]--
 		option.postToggle = getValue(optionalParams.postToggle, _defaultPostToggleBoolean) --[[ If True When the Toggle Option is Clicked it will pass the Boolean Value of Whether it's On or Off to the Function it Calls (Overwrites callbackData) ]]--
 		option.recieveToggle = getValue(optionalParams.recieveToggle, _defaultRecieveToggleBoolean) --[[ If True When the Toggle Option is Clicked it will Set the Toggle Value to the Boolean Returned from the Function it Calls ]]--
+		option.closeMenu = getValue(optionalParams.closeMenu, _closeMenu) --[[ If True Closes the Menu when the Option is Clicked ]]--
 		
 		local pageCount = #self.menus[menu].pages
 		if pageCount > 0 then
@@ -881,7 +915,7 @@ if not CustomMenuClass then
 	--[[ Activates Mouse Input ]]--
 	function CustomMenuClass:activateMouse()
 		if not self.mouseActive then
-			managers.mouse_pointer._ws:set_screen(self.resolution.x, self.resolution.y, 0, 0, self.resolution.x, self.resolution.y) -- Adjust Mouse Workspace to Current Screen Resolution Because otherwise if your not using 720p Resolution the Mouse is Fucked up for Some Reason
+			managers.mouse_pointer._ws:set_screen(self.resolution.x, self.resolution.y, 0, 0, self.resolution.x, self.resolution.y) --Adjust Mouse Workspace to Current Screen Resolution Because otherwise if your not using 720p Resolution the Mouse is Fucked up for Some Reason
 			local data = {
 				mouse_move = callback(self, self, "mouse_moved"),
 				mouse_press = callback(self, self, "mouse_pressed"),
@@ -898,7 +932,7 @@ if not CustomMenuClass then
 	--[[ Deactivates Mouse Input ]]--
 	function CustomMenuClass:deactivateMouse()
 		if self.mouseActive then
-			managers.gui_data:layout_fullscreen_workspace(managers.mouse_pointer._ws) -- Set Mouse Workspace back to how PayDay wants it
+			managers.gui_data:layout_fullscreen_workspace(managers.mouse_pointer._ws) --Set Mouse Workspace back to how PayDay wants it
 			managers.mouse_pointer:remove_mouse(_mouseId)
 			self.mouseActive = false
 		end
@@ -958,6 +992,7 @@ if not CustomMenuClass then
 	function CustomMenuClass:mouse_clicked(o, button, x, y)
 		if self:isOpen() then
 			if self.activeButtons ~= nil then
+				local needCloseMenu = false
 				for _,data in ipairs(self.activeButtons) do
 					if data then
 						if data.column then --[[ Basically if There isn't a Column Declared in the Data then it's a Navigation Button ]]--
@@ -966,6 +1001,7 @@ if not CustomMenuClass then
 								 but if you Call the Children of the Panel using their Names it Doesn't Error. So I Dunno what that's all About, Potentially an Error with Payday 2 Coding ]]--
 							pcall(function()
 								if self.panelMainMenuDisplay:child(data.column):child(data.rect):inside(x, y) then
+									if data.closeMenu then needCloseMenu = true end
 									if data.type == 4 then
 										local option = self:getMenuOptionViaIndices(self.currentMenu, data.page, data.index)
 										option.toggle = not option.toggle
@@ -1007,6 +1043,9 @@ if not CustomMenuClass then
 							end)
 						end
 					end
+				end
+				if needCloseMenu then
+					self:close()
 				end
 			end
 		end

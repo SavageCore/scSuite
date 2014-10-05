@@ -23,7 +23,7 @@ if tweak_data and tweak_data.SCSuiteConfiguration.mute_bain_enabled then
             return _queue_dialog_orig(self, id, ...)
         end
         
-        if managers.job:current_level_id() ~= "big" and managers.job:current_level_id() ~= "roberts" then
+        if managers.job:current_level_id() ~= "big" and managers.job:current_level_id() ~= "roberts" and managers.job:current_level_id() ~= "mia_1" then
             function DialogManager:_play_dialog(dialog, params, line)
                 return
             end
