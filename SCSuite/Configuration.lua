@@ -66,8 +66,11 @@ function SCSuiteConfiguration:init()
     self.carry_stacker_toggle = true    
     self.carry_stacker_limit_value = 2 
     self.cable_tie_toggle = true    
-    self.cable_tie_limit_value = 10
+    self.cable_tie_limit_value = 25
     self.pager_chance_toggle = true
     self.restart_pro_toggle = true
     self.disable_update_notifier_toggle = true
+    self.sell_hostage_toggle = true
+    self.follow_override_toggle = true
+    self.follow_override_limit_value = 4
 end

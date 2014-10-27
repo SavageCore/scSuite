@@ -21,6 +21,8 @@ PersistScripts:
     - [AntiAntiCheats, Lua/Persist/AntiAntiCheats.lua]       
     - [CableLimit, Lua/Persist/CableLimit.lua]              
     - [RestartPro, Lua/Persist/RestartPro.lua]                      
+    - [SellHostage, Lua/Persist/SellHostage.lua]                      
+    - [FollowOverride, Lua/Persist/FollowOverride.lua]                      
 PostRequireScripts:
     - ["*", SCSuite/Main.lua]
     - ["*", Lua/PostRequire/CrashFixer.lua]
@@ -35,4 +37,4 @@ PostRequireScripts:
     - [lib/states/missionendstate, Lua/General/SkipEndscreen.lua]
     - [lib/units/unitdamage, Lua/PostRequire/BankBusterHost.lua]    
     - [lib/managers/missionmanager, Lua/PostRequire/BankBusterClient.lua]    
-    - [lib/units/enemies/cop/copbrain, LUA/PostRequire/PagerChance.lua]
+    - [lib/units/enemies/cop/copbrain, Lua/PostRequire/PagerChance.lua]

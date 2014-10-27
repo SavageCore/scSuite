@@ -58,6 +58,15 @@ end
 function MenuCallbackHandler:toggleDisableUpdateNotifier(item)
           LocalizationStringManagerBooleanCallBack("disable_update_notifier_toggle")
 end
+function MenuCallbackHandler:toggleSellHostage(item)
+          LocalizationStringManagerBooleanCallBack("sell_hostage_toggle")
+end
+function MenuCallbackHandler:toggleFollowOverride(item)
+          LocalizationStringManagerBooleanCallBack("follow_override_toggle")
+end
+function MenuCallbackHandler:sliderFollowOverrideLimit(item)
+    LocalizationStringManagerSliderCallBack("follow_override_limit_value", tostring(item:value()))
+end
 
 function MenuCallbackHandler:toggleTest2(item)
           io.write("Toggle value: " .. tostring(item:value()) .. "\n")
@@ -229,9 +238,12 @@ function addMainMenu()
           addToggle("carry_stacker_name", "carry_stacker_title", "carry_stacker_desc", "toggleCarryStacker", tweak_data.SCSuiteConfiguration.carry_stacker_toggle, menuEntry)
           addSlider("carry_stacker_limit_name", "carry_stacker_limit_title", "carry_stacker_limit_desc", "sliderCarryStackerLimit", tweak_data.SCSuiteConfiguration.carry_stacker_limit_value, menuEntry, 0, 50, 5)  
           addToggle("cable_tie_name", "cable_tie_title", "cable_tie_desc", "toggleCableTie", tweak_data.SCSuiteConfiguration.cable_tie_toggle, menuEntry)
-          addSlider("cable_tie_limit_name", "cable_tie_limit_title", "cable_tie_limit_desc", "sliderCableTieLimit", tweak_data.SCSuiteConfiguration.cable_tie_limit_value, menuEntry, 0, 10, 5)
+          addSlider("cable_tie_limit_name", "cable_tie_limit_title", "cable_tie_limit_desc", "sliderCableTieLimit", tweak_data.SCSuiteConfiguration.cable_tie_limit_value, menuEntry, 0, 25, 5)
           addToggle("pager_chance_name", "pager_chance_title", "pager_chance_desc", "togglePagerChance", tweak_data.SCSuiteConfiguration.pager_chance_toggle, menuEntry)
           addToggle("restart_pro_name", "restart_pro_title", "restart_pro_desc", "toggleRestartPro", tweak_data.SCSuiteConfiguration.restart_pro_toggle, menuEntry)
           addToggle("disable_update_notifier_name", "disable_update_notifier_title", "disable_update_notifier_desc", "toggleDisableUpdateNotifier", tweak_data.SCSuiteConfiguration.disable_update_notifier_toggle, menuEntry)
+          addToggle("sell_hostage_name", "sell_hostage_title", "sell_hostage_desc", "toggleSellHostage", tweak_data.SCSuiteConfiguration.sell_hostage_toggle, menuEntry)
+          addToggle("follow_override_name", "follow_override_title", "follow_override_desc", "toggleFollowOverride", tweak_data.SCSuiteConfiguration.follow_override_toggle, menuEntry)
+          addSlider("follow_override_limit_name", "follow_override_limit_title", "follow_override_limit_desc", "sliderFollowOverrideLimit", tweak_data.SCSuiteConfiguration.follow_override_limit_value, menuEntry, 0, 50, 5)
           --addMultichoice("test_multichoice", "multichoice", "multichoicedesc", "multichoiceTest", 0, menuEntry)
 end

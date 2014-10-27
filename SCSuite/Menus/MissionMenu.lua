@@ -1,11 +1,13 @@
 -- Requires GUI Drawn Menu by stumpy3toes
+
 -----------------------------------------
------ Job Manager v1.03 (Update 37) -----
+----- Job Manager v1.03a (Update 37) ----
 -- Acepilot1023978: GUI Implementation --
 ------ B1313: Base code (functions) -----
------------ MS HACK: Update 37 ----------
--- kel007: Update 37 (Open/Close menu) --
+----- MS HACK: Update 37 (level ID) -----
+-- kel007: Update 37 (open/close menu) --
 -----------------------------------------
+
 if not JobMenu then
 -- ESCAPE CHAIN (Current Difficulty)
 EscapeCafeChain = function()
@@ -2140,7 +2142,6 @@ HotlineMiamiDay1DeathWish = function()
 end
 
 HotlineMiamiDay1OverKill = function()
-    Console("lebep")
     managers.job:activate_job ( "mia" )
     Global.game_settings.level_id = "mia_1"
     Global.game_settings.mission = managers.job:current_mission()
@@ -2221,16 +2222,6 @@ HotlineMiamiPRODay2Hard = function()
     managers.network.matchmake:create_lobby( { numbers = { level_id, "hard", "public", nil, nil, 1, 1, 1 } } )
 end
 
-HotlineMiamiPRODay2Normal = function()
-    managers.job:activate_job ( "mia", 2 )
-    Global.game_settings.level_id = "mia_2"
-    Global.game_settings.mission = managers.job:current_mission()
-    Global.game_settings.difficulty = "normal"
-    local level_id = tweak_data.levels:get_index_from_level_id( Global.game_settings.level_id )
-    local job_id = tweak_data.narrative:get_index_from_job_id( managers.job:current_job_id() )
-    managers.network.matchmake:create_lobby( { numbers = { level_id, "normal", "public", nil, nil, 1, 1, 1 } } )
-end
-
 -- HOTLINE MIAMI PRO JOB DAY 1 (Normal, Hard, Very Hard, OverKill, and DeathWish)
 HotlineMiamiPRODay1DeathWish = function()
     managers.job:activate_job ( "mia_prof" )
@@ -2270,16 +2261,6 @@ HotlineMiamiPRODay1Hard = function()
     local level_id = tweak_data.levels:get_index_from_level_id( Global.game_settings.level_id )
     local job_id = tweak_data.narrative:get_index_from_job_id( managers.job:current_job_id() )
     managers.network.matchmake:create_lobby( { numbers = { level_id, "hard", "public", nil, nil, 1, 1, 1 } } )
-end
-
-HotlineMiamiPRODay1Normal = function()
-    managers.job:activate_job ( "mia_prof" )
-    Global.game_settings.level_id = "mia_1"
-    Global.game_settings.mission = managers.job:current_mission()
-    Global.game_settings.difficulty = "normal"
-    local level_id = tweak_data.levels:get_index_from_level_id( Global.game_settings.level_id )
-    local job_id = tweak_data.narrative:get_index_from_job_id( managers.job:current_job_id() )
-    managers.network.matchmake:create_lobby( { numbers = { level_id, "normal", "public", nil, nil, 1, 1, 1 } } )
 end
 
 -- BAIN DLC (Normal, Hard, Very Hard, OverKill, and DeathWish)
@@ -3132,9 +3113,6 @@ JobMenu:addOption('dentist_normal', 'The Big Bank', { callback = BigBankNormal, 
 JobMenu:addGap('dentist_normal')
 JobMenu:addOption('dentist_normal', 'Hotline Miami: Day 1', { callback = HotlineMiamiDay1Normal, closeMenu = true } )
 JobMenu:addOption('dentist_normal', 'Hotline Miami: Day 2', { callback = HotlineMiamiDay2Normal, closeMenu = true } )
-JobMenu:addGap('dentist_normal')
-JobMenu:addOption('dentist_normal', 'Hotline Miami: Day 1 (Pro)', { callback = HotlineMiamiPRODay1Normal, closeMenu = true } )
-JobMenu:addOption('dentist_normal', 'Hotline Miami: Day 2 (Pro)', { callback = HotlineMiamiPRODay2Normal, closeMenu = true } )
 --[[ Hector Normal ]]--
 JobMenu:addOption('hector_normal', 'Watchdogs: Day 1', { callback = WatchdogsDay1Normal, closeMenu = true } )
 JobMenu:addOption('hector_normal', 'Watchdogs: Day 2', { callback = WatchdogsDay2Normal, closeMenu = true } )
@@ -3373,11 +3351,11 @@ JobMenu:addOption('bain_overkill', 'Shadow Raid', { callback = ShadowRaidOverKil
 --[[ Dentist Overkill ]]--
 JobMenu:addOption('dentist_overkill', 'The Big Bank', { callback = BigBankOverKill, closeMenu = true } )
 JobMenu:addGap('dentist_overkill')
-JobMenu:addOption('dentist_overkill', 'Hotline Miami: Day 1', { callback = HotlineMiamiDay1Overkill, closeMenu = true } )
-JobMenu:addOption('dentist_overkill', 'Hotline Miami: Day 2', { callback = HotlineMiamiDay2Overkill, closeMenu = true } )
+JobMenu:addOption('dentist_overkill', 'Hotline Miami: Day 1', { callback = HotlineMiamiDay1OverKill, closeMenu = true } )
+JobMenu:addOption('dentist_overkill', 'Hotline Miami: Day 2', { callback = HotlineMiamiDay2OverKill, closeMenu = true } )
 JobMenu:addGap('dentist_overkill')
-JobMenu:addOption('dentist_overkill', 'Hotline Miami: Day 1 (Pro)', { callback = HotlineMiamiPRODay1Overkill, closeMenu = true } )
-JobMenu:addOption('dentist_overkill', 'Hotline Miami: Day 2 (Pro)', { callback = HotlineMiamiPRODay2Overkill, closeMenu = true } )
+JobMenu:addOption('dentist_overkill', 'Hotline Miami: Day 1 (Pro)', { callback = HotlineMiamiPRODay1OverKill, closeMenu = true } )
+JobMenu:addOption('dentist_overkill', 'Hotline Miami: Day 2 (Pro)', { callback = HotlineMiamiPRODay2OverKill, closeMenu = true } )
 --[[ Hector Overkill ]]--
 JobMenu:addOption('hector_overkill', 'Watchdogs: Day 1', { callback = WatchdogsDay1OverKill, closeMenu = true } )
 JobMenu:addOption('hector_overkill', 'Watchdogs: Day 2', { callback = WatchdogsDay2OverKill, closeMenu = true } )
@@ -3535,8 +3513,8 @@ JobMenu:addOption('escape_chain', 'Escape: Street', { callback = EscapeStreetCha
 JobMenu:addOption('escape_chain', 'Escape: Park', { callback = EscapeGarageChain, closeMenu = true } )
 end
 
-if JobMenu:isOpen() then
-    JobMenu:close()
-else
-    JobMenu:open()
-end
+	if JobMenu:isOpen() then
+		JobMenu:close()
+	else
+		JobMenu:open()
+	end
