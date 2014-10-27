@@ -12,5 +12,5 @@ Neither of those are required as of now due to switching to the standard HoxHud 
 
 This is currently tested with
 
-HoxHud P6.4
-Payday2 v1.13.0 (Update 37.1)
+HoxHud P7.6
+Payday2 v1.16.6 (Update 43)
