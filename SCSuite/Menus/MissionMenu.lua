@@ -1,12 +1,13 @@
--- Requires GUI Drawn Menu by stumpy3toes
+-- Requires CustomMenuClass.lua and Util.lua
 
 -----------------------------------------
------ Job Manager v1.03a (Update 37) ----
+----- Job Manager v1.04 (Update 42) -----
 -- Acepilot1023978: GUI Implementation --
 ------ B1313: Base code (functions) -----
------ MS HACK: Update 37 (level ID) -----
--- kel007: Update 37 (open/close menu) --
+----------- MS HACK: Level ID -----------
+-- kel007: Update 42 (open/close menu) --
 -----------------------------------------
+
 
 if not JobMenu then
 -- ESCAPE CHAIN (Current Difficulty)
@@ -2264,6 +2265,57 @@ HotlineMiamiPRODay1Hard = function()
 end
 
 -- BAIN DLC (Normal, Hard, Very Hard, OverKill, and DeathWish)
+-- ART GALLERY (Normal, Hard, Very Hard, OverKill, and DeathWish)
+GalleryDeathWish = function()
+    managers.job:activate_job ( "gallery" )
+    Global.game_settings.level_id = "gallery"
+    Global.game_settings.mission = managers.job:current_mission()
+    Global.game_settings.difficulty = "overkill_290"
+    local level_id = tweak_data.levels:get_index_from_level_id( Global.game_settings.level_id )
+    local job_id = tweak_data.narrative:get_index_from_job_id( managers.job:current_job_id() )
+    managers.network.matchmake:create_lobby( { numbers = { level_id, "overkill_290", "public", nil, nil, 1, 1, 1 } } )
+end
+
+GalleryOverKill = function()
+    managers.job:activate_job ( "gallery" )
+    Global.game_settings.level_id = "gallery"
+    Global.game_settings.mission = managers.job:current_mission()
+    Global.game_settings.difficulty = "overkill_145"
+    local level_id = tweak_data.levels:get_index_from_level_id( Global.game_settings.level_id )
+    local job_id = tweak_data.narrative:get_index_from_job_id( managers.job:current_job_id() )
+    managers.network.matchmake:create_lobby( { numbers = { level_id, "overkill_145", "public", nil, nil, 1, 1, 1 } } )
+end
+
+GalleryVeryHard = function()
+    managers.job:activate_job ( "gallery" )
+    Global.game_settings.level_id = "gallery"
+    Global.game_settings.mission = managers.job:current_mission()
+    Global.game_settings.difficulty = "overkill"
+    local level_id = tweak_data.levels:get_index_from_level_id( Global.game_settings.level_id )
+    local job_id = tweak_data.narrative:get_index_from_job_id( managers.job:current_job_id() )
+    managers.network.matchmake:create_lobby( { numbers = { level_id, "overkill", "public", nil, nil, 1, 1, 1 } } )
+end
+
+GalleryHard = function()
+    managers.job:activate_job ( "gallery" )
+    Global.game_settings.level_id = "gallery"
+    Global.game_settings.mission = managers.job:current_mission()
+    Global.game_settings.difficulty = "hard"
+    local level_id = tweak_data.levels:get_index_from_level_id( Global.game_settings.level_id )
+    local job_id = tweak_data.narrative:get_index_from_job_id( managers.job:current_job_id() )
+    managers.network.matchmake:create_lobby( { numbers = { level_id, "hard", "public", nil, nil, 1, 1, 1 } } )
+end
+
+GalleryNormal = function()
+    managers.job:activate_job ( "gallery" )
+    Global.game_settings.level_id = "gallery"
+    Global.game_settings.mission = managers.job:current_mission()
+    Global.game_settings.difficulty = "normal"
+    local level_id = tweak_data.levels:get_index_from_level_id( Global.game_settings.level_id )
+    local job_id = tweak_data.narrative:get_index_from_job_id( managers.job:current_job_id() )
+    managers.network.matchmake:create_lobby( { numbers = { level_id, "normal", "public", nil, nil, 1, 1, 1 } } )
+end
+
 -- SHADOW RAID (Normal, Hard, Very Hard, OverKill, and DeathWish)
 ShadowRaidDeathWish = function()
     managers.job:activate_job ( "kosugi" )
@@ -3094,7 +3146,7 @@ JobMenu:addOption('bain_normal', 'Jewelry Store', { callback = JewelryStoreNorma
 JobMenu:addOption('bain_normal', 'Bank Heist: Cash', { callback = BankCashNormal, closeMenu = true } )
 JobMenu:addOption('bain_normal', 'Bank Heist: Deposit', { callback = BankDepositNormal, closeMenu = true } )
 JobMenu:addOption('bain_normal', 'Diamond Store', { callback = DiamondStoreNormal, closeMenu = true } )
-JobMenu:addGap('bain_normal')
+JobMenu:addOption('bain_normal', 'Art Gallery', { callback = GalleryNormal, closeMenu = true } )
 JobMenu:addGap('bain_normal')
 JobMenu:addGap('bain_normal')
 JobMenu:addGap('bain_normal')
@@ -3159,10 +3211,10 @@ JobMenu:addOption('bain_hard', 'Jewelry Store', { callback = JewelryStoreHard, c
 JobMenu:addOption('bain_hard', 'Bank Heist: Cash', { callback = BankCashHard, closeMenu = true } )
 JobMenu:addOption('bain_hard', 'Bank Heist: Deposit', { callback = BankDepositHard, closeMenu = true } )
 JobMenu:addOption('bain_hard', 'Diamond Store', { callback = DiamondStoreHard, closeMenu = true } )
+JobMenu:addOption('bain_hard', 'Art Gallery', { callback = GalleryHard, closeMenu = true } )
 JobMenu:addGap('bain_hard')
 JobMenu:addOption('bain_hard', 'Bank Heist: Gold (Pro)', { callback = BankGoldPROHard, closeMenu = true } )
 JobMenu:addOption('bain_hard', 'Bank Heist (Pro)', { callback = BankPROHard, closeMenu = true } )
-JobMenu:addGap('bain_hard')
 JobMenu:addGap('bain_hard')
 JobMenu:addInformationOption('bain_hard', '.:: DLC ::.')
 JobMenu:addOption('bain_hard', 'Transport: Crossroads', { callback = TransportCrossRoadsHard, closeMenu = true } )
@@ -3246,10 +3298,10 @@ JobMenu:addOption('bain_veryhard', 'Jewelry Store', { callback = JewelryStoreVer
 JobMenu:addOption('bain_veryhard', 'Bank Heist: Cash', { callback = BankCashVeryHard, closeMenu = true } )
 JobMenu:addOption('bain_veryhard', 'Bank Heist: Deposit', { callback = BankDepositVeryHard, closeMenu = true } )
 JobMenu:addOption('bain_veryhard', 'Diamond Store', { callback = DiamondStoreVeryHard, closeMenu = true } )
+JobMenu:addOption('bain_veryhard', 'Gallery', { callback = GalleryVeryHard, closeMenu = true } )
 JobMenu:addGap('bain_veryhard')
 JobMenu:addOption('bain_veryhard', 'Bank Heist: Gold (Pro)', { callback = BankGoldPROVeryHard, closeMenu = true } )
 JobMenu:addOption('bain_veryhard', 'Bank Heist (Pro)', { callback = BankPROVeryHard, closeMenu = true } )
-JobMenu:addGap('bain_veryhard')
 JobMenu:addGap('bain_veryhard')
 JobMenu:addInformationOption('bain_veryhard', '.:: DLC ::.')
 JobMenu:addOption('bain_veryhard', 'Transport: Crossroads', { callback = TransportCrossRoadsVeryHard, closeMenu = true } )
@@ -3334,10 +3386,10 @@ JobMenu:addOption('bain_overkill', 'Jewelry Store', { callback = JewelryStoreOve
 JobMenu:addOption('bain_overkill', 'Bank Heist: Cash', { callback = BankCashOverKill, closeMenu = true } )
 JobMenu:addOption('bain_overkill', 'Bank Heist: Deposit', { callback = BankDepositOverKill, closeMenu = true } )
 JobMenu:addOption('bain_overkill', 'Diamond Store', { callback = DiamondStoreOverKill, closeMenu = true } )
+JobMenu:addOption('bain_overkill', 'Art Gallery', { callback = GalleryOverKill, closeMenu = true } )
 JobMenu:addGap('bain_overkill')
 JobMenu:addOption('bain_overkill', 'Bank Heist: Gold (Pro)', { callback = BankGoldPROOverKill, closeMenu = true } )
 JobMenu:addOption('bain_overkill', 'Bank Heist (Pro)', { callback = BankPROOverKill, closeMenu = true } )
-JobMenu:addGap('bain_overkill')
 JobMenu:addGap('bain_overkill')
 JobMenu:addInformationOption('bain_overkill', '.:: DLC ::.')
 JobMenu:addOption('bain_overkill', 'Transport: Crossroads', { callback = TransportCrossRoadsOverKill, closeMenu = true } )
@@ -3421,10 +3473,10 @@ JobMenu:addOption('bain_deathwish', 'Jewelry Store', { callback = JewelryStoreDe
 JobMenu:addOption('bain_deathwish', 'Bank Heist: Cash', { callback = BankCashDeathWish, closeMenu = true } )
 JobMenu:addOption('bain_deathwish', 'Bank Heist: Deposit', { callback = BankDepositDeathWish, closeMenu = true } )
 JobMenu:addOption('bain_deathwish', 'Diamond Store', { callback = DiamondStoreDeathWish, closeMenu = true } )
+JobMenu:addOption('bain_deathwish', 'Art Gallery', { callback = GalleryDeathWish, closeMenu = true } )
 JobMenu:addGap('bain_deathwish')
 JobMenu:addOption('bain_deathwish', 'Bank Heist: Gold (Pro)', { callback = BankGoldPRODeathWish, closeMenu = true } )
 JobMenu:addOption('bain_deathwish', 'Bank Heist (Pro)', { callback = BankPRODeathWish, closeMenu = true } )
-JobMenu:addGap('bain_deathwish')
 JobMenu:addGap('bain_deathwish')
 JobMenu:addInformationOption('bain_deathwish', '.:: DLC ::.')
 JobMenu:addOption('bain_deathwish', 'Transport: Crossroads', { callback = TransportCrossRoadsDeathWish, closeMenu = true } )
@@ -3513,8 +3565,8 @@ JobMenu:addOption('escape_chain', 'Escape: Street', { callback = EscapeStreetCha
 JobMenu:addOption('escape_chain', 'Escape: Park', { callback = EscapeGarageChain, closeMenu = true } )
 end
 
-	if JobMenu:isOpen() then
-		JobMenu:close()
-	else
-		JobMenu:open()
-	end
+if JobMenu:isOpen() then
+    JobMenu:close()
+else
+    JobMenu:open()
+end
